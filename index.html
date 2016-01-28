@@ -173,6 +173,242 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS bug记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/iOS bug记录/" class="article-date">
+  	<time datetime="2016-01-28T01:20:49.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/iOS bug记录/">iOS bug记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>iOS 7.0使用此方法闪退</p>
+<p>  友盟统计错误提示：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+[UIFont <span class="string">systemFontOfSize:</span><span class="string">weight:</span>]: unrecognized selector sent to <span class="class"><span class="keyword">class</span> 0<span class="title">x191252b50</span></span></span><br></pre></td></tr></table></figure>
+<p>  ###错误原因</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIFont systemFontOfSize:<span class="number">12.0f</span> weight:<span class="number">12.0f</span>];</span><br></pre></td></tr></table></figure>
+<p>  ###字体加粗使用</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[UIFont boldSystemFontOfSize:12.0f]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/记录/" class="article-date">
+  	<time datetime="2016-01-28T01:20:49.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/记录/">记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>去除 TabBar 自带的顶部阴影<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[<span class="collection">[UITabBar appearance]</span> setShadowImage:<span class="collection">[<span class="collection">[UIImage alloc]</span> init]</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>去除 UINavigationBar 自带的底部阴影<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[<span class="collection">[UINavigationBar appearance]</span> setShadowImage:<span class="collection">[<span class="collection">[UIImage alloc]</span> init]</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>###CocoaPods安装失败<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem <span class="operator"><span class="keyword">install</span> -<span class="keyword">n</span> /usr/<span class="keyword">local</span>/<span class="keyword">bin</span> cocoapods</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-杭电acm 1001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/杭电acm 1001/" class="article-date">
+  	<time datetime="2016-01-28T01:20:49.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u676D_u7535acm_1001"><a href="#u676D_u7535acm_1001" class="headerlink" title="杭电acm 1001"></a>杭电acm 1001</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	double a;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%lf"</span>,&amp;a) != EOF) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.0lf\n\n"</span>,a * (<span class="number">1</span> + a) / <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>[杭电acm 1001] (<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1001" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=1001</a>)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS第三方库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/28/iOS第三方库/" class="article-date">
+  	<time datetime="2016-01-28T01:20:49.000Z" itemprop="datePublished">2016-01-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/28/iOS第三方库/">iOS第三方库</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>AFNetworking</strong> 网络请求</li>
+<li><strong>SDWebImage</strong>  图片异步下载，缓存管理</li>
+<li><strong>MBProgressHUD</strong>  HUD loading提示</li>
+<li><strong>Masonry</strong>  AutoLayout手写库</li>
+<li><strong>Pop</strong>  自定义动画</li>
+<li><strong>iToast</strong>  黑底白字提示框</li>
+<li><strong>GPUImage</strong>  图片处理框架</li>
+<li><strong>CRToast</strong>  顶部状态栏提示</li>
+<li><strong>SSKeychain</strong>  使用系统keychain储存、修改、访问密码</li>
+<li><strong>chartee</strong>  K线图绘制</li>
+<li><strong>MMDrawerController</strong> 侧滑</li>
+<li><strong>iCarousel</strong>  分页效果</li>
+<li><strong>ReactiveCocoa</strong>  响应式编程</li>
+<li><strong>DOPNavbarMenu</strong>  导航栏展开菜单</li>
+<li><strong>KYGooeyMenu</strong>  带粘性的扇形菜单</li>
+<li><strong>RESideMenu</strong>  开源中国App中使用的侧拉</li>
+<li><strong>MMPopupView</strong>  弹出框</li>
+<li><strong>Reachability</strong>  网络检测</li>
+<li><strong>RTLabel</strong>  富文本</li>
+<li><strong>ZBarSDK</strong>  二维码扫描</li>
+<li><strong>LJWKeyboardHandler</strong>  键盘监听</li>
+<li><strong>CKCalendarView</strong>  日历</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
