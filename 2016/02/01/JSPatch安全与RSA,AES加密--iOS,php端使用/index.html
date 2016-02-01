@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>JSPatch基本与RSA,AES加密 | 阳光下的程序猿</title>
+  <title>JSPatch安全与RSA,AES加密--iOS,php端使用 | 阳光下的程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
 鉴于此种情况
@@ -14,8 +14,8 @@
 RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSPatch基本与RSA,AES加密">
-<meta property="og:url" content="www.3vcolor.com/2016/02/01/JSPatch基本与RSA,SAE加密/index.html">
+<meta property="og:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
+<meta property="og:url" content="www.3vcolor.com/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
 <meta property="og:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
 鉴于此种情况
@@ -24,9 +24,9 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
 RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
-<meta property="og:updated_time" content="2016-02-01T09:09:00.000Z">
+<meta property="og:updated_time" content="2016-02-01T14:24:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSPatch基本与RSA,AES加密">
+<meta name="twitter:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
 <meta name="twitter:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
 鉴于此种情况
 1. 服务器尽量使用https传输
@@ -210,11 +210,11 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-JSPatch基本与RSA,SAE加密" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JSPatch安全与RSA,AES加密--iOS,php端使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/01/JSPatch基本与RSA,SAE加密/" class="article-date">
-  	<time datetime="2016-02-01T09:34:16.000Z" itemprop="datePublished">2016-02-01</time>
+      <a href="/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
+  	<time datetime="2016-02-01T14:24:53.000Z" itemprop="datePublished">2016-02-01</time>
 </a>
     </div>
   
@@ -227,7 +227,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
         
   
     <h1 class="article-title" itemprop="name">
-      JSPatch基本与RSA,AES加密
+      JSPatch安全与RSA,AES加密--iOS,php端使用
     </h1>
   
 
@@ -241,7 +241,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-JSPatch-RSA-AES/">iOS JSPatch, RSA, AES</a>
+	<a class="article-category-link" href="/categories/iOS-JSPatch-RSA-AES-PHP/">iOS JSPatch, RSA, AES, PHP</a>
 	</div>
 
 
@@ -346,20 +346,24 @@ uSoMrYaSKj2qnGmNXQIDAQAB
 
     openssl_public_decrypt(base64_decode($bicode), $cdbicode, $pu_key);
     echo &quot;公钥验证签名：&quot;,$cdbicode,&quot;\n&quot;;
-
 }
-
-}
+}    
 </code></pre><p>=============</p>
 <h3 id="iOS_u4F7F_u7528JSPatch"><a href="#iOS_u4F7F_u7528JSPatch" class="headerlink" title="iOS使用JSPatch"></a>iOS使用JSPatch</h3><p>JSPatch脚本的执行权限很高，若在传输过程中被中间人篡改，会带来很大的安全问题，为了防止这种情况出现，我们在传输过程中对JS文件进行了RSA签名加密，流程如下：</p>
 <h4 id="u670D_u52A1_u7AEF_uFF1A"><a href="#u670D_u52A1_u7AEF_uFF1A" class="headerlink" title="服务端："></a>服务端：</h4><ol>
 <li>计算 JS 内容 MD5 值。</li>
 <li>用 RSA 私钥对 MD5 值进行加密，与JS内容一起下发给客户端。</li>
 </ol>
+<blockquote>
+<p>对md5进行RSA加密，而不是对整个js内容加密，是因为</p>
+<p>1.一般的RSA加密算法，对待加密内容有长度要求，通常不会很长；</p>
+<p>2.对较长内容进行RSA加密，较影响性能。 </p>
+<p>本实例服务器返回js代码，也可以直接下载js文件，进行校验。 </p>
+</blockquote>
 <h4 id="u5BA2_u6237_u7AEF_uFF1A"><a href="#u5BA2_u6237_u7AEF_uFF1A" class="headerlink" title="客户端："></a>客户端：</h4><ol>
 <li>拿到加密数据，用 RSA 公钥解密出 MD5 值。</li>
 <li>本地计算返回的 JS 内容 MD5 值。</li>
-<li>对比上述的两个 MD5 值，若相等则校验通过，取 JS 文件保存到本地。<br>由于 RSA 是非对称加密，在没有私钥的情况下第三方无法加密对应的 MD5 值，也就无法伪造 JS 文件，杜绝了 JS 文件在传输过程被篡改的可能。</li>
+<li>对比上述的两个 MD5 值，若相等则校验通过，取 JS 文件保存到本地。<br>由于 RSA 是非对称加密，在没有私钥的情况下第三方无法加密对应的 MD5 值，也就无法伪造 JS 内容，杜绝了 JS 内容在传输过程被篡改的可能。</li>
 </ol>
 <h4 id="u670D_u52A1_u7AEFphp_u4EE3_u7801"><a href="#u670D_u52A1_u7AEFphp_u4EE3_u7801" class="headerlink" title="服务端php代码"></a>服务端php代码</h4><pre><code>/*
  * 加密一个字符串，返回RSA加密后的内容
@@ -390,7 +394,14 @@ public function jscode() {
 
     $this-&gt;json_out(&apos;200&apos;,&apos;0&apos;,&apos;&apos;,$da);
 }
-</code></pre><h5 id="iOS_u7AEF_u4EE3_u7801"><a href="#iOS_u7AEF_u4EE3_u7801" class="headerlink" title="iOS端代码"></a>iOS端代码</h5><p>由于iOS端原生 <a href="https://codeload.github.com/ideawu/Objective-C-RSA/zip/master" target="_blank" rel="external">RSA加密解密</a></p>
+</code></pre><h5 id="iOS_u7AEF_u4EE3_u7801"><a href="#iOS_u7AEF_u4EE3_u7801" class="headerlink" title="iOS端代码"></a>iOS端代码</h5><p>iOS端RSA原生加密解密</p>
+<ol>
+<li><strong>SecKeyEncrypt</strong> ：使用公钥对数据进行加密</li>
+<li><strong>SecKeyDecrypt</strong> ：使用私钥对数据进行解密</li>
+<li><strong>SecKeyRawVerify</strong> ：使用公钥对数字签名和数据进行验证，以确认该数据的来源合法性。<a href="http://baike.baidu.com/view/16501.htm#7" target="_blank" rel="external">什么是数字签名，可以参考百度百科这篇文章？</a></li>
+<li><strong>SecKeyRawSign</strong> ：使用私钥对数据进行摘要并生成数字签名</li>
+</ol>
+<p>在开发中，通常后端会把给前端一个 <strong>公钥</strong> 和 用 <strong>私钥加密过的数据</strong> 。在此，我们使用大牛封装好的RSA加密解密方法，下载请点击<br><a href="https://codeload.github.com/ideawu/Objective-C-RSA/zip/master" target="_blank" rel="external">RSA加密解密</a>。</p>
 <ol>
 <li>导入Security.framework</li>
 <li><p>把public_key.pem中的public_key取出</p>
@@ -408,26 +419,26 @@ public function jscode() {
  */
 
 - (void)upJSHandle:(NSDictionary *)response {
-NSMutableString *jsString = [NSMutableString string];
-for (NSDictionary *di in (NSArray *)response) {
-    NSString *js = di[@&quot;con&quot;];
+    NSMutableString *jsString = [NSMutableString string];
+    for (NSDictionary *di in (NSArray *)response) {
+        NSString *js = di[@&quot;con&quot;];
 
-   //计算获取到的js内容的md5值
-    NSString *jsMd5 = [MiscTool md5:js];
+       //计算获取到的js内容的md5值
+        NSString *jsMd5 = [MiscTool md5:js];
 
-    //解密获取js内容的md5
-    NSString *cdMd5 = [RSA decryptString:di[@&quot;ver&quot;] publicKey:rsa_public_key];
-    NSLog(@&quot;cd bicode = %@&quot;,cdMd5);
+        //解密获取js内容的md5
+        NSString *cdMd5 = [RSA decryptString:di[@&quot;ver&quot;] publicKey:rsa_public_key];
+        NSLog(@&quot;cd bicode = %@&quot;,cdMd5);
 
-    //校验
-    if (![jsMd5 isEqualToString:cdMd5]) {//经过校验，不相等，说明内容被篡改，直接返回不存储
-        NSLog(@&quot;zz 内容被篡改!!!&quot;);
-        return;
-    }
+        //校验
+        if (![jsMd5 isEqualToString:cdMd5]) {//经过校验，不相等，说明内容被篡改，直接返回不存储
+            NSLog(@&quot;zz 内容被篡改!!!&quot;);
+            return;
+        }
 
-    [jsString appendString:js];
-    //将代码下载到本地，保存成文件Document/up.js, 各个方法之间使用 ***** 分隔符
-    [jsString appendString:@&quot;*****&quot;];
+        [jsString appendString:js];
+        //将代码下载到本地，保存成文件Document/up.js, 各个方法之间使用 ***** 分隔符
+        [jsString appendString:@&quot;*****&quot;];
     }
 
     //获取保存js文件内容
@@ -477,9 +488,8 @@ for (NSDictionary *di in (NSArray *)response) {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-//每次进入时执行js
-[self execUpJsWithJsArray:[self readJs]];  
+    //每次进入时执行js
+    [self execUpJsWithJsArray:[self readJs]];  
 }
 </code></pre><h3 id="u672C_u5730_u5B58_u50A8"><a href="#u672C_u5730_u5B58_u50A8" class="headerlink" title="本地存储"></a>本地存储</h3><blockquote>
 <p>本地存储的脚本被篡改的机会小很多，只在越狱机器上有点风险，对此可以在下载完脚本保存到本地时进行对称加密，每次读取时解密。</p>
@@ -502,7 +512,8 @@ for (NSDictionary *di in (NSArray *)response) {
     //NSLog(@&quot;xx 解密：%@&quot;, string1);
     return unCode;
 }
-</code></pre>
+</code></pre><hr>
+<h4 id="u5F53_u7136_u4E5F_u53EF_u4EE5_u4F7F_u7528_u81EA_u5B9A_u4E49_u7684_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u4F46_u4F7F_u7528_u73B0_u6210_u7684_u7ECF_u8FC7_u9A8C_u8BC1_u5B89_u5168_u7684_u901A_u7528_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u624D_u662F_u4E1A_u754C_u7684_u4E3B_u6D41_uFF0C_u7279_u522B_u662F_u91D1_u878D_u7C7B_u4EA7_u54C1_u3002_u603B_u4E4B_uFF0C_u5B89_u5168_u624D_u662F_u738B_u9053_u3002"><a href="#u5F53_u7136_u4E5F_u53EF_u4EE5_u4F7F_u7528_u81EA_u5B9A_u4E49_u7684_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u4F46_u4F7F_u7528_u73B0_u6210_u7684_u7ECF_u8FC7_u9A8C_u8BC1_u5B89_u5168_u7684_u901A_u7528_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u624D_u662F_u4E1A_u754C_u7684_u4E3B_u6D41_uFF0C_u7279_u522B_u662F_u91D1_u878D_u7C7B_u4EA7_u54C1_u3002_u603B_u4E4B_uFF0C_u5B89_u5168_u624D_u662F_u738B_u9053_u3002" class="headerlink" title="当然也可以使用自定义的加密方式，但使用现成的经过验证安全的通用加密方式，才是业界的主流，特别是金融类产品。总之，安全才是王道。"></a>当然也可以使用自定义的加密方式，但使用现成的经过验证安全的通用加密方式，才是业界的主流，特别是金融类产品。总之，安全才是王道。</h4>
       
     </div>
     
@@ -511,9 +522,18 @@ for (NSDictionary *di in (NSArray *)response) {
     
 <nav id="article-nav">
   
+    <a href="/2016/02/01/JSPatch基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          JSPatch基本使用
+        
+      </div>
+    </a>
   
-    <a href="/2016/02/01/JSPatch基本使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JSPatch基本使用</div>
+  
+    <a href="/2016/01/29/上滑隐藏navigationBar/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">上滑隐藏navigationBar</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -529,7 +549,7 @@ for (NSDictionary *di in (NSArray *)response) {
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="JSPatch基本与RSA,SAE加密" data-title="JSPatch基本与RSA,AES加密" data-url="www.3vcolor.com/2016/02/01/JSPatch基本与RSA,SAE加密/"></div>
+	<div class="ds-thread" data-thread-key="JSPatch安全与RSA,AES加密--iOS,php端使用" data-title="JSPatch安全与RSA,AES加密--iOS,php端使用" data-url="www.3vcolor.com/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
