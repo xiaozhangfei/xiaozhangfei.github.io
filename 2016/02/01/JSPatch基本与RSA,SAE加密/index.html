@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JSPatch基本与RSA,AES加密 | 阳光下的程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
+鉴于此种情况
+1. 服务器尽量使用https传输
+2. 对传输的代码做好加密和校验
+接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
+RSA算法
+RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSPatch基本与RSA,AES加密">
+<meta property="og:url" content="www.3vcolor.com/2016/02/01/JSPatch基本与RSA,SAE加密/index.html">
+<meta property="og:site_name" content="阳光下的程序猿">
+<meta property="og:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
+鉴于此种情况
+1. 服务器尽量使用https传输
+2. 对传输的代码做好加密和校验
+接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
+RSA算法
+RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
+<meta property="og:updated_time" content="2016-02-01T09:09:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSPatch基本与RSA,AES加密">
+<meta name="twitter:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
+鉴于此种情况
+1. 服务器尽量使用https传输
+2. 对传输的代码做好加密和校验
+接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
+RSA算法
+RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
+  
+    <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">三维色</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/iOS">iOS</a></li>
+				        
+							<li><a href="/tags/php">php</a></li>
+				        
+							<li><a href="/tags/android">android</a></li>
+				        
+							<li><a href="/tags/c">c</a></li>
+				        
+							<li><a href="/tags/bug">bug</a></li>
+				        
+							<li><a href="/tags/随想">随想</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">无心得到的一切放开也未染尘 随心欣赏的景致最吸引 谁想过 清风踏绿草未无痕 留下无心的美感 谁想过 一生像雾水逐闲云 原是无心中发生</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">三维色</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">三维色</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/iOS">iOS</a></li>
+		        
+					<li><a href="/tags/php">php</a></li>
+		        
+					<li><a href="/tags/android">android</a></li>
+		        
+					<li><a href="/tags/c">c</a></li>
+		        
+					<li><a href="/tags/bug">bug</a></li>
+		        
+					<li><a href="/tags/随想">随想</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-JSPatch基本与RSA,SAE加密" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/01/JSPatch基本与RSA,SAE加密/" class="article-date">
+  	<time datetime="2016-02-01T09:34:16.000Z" itemprop="datePublished">2016-02-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JSPatch基本与RSA,AES加密
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-JSPatch-RSA-AES/">iOS JSPatch, RSA, AES</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。</p>
+<p>鉴于此种情况</p>
+<pre><code>1. 服务器尽量使用https传输
+2. 对传输的代码做好加密和校验
+</code></pre><p>接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理</p>
+<h4 id="RSA_u7B97_u6CD5"><a href="#RSA_u7B97_u6CD5" class="headerlink" title="RSA算法"></a>RSA算法</h4><blockquote>
+<p>RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推荐为公钥数据加密标准。</p>
+<p>RSA算法是一种非对称加密算法,常被用于加密数据传输.如果配合上数字摘要算法, 也可以用于文件签名.</p>
+<p>RSA算法是一种非对称算法，算法需要一对密钥，使用其中一个加密，需要使用另外一个才能解密。我们在进行RSA加密通讯时，就把公钥放在客户端，私钥留在服务器。</p>
+</blockquote>
+<h6 id="u4E00_u822C_u6765_u8BF4"><a href="#u4E00_u822C_u6765_u8BF4" class="headerlink" title="一般来说"></a><strong><em>一般来说</em></strong></h6><pre><code>1.公钥加密，私钥解密
+2.私钥对文件进行签名，公钥对签名进行验证
+</code></pre><h4 id="u516C_u94A5_u3001_u79C1_u94A5_u751F_u6210"><a href="#u516C_u94A5_u3001_u79C1_u94A5_u751F_u6210" class="headerlink" title="公钥、私钥生成"></a>公钥、私钥生成</h4><ol>
+<li><blockquote>
+<p>使用openSSL命令生成密钥</p>
+</blockquote>
+<pre><code>openssl req -x509 -out public_key.der -outform der -new -newkey rsa:1024 -keyout private_key.pem
+</code></pre><blockquote>
+<p>按照提示，填入私钥的密码，签名证书的组织名、邮件等信息之后，就会生成包含有公钥的证书文件public_key.der和私钥文件private_key.pem。</p>
+<p>public_key.der文件用于分发到ios客户端进行公钥加解密，而private_key.pem文件留在服务器端供php使用</p>
+</blockquote>
+<pre><code>openssl rsa -in private_key.pem -pubout -out public_key.pem
+</code></pre><blockquote>
+<p>此命令会根据输入的私钥文件生成pem格式的公钥文件，这也是把private_key放在服务端的原因</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="u670D_u52A1_u7AEFphp_u4EE3_u7801_uFF08ThinkPHP_u6846_u67B6_uFF0C_u52A0_u5BC6_u89E3_u5BC6_u4EE3_u7801_u4E0E_u6846_u67B6_u65E0_u76F4_u63A5_u5173_u7CFB_uFF09"><a href="#u670D_u52A1_u7AEFphp_u4EE3_u7801_uFF08ThinkPHP_u6846_u67B6_uFF0C_u52A0_u5BC6_u89E3_u5BC6_u4EE3_u7801_u4E0E_u6846_u67B6_u65E0_u76F4_u63A5_u5173_u7CFB_uFF09" class="headerlink" title="服务端php代码（ThinkPHP框架，加密解密代码与框架无直接关系）"></a>服务端php代码（ThinkPHP框架，加密解密代码与框架无直接关系）</h4><pre><code>&lt;?php
+/**
+ * Created by PhpStorm.
+ * User: and
+ * Date: 16/2/1
+ * Time: 10:14
+ */
+
+namespace Home\Controller;
+
+class RsaController extends CommenController {
+//使用文本打开之前获取的private_key.pem可得如下
+    const PRIVATE_KEY = &apos;-----BEGIN PRIVATE KEY-----
+MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAN2DTzqHsIiEw8bQ
+R3MT9FpwVzet+kGQphJCFfY6A5u4gK6BuiVKqJpRroJlzg5yT3zy5tzowpSqIuMZ
+8104ncih3uvKoNvvPhwjTy6mGHJHoKaGBlnK7oMXOmi50wVA8qvf++kZnxn9W7tM
+YnCe6GSkQBS5KgythpIqPaqcaY1dAgMBAAECgYEAjTfqacEZvV8OxRABjQ76qDGY
+mOm0cto51cgF4k0IAd21RAt2VdHr/T33yDAJFtKvdFQS9GD7s/VnemsP6K1wgMld
+AvV2+KAPK2ZcCNTktLLBmOikJtBYQZGBnaAlxKQD2RFr+YJRCORxSQfOgGVxzch6
+tgXC7VyQmddYBvaOEq0CQQD0dRHMxvn8iTa1x+Df4ghE3XZwyG8rDIpMehfAQdm/
+hgf5Z1DX56DOG0LD99OMH5wE+C8CHdSP9F842cFJrZjTAkEA5/jlFcQU3vW/6fmk
+XshHyaF40s9+5K84i/1EzTW/Wx08zZGql/WrTuQ8QllMAUDR6+kZvPLSPexA/8DS
+e8xjDwJAObn7fhPurIfqd3q/y56gvUJe2bs7JTtM3UpnmWrzdJq9/1M6cAGuo30k
+gwpe1lQQj8vbrfBFZckbQ12Im1F3KQJBAIBQCY+nnY/SyaxHfWc8S5E5cxbQ1bTz
+Q0kT+Cm2sDlbC9X93CogJvkFgFuG/2a2Dyf6EVWVzzuXYkDVzNfTr3sCQQCdTK7v
+I+C/aVcGFFYE0ZL5y3zxUtccBdhJNORb2fG5Oa7tqJH2bancuspeoArcpqElH7GQ
+Mm9YArj1T6E10X0E
+-----END PRIVATE KEY-----&apos;;
+
+    public function test() {
+
+//此处为了验证，所以取出publick_key.pem中的public_key
+    $public_key = &apos;-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3
+rfpBkKYSQhX2OgObuICugbolSqiaUa6CZc4Ock988ubc6MKUqiLjGfNdOJ3Iod7r
+yqDb7z4cI08uphhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
+uSoMrYaSKj2qnGmNXQIDAQAB
+-----END PUBLIC KEY-----&apos;;
+
+    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+    echo $pi_key,&quot;\n&quot;;
+    $pu_key = openssl_pkey_get_public($public_key);//这个函数可用来判断公钥是否是可用的
+    echo $pu_key,&quot;\n&quot;;
+
+    $data = &quot;xiaohulu123&quot;;//原始数据
+    $encrypted = &quot;&quot;;
+    $decrypted = &quot;&quot;;
+    echo &quot;source data:&quot;,$data,&quot;\n&quot;;
+    echo &quot;private key encrypt:\n&quot;;
+
+    openssl_public_encrypt($data,$encrypted,$pu_key);//公钥加密，私钥解密
+    $encrypted = base64_encode($encrypted);//加密后的内容通常含有特殊字符，需要编码转换下，在网络间通过url传输时要注意base64编码是否是url安全的
+    echo &quot;公钥加密后:&quot;,$encrypted,&quot;\n&quot;;
+
+    openssl_private_decrypt(base64_decode($encrypted),$decrypted,$pi_key);//私钥加密的内容通过公钥可用解密出来
+    echo &quot;私钥解密:&quot;,$decrypted,&quot;\n&quot;;
+
+    echo &quot;\n&quot;,&quot;---------------------------------------&quot;,&quot;\n&quot;;
+
+    //私钥对数据进行签名，公钥解密验证
+    $bicode = &quot;&quot;;
+    $cdbicode = &quot;&quot;;
+    openssl_private_encrypt($data, $bicode, $pi_key);
+    $bicode = base64_encode($bicode);
+    echo &quot;私钥签名：&quot;,$bicode,&quot;\n&quot;;
+
+    openssl_public_decrypt(base64_decode($bicode), $cdbicode, $pu_key);
+    echo &quot;公钥验证签名：&quot;,$cdbicode,&quot;\n&quot;;
+
+}
+
+}
+</code></pre><p>=============</p>
+<h3 id="iOS_u4F7F_u7528JSPatch"><a href="#iOS_u4F7F_u7528JSPatch" class="headerlink" title="iOS使用JSPatch"></a>iOS使用JSPatch</h3><p>JSPatch脚本的执行权限很高，若在传输过程中被中间人篡改，会带来很大的安全问题，为了防止这种情况出现，我们在传输过程中对JS文件进行了RSA签名加密，流程如下：</p>
+<h4 id="u670D_u52A1_u7AEF_uFF1A"><a href="#u670D_u52A1_u7AEF_uFF1A" class="headerlink" title="服务端："></a>服务端：</h4><ol>
+<li>计算 JS 内容 MD5 值。</li>
+<li>用 RSA 私钥对 MD5 值进行加密，与JS内容一起下发给客户端。</li>
+</ol>
+<h4 id="u5BA2_u6237_u7AEF_uFF1A"><a href="#u5BA2_u6237_u7AEF_uFF1A" class="headerlink" title="客户端："></a>客户端：</h4><ol>
+<li>拿到加密数据，用 RSA 公钥解密出 MD5 值。</li>
+<li>本地计算返回的 JS 内容 MD5 值。</li>
+<li>对比上述的两个 MD5 值，若相等则校验通过，取 JS 文件保存到本地。<br>由于 RSA 是非对称加密，在没有私钥的情况下第三方无法加密对应的 MD5 值，也就无法伪造 JS 文件，杜绝了 JS 文件在传输过程被篡改的可能。</li>
+</ol>
+<h4 id="u670D_u52A1_u7AEFphp_u4EE3_u7801"><a href="#u670D_u52A1_u7AEFphp_u4EE3_u7801" class="headerlink" title="服务端php代码"></a>服务端php代码</h4><pre><code>/*
+ * 加密一个字符串，返回RSA加密后的内容
+ * aString 需要加密的字符串
+ * return encrypted rsa加密后的字符串
+ */
+public function enjscode($aString) {
+    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+    openssl_private_encrypt($aString, $encrypted, $pi_key);//私钥加密
+    $encrypted = base64_encode($encrypted);//加密后的内容通常含有特殊字符，需要编码转换下，在网络间通过url传输时要注意base64编码是否是url安全的
+    return $encrypted;
+}
+
+//JS
+public function jscode() {
+    //$headers = $this-&gt;verifyHeaders();
+    //验证header
+    //$this-&gt;verifyHeadersWithHeaders($headers);
+
+    $data[&apos;con&apos;] = &quot;defineClass(&apos;FindViewController&apos;,{viewDidLoad: function() {self.super().viewDidLoad();self.setTitle(&apos;发现哈哈&apos;);_selectedIndex = 0;self.initView();}})&quot;;
+    $data[&apos;isUpdate&apos;] = &apos;true&apos;;
+   //首先计算js内容的md5值，再将md5值进行RSA加密
+    $data[&quot;ver&quot;] = self::enjscode(md5($data[&apos;con&apos;]));
+
+    $data1[&apos;con&apos;] = &quot;require(&apos;UIAlertView&apos;);defineClass(&apos;CircleHotPageViewController&apos;,{tableView_didSelectRowAtIndexPath:function(tableView,indexPath){tableView.deselectRowAtIndexPath_animated(indexPath, YES);var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(&apos;只是提示而已&apos;, &apos;测试JSPath！&apos;, null, &apos;知道了&apos;, null, null);alert.show();}})&quot;;
+    $data1[&apos;isUpdate&apos;] = &apos;true&apos;;
+    $data1[&quot;ver&quot;] = self::enjscode(md5($data1[&apos;con&apos;]));
+
+    $this-&gt;json_out(&apos;200&apos;,&apos;0&apos;,&apos;&apos;,$da);
+}
+</code></pre><h5 id="iOS_u7AEF_u4EE3_u7801"><a href="#iOS_u7AEF_u4EE3_u7801" class="headerlink" title="iOS端代码"></a>iOS端代码</h5><p>由于iOS端原生 <a href="https://codeload.github.com/ideawu/Objective-C-RSA/zip/master" target="_blank" rel="external">RSA加密解密</a></p>
+<ol>
+<li>导入Security.framework</li>
+<li><p>把public_key.pem中的public_key取出</p>
+<pre><code>#define rsa_public_key @&quot;MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3rfpBkKYSQhX2OgObuICugbolSqiaUa6CZc4Ock988ubc6MKUqiLjGfNdOJ3Iod7ryqDb7z4cI08uphhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAUuSoMrYaSKj2qnGmNXQIDAQAB&quot;
+</code></pre></li>
+</ol>
+<p>3.在didFinishLaunchingWithOptions方法中进行网络请求，从网络断获取内容data</p>
+<pre><code>/*
+ *  获取内容为
+ *  con         js内容
+ *  isUpdate    是否更新（无用）
+ *  ver         验证内容，有con 计算md5，再进行rsa加密得来  -&gt;  客户端首页解密得到con的md5值，将此md5值与获取的js内容的md5值进行比较
+ *      
+ *  若值相等，则说明无篡改；否则，说明被篡改，放弃存储
+ */
+
+- (void)upJSHandle:(NSDictionary *)response {
+NSMutableString *jsString = [NSMutableString string];
+for (NSDictionary *di in (NSArray *)response) {
+    NSString *js = di[@&quot;con&quot;];
+
+   //计算获取到的js内容的md5值
+    NSString *jsMd5 = [MiscTool md5:js];
+
+    //解密获取js内容的md5
+    NSString *cdMd5 = [RSA decryptString:di[@&quot;ver&quot;] publicKey:rsa_public_key];
+    NSLog(@&quot;cd bicode = %@&quot;,cdMd5);
+
+    //校验
+    if (![jsMd5 isEqualToString:cdMd5]) {//经过校验，不相等，说明内容被篡改，直接返回不存储
+        NSLog(@&quot;zz 内容被篡改!!!&quot;);
+        return;
+    }
+
+    [jsString appendString:js];
+    //将代码下载到本地，保存成文件Document/up.js, 各个方法之间使用 ***** 分隔符
+    [jsString appendString:@&quot;*****&quot;];
+    }
+
+    //获取保存js文件内容
+    NSString *jsPath = [self jsFilePath];
+    NSLog(@&quot;js xx = 写入 %@&quot;,jsString);
+
+    //将jsString 进行aes对称加密
+    //jsString = [self aes:jsString].mutableCopy;
+    //NSLog(@&quot;xx 加密后 = %@&quot;,jsString);
+
+    NSData *jsData = [jsString dataUsingEncoding:(NSUTF8StringEncoding)];
+    //写入文件
+    [jsData writeToFile:jsPath atomically:YES];
+    //执行
+    [self execUpJsWithJsArray:[self readJs]];
+}
+</code></pre><p>4.在applicationDidBecomeActive方法，读取js文件，并执行</p>
+<pre><code>#pragma mark -- js 读取
+- (NSArray *)readJs {
+    NSString *file = [self jsFilePath];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:file]) {//如果不存在
+        return @[];
+    }
+    NSString *jsString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
+
+    //取出后，将jsString 解密
+    //jsString = [self cdAes:jsString];
+    //NSLog(@&quot;xx 解密后 = %@&quot;,jsString);
+
+    NSArray *jsArray = [jsString componentsSeparatedByString:@&quot;*****&quot;];
+    return jsArray;
+}
+
+- (void)execUpJsWithJsArray:(NSArray *)jsArray {
+    if (jsArray.count == 0) {
+        return;
+    }
+    [JPEngine startEngine];
+    for (NSString *js in jsArray) {
+        if ([js isEqualToString:@&quot;&quot;] || js == nil) {
+            continue;
+        }
+        NSLog(@&quot;read js = %@&quot;,js);
+        [JPEngine evaluateScript:js];
+    }
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//每次进入时执行js
+[self execUpJsWithJsArray:[self readJs]];  
+}
+</code></pre><h3 id="u672C_u5730_u5B58_u50A8"><a href="#u672C_u5730_u5B58_u50A8" class="headerlink" title="本地存储"></a>本地存储</h3><blockquote>
+<p>本地存储的脚本被篡改的机会小很多，只在越狱机器上有点风险，对此可以在下载完脚本保存到本地时进行对称加密，每次读取时解密。</p>
+</blockquote>
+<h5 id="aes_u52A0_u5BC6_u89E3_u5BC6"><a href="#aes_u52A0_u5BC6_u89E3_u5BC6" class="headerlink" title="aes加密解密"></a>aes加密解密</h5><pre><code>/*
+ *  进行aes对称加密
+ */
+- (NSString *)aes:(NSString *)aString {
+    NSString *biCode = [SecurityUtil encryptAESData:aString app_key:aesKey];
+    //NSLog(@&quot;xx 加密： %@&quot;,st);
+    return biCode;
+}
+/*
+ *  对字符串进行aes解密
+ */
+- (NSString *)cdAes:(NSString *)aString {
+    //NSData *EncryptData1 = [GTMBase64 decodeString:[SecurityUtil encryptAESData:string app_key:aesKey]]; // 解密前进行 GTMBase64 编码
+    NSData *EncryptData = [GTMBase64 decodeString:aString];
+    NSString *unCode = [SecurityUtil decryptAESData:EncryptData app_key:aesKey];
+    //NSLog(@&quot;xx 解密：%@&quot;, string1);
+    return unCode;
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/02/01/JSPatch基本使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSPatch基本使用</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="JSPatch基本与RSA,SAE加密" data-title="JSPatch基本与RSA,AES加密" data-url="www.3vcolor.com/2016/02/01/JSPatch基本与RSA,SAE加密/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	<!-- var duoshuoQuery = {short_name:"5f115847112b15a48b4f5f4f94a1a7fa"}; -->
+    var duoshuoQuery = {short_name:"3vcolor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 三维色
+    	</div>
+
+      	<div class="footer-right">
+      		<a href="http://www.3vcolor.com" target="_blank">一只小小的程序猿</a>
+      	</div>
+          
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+<!--  -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
