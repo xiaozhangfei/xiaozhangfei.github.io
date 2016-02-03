@@ -15,7 +15,7 @@ RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
-<meta property="og:url" content="www.3vcolor.com/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/index.html">
+<meta property="og:url" content="www.3vcolor.com/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
 <meta property="og:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
 鉴于此种情况
@@ -24,7 +24,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
 RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
-<meta property="og:updated_time" content="2016-02-01T14:24:53.000Z">
+<meta property="og:updated_time" content="2016-02-03T02:01:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
 <meta name="twitter:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
@@ -213,8 +213,8 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
       <div class="body-wrap"><article id="post-JSPatch安全与RSA,AES加密--iOS,php端使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
-  	<time datetime="2016-02-01T14:24:53.000Z" itemprop="datePublished">2016-02-01</time>
+      <a href="/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
+  	<time datetime="2016-02-03T02:01:33.000Z" itemprop="datePublished">2016-02-03</time>
 </a>
     </div>
   
@@ -296,6 +296,7 @@ namespace Home\Controller;
 
 class RsaController extends CommenController {
 //使用文本打开之前获取的private_key.pem可得如下
+//为了隐秘，key在此做了部分删除
     const PRIVATE_KEY = &apos;-----BEGIN PRIVATE KEY-----
 MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAN2DTzqHsIiEw8bQ
 R3MT9FpwVzet+kGQphJCFfY6A5u4gK6BuiVKqJpRroJlzg5yT3zy5tzowpSqIuMZ
@@ -307,19 +308,16 @@ tgXC7VyQmddYBvaOEq0CQQD0dRHMxvn8iTa1x+Df4ghE3XZwyG8rDIpMehfAQdm/
 hgf5Z1DX56DOG0LD99OMH5wE+C8CHdSP9F842cFJrZjTAkEA5/jlFcQU3vW/6fmk
 XshHyaF40s9+5K84i/1EzTW/Wx08zZGql/WrTuQ8QllMAUDR6+kZvPLSPexA/8DS
 e8xjDwJAObn7fhPurIfqd3q/y56gvUJe2bs7JTtM3UpnmWrzdJq9/1M6cAGuo30k
-gwpe1lQQj8vbrfBFZckbQ12Im1F3KQJBAIBQCY+nnY/SyaxHfWc8S5E5cxbQ1bTz
-Q0kT+Cm2sDlbC9X93CogJvkFgFuG/2a2Dyf6EVWVzzuXYkDVzNfTr3sCQQCdTK7v
-I+C/aVcGFFYE0ZL5y3zxUtccBdhJNORb2fG5Oa7tqJH2bancuspeoArcpqElH7GQ
-Mm9YArj1T6E10X0E
+gwpe1lQQj
 -----END PRIVATE KEY-----&apos;;
 
     public function test() {
 
 //此处为了验证，所以取出publick_key.pem中的public_key
+//为了隐秘，key在此做了部分删除
     $public_key = &apos;-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3
-rfpBkKYSQhX2OgObuICugbolSqiaUa6CZc4Ock988ubc6MKUqiLjGfNdOJ3Iod7r
-yqDb7z4cI08uphhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
+rf6CZc4OhhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
 uSoMrYaSKj2qnGmNXQIDAQAB
 -----END PUBLIC KEY-----&apos;;
 
@@ -528,18 +526,9 @@ public function jscode() {
     
 <nav id="article-nav">
   
-    <a href="/2016/02/01/JSPatch基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          JSPatch基本使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/01/29/上滑隐藏navigationBar/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">上滑隐藏navigationBar</div>
+    <a href="/2016/02/01/JSPatch基本使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JSPatch基本使用</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -555,7 +544,7 @@ public function jscode() {
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="JSPatch安全与RSA,AES加密--iOS,php端使用" data-title="JSPatch安全与RSA,AES加密--iOS,php端使用" data-url="www.3vcolor.com/2016/02/01/JSPatch安全与RSA,AES加密--iOS,php端使用/"></div>
+	<div class="ds-thread" data-thread-key="JSPatch安全与RSA,AES加密--iOS,php端使用" data-title="JSPatch安全与RSA,AES加密--iOS,php端使用" data-url="www.3vcolor.com/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
