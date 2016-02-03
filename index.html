@@ -197,7 +197,7 @@
   
     <div class="article-meta">
       <a href="/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
-  	<time datetime="2016-02-03T03:29:37.000Z" itemprop="datePublished">2016-02-03</time>
+  	<time datetime="2016-02-03T03:40:01.000Z" itemprop="datePublished">2016-02-03</time>
 </a>
     </div>
   
@@ -282,8 +282,11 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3
 rf6CZc4OhhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
 uSoMrYaSKj2qnGmNXQIDAQAB
 -----END PUBLIC KEY-----&apos;;
-</code></pre><p>//之前使用openssl生成private_key时填写的密码<br>    $open_key = ‘123456’;</p>
-<pre><code>    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY,$open_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+
+    //之前使用openssl生成private_key时填写的密码
+    $open_key = &apos;123456&apos;;
+
+    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY,$open_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
     echo $pi_key,&quot;\n&quot;;
     $pu_key = openssl_pkey_get_public($public_key);//这个函数可用来判断公钥是否是可用的
     echo $pu_key,&quot;\n&quot;;

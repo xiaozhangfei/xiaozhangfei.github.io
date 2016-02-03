@@ -24,7 +24,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
 RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
-<meta property="og:updated_time" content="2016-02-03T03:29:37.000Z">
+<meta property="og:updated_time" content="2016-02-03T03:40:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
 <meta name="twitter:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
@@ -214,7 +214,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
   
     <div class="article-meta">
       <a href="/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
-  	<time datetime="2016-02-03T03:29:37.000Z" itemprop="datePublished">2016-02-03</time>
+  	<time datetime="2016-02-03T03:40:01.000Z" itemprop="datePublished">2016-02-03</time>
 </a>
     </div>
   
@@ -320,8 +320,11 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3
 rf6CZc4OhhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
 uSoMrYaSKj2qnGmNXQIDAQAB
 -----END PUBLIC KEY-----&apos;;
-</code></pre><p>//之前使用openssl生成private_key时填写的密码<br>    $open_key = ‘123456’;</p>
-<pre><code>    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY,$open_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+
+    //之前使用openssl生成private_key时填写的密码
+    $open_key = &apos;123456&apos;;
+
+    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY,$open_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
     echo $pi_key,&quot;\n&quot;;
     $pu_key = openssl_pkey_get_public($public_key);//这个函数可用来判断公钥是否是可用的
     echo $pu_key,&quot;\n&quot;;
