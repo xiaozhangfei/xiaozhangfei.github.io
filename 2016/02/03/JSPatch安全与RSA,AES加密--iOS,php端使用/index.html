@@ -24,7 +24,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理
 RSA算法
 RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推">
-<meta property="og:updated_time" content="2016-02-03T02:01:33.000Z">
+<meta property="og:updated_time" content="2016-02-03T03:29:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSPatch安全与RSA,AES加密--iOS,php端使用">
 <meta name="twitter:description" content="在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。
@@ -214,7 +214,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
   
     <div class="article-meta">
       <a href="/2016/02/03/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
-  	<time datetime="2016-02-03T02:01:33.000Z" itemprop="datePublished">2016-02-03</time>
+  	<time datetime="2016-02-03T03:29:37.000Z" itemprop="datePublished">2016-02-03</time>
 </a>
     </div>
   
@@ -275,7 +275,7 @@ RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为�
 </blockquote>
 <pre><code>openssl req -x509 -out public_key.der -outform der -new -newkey rsa:1024 -keyout private_key.pem
 </code></pre><blockquote>
-<p>按照提示，填入私钥的密码，签名证书的组织名、邮件等信息之后，就会生成包含有公钥的证书文件public_key.der和私钥文件private_key.pem。</p>
+<p>按照提示，填入私钥的密码(之后会使用)，签名证书的组织名、邮件等信息之后，就会生成包含有公钥的证书文件public_key.der和私钥文件private_key.pem。</p>
 <p>public_key.der文件用于分发到ios客户端进行公钥加解密，而private_key.pem文件留在服务器端供php使用</p>
 </blockquote>
 <pre><code>openssl rsa -in private_key.pem -pubout -out public_key.pem
@@ -320,8 +320,8 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3
 rf6CZc4OhhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU
 uSoMrYaSKj2qnGmNXQIDAQAB
 -----END PUBLIC KEY-----&apos;;
-
-    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
+</code></pre><p>//之前使用openssl生成private_key时填写的密码<br>    $open_key = ‘123456’;</p>
+<pre><code>    $pi_key = openssl_pkey_get_private(self::PRIVATE_KEY,$open_key);//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id
     echo $pi_key,&quot;\n&quot;;
     $pu_key = openssl_pkey_get_public($public_key);//这个函数可用来判断公钥是否是可用的
     echo $pu_key,&quot;\n&quot;;
@@ -352,7 +352,10 @@ uSoMrYaSKj2qnGmNXQIDAQAB
     echo &quot;公钥验证签名：&quot;,$cdbicode,&quot;\n&quot;;
 }
 }    
-</code></pre><p>=============</p>
+</code></pre><blockquote>
+<p>如果得不到resourceID，先查看是否开启openssl扩展，之后查看private_key是否私自添加了缩进等。</p>
+</blockquote>
+<p>=============</p>
 <h3 id="iOS_u4F7F_u7528JSPatch"><a href="#iOS_u4F7F_u7528JSPatch" class="headerlink" title="iOS使用JSPatch"></a>iOS使用JSPatch</h3><p>JSPatch脚本的执行权限很高，若在传输过程中被中间人篡改，会带来很大的安全问题，为了防止这种情况出现，我们在传输过程中对JS文件进行了RSA签名加密，流程如下：</p>
 <h4 id="u670D_u52A1_u7AEF_uFF1A"><a href="#u670D_u52A1_u7AEF_uFF1A" class="headerlink" title="服务端："></a>服务端：</h4><ol>
 <li>计算 JS 内容 MD5 值。</li>
