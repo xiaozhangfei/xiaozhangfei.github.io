@@ -117,7 +117,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/bug/" style="font-size: 10px;">bug</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
 					</div>
 				</section>
 				
@@ -192,6 +192,216 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-枚举类型导致的1 duplicate symbol for architecture x86_64错误" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/23/枚举类型导致的1 duplicate symbol for architecture x86_64错误/" class="article-date">
+  	<time datetime="2016-02-23T02:51:48.000Z" itemprop="datePublished">2016-02-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/23/枚举类型导致的1 duplicate symbol for architecture x86_64错误/">枚举类型导致的1 duplicate symbol for architecture x86\_64错误</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="bug_u8D77_u56E0_28ios7-1_uFF0CxCode7-2-1_29"><a href="#bug_u8D77_u56E0_28ios7-1_uFF0CxCode7-2-1_29" class="headerlink" title="bug起因(ios7.1，xCode7.2.1)"></a>bug起因(ios7.1，xCode7.2.1)</h5><p>工程原本是正常运行的（不管模拟器还是真机）</p>
+<p>但是之后添加了新的Target - WatchKit App 之后，真机运行正常，模拟器运行报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">duplicate symbol _iToastDuration <span class="keyword">in</span>:</span><br><span class="line">    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzonquheuzvvzaqxjtrlbpililv/Build/Intermediates/MyCircle.build/Debug-iphonesimulator/MyCircle.build/Objects-normal/x86_64/BaseViewController.o</span><br><span class="line">    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzonquheuzvvzaqxjtrlbpililv/Build/Products/Debug-iphonesimulator/libiToast.a(iToast.o)</span><br><span class="line">ld: <span class="number">1</span> duplicate symbol <span class="keyword">for</span> architecture x86_64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p>在百度、谷歌，修改了一系列Search Frame Path之后，仍是一无所获。</p>
+<p>之后找到了参看了 <a href="/(http://http://www.jianshu.com/p/2b79e450d67e)"> <em>枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a> ，去到iToast源码中找到以下代码</p>
+<blockquote>
+<p>p.s. Podfile中支持ios7.1，从pod上更新所得的iToast为0.0.1，代码如下</p>
+<p>而直接从 <a href="/(https://github.com/ecstasy2/toast-notifications-ios)">github</a> 下载的iToast.h中则不缺少typedef</p>
+</blockquote>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> iToastGravity &#123;</span><br><span class="line">	iToastGravityTop = <span class="number">1000001</span>,</span><br><span class="line">	iToastGravityBottom,</span><br><span class="line">	iToastGravityCenter</span><br><span class="line">&#125;iToastGravity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> iToastDuration &#123;</span><br><span class="line">	iToastDurationLong = <span class="number">10000</span>,</span><br><span class="line">	iToastDurationShort = <span class="number">1000</span>,</span><br><span class="line">	iToastDurationNormal = <span class="number">3000</span></span><br><span class="line">&#125;iToastDuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> iToastType &#123;</span><br><span class="line">	iToastTypeInfo = -<span class="number">100000</span>,</span><br><span class="line">	iToastTypeNotice,</span><br><span class="line">	iToastTypeWarning,</span><br><span class="line">	iToastTypeError,</span><br><span class="line">	iToastTypeNone <span class="comment">// For internal use only (to force no image)</span></span><br><span class="line">&#125;iToastType;</span><br></pre></td></tr></table></figure>
+<p>一共三个枚举，不知道为何只有 <em>iToastDuration</em> 用了C语言样式的枚举。</p>
+<p>由于iToast引用于pod，于是改用本地引用，</p>
+<blockquote>
+<p>直接从github上down下的文件，直接使用。</p>
+<p>因为iToast用于MRC，ARC下使用在Target-Build Phases-Compile Source中iToast.m 添加 <strong>-fno-objc-arc</strong></p>
+</blockquote>
+<p>解决。</p>
+<p></p><h4>本文参考</h4><p></p>
+<h5 id="u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF"><a href="#u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF" class="headerlink" title="简书 由于枚举类型导致的1 duplicate symbol for architecture x86_64错误"></a><a href="/(http://http://www.jianshu.com/p/2b79e450d67e)">简书 <em>由于枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a></h5><h5 id="iToast_github_u5730_u5740"><a href="#iToast_github_u5730_u5740" class="headerlink" title="iToast github地址"></a><a href="/(https://github.com/ecstasy2/toast-notifications-ios)">iToast github地址</a></h5><hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-1-duplicate-symbol-for-architecture-x86-64错误/">iOS 1 duplicate symbol for architecture x86\_64错误</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-UIWebView与js交互(1)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/16/UIWebView与js交互(1)/" class="article-date">
+  	<time datetime="2016-02-16T08:39:26.000Z" itemprop="datePublished">2016-02-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/16/UIWebView与js交互(1)/">UIWebView与js交互(1)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在WebView与js交互中，会出现点击html按钮跳转进入原生VC的情况。</p>
+</blockquote>
+<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><ol>
+<li><p><a href="http://mozhenhau.com/2016/02/07/D3Generator实现万能跳转界面，UIWebview与js随意交互/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">UIWebView 与 js 交互</a></p>
+</li>
+<li><p><a href="https://github.com/mozhenhau/D3Generator" target="_blank" rel="external">D3Generator Demo 下载</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/UIWebView-js-页面跳转/">UIWebView js 页面跳转</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-杭电acm 1001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/14/杭电acm 1001/" class="article-date">
+  	<time datetime="2016-02-14T13:36:07.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/14/杭电acm 1001/">杭电acm 1001</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u676D_u7535acm_1001"><a href="#u676D_u7535acm_1001" class="headerlink" title="杭电acm 1001"></a>杭电acm 1001</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	double a;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%lf"</span>,&amp;a) != EOF) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.0lf\n\n"</span>,a * (<span class="number">1</span> + a) / <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1001" target="_blank" rel="external">杭电acm 1001</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/c-杭电1001/">c 杭电1001</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-JSPatch安全与RSA,AES加密--iOS,php端使用" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -702,68 +912,6 @@
 
 
   
-    <article id="post-杭电acm 1001" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/28/杭电acm 1001/" class="article-date">
-  	<time datetime="2016-01-28T05:31:48.000Z" itemprop="datePublished">2016-01-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/28/杭电acm 1001/">杭电acm 1001</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="u676D_u7535acm_1001"><a href="#u676D_u7535acm_1001" class="headerlink" title="杭电acm 1001"></a>杭电acm 1001</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	double a;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%lf"</span>,&amp;a) != EOF) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.0lf\n\n"</span>,a * (<span class="number">1</span> + a) / <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>[杭电acm 1001] (<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1001" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=1001</a>)</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/c-杭电1001/">c 杭电1001</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-iOS 第三方库" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -911,129 +1059,10 @@
 
 
   
-    <article id="post-iOS bug记录" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2016/01/28/iOS bug记录/" class="article-date">
-  	<time datetime="2016-01-28T01:53:01.000Z" itemprop="datePublished">2016-01-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/28/iOS bug记录/">iOS bug记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>iOS 7.0使用此方法闪退</p>
-<p>  友盟统计错误提示：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+[UIFont <span class="string">systemFontOfSize:</span><span class="string">weight:</span>]: unrecognized selector sent to <span class="class"><span class="keyword">class</span> 0<span class="title">x191252b50</span></span></span><br></pre></td></tr></table></figure>
-<p>  ###错误原因</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIFont systemFontOfSize:<span class="number">12.0f</span> weight:<span class="number">12.0f</span>];</span><br></pre></td></tr></table></figure>
-<p>  ###字体加粗使用</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[UIFont boldSystemFontOfSize:12.0f]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-bug/">iOS bug</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/27/hello-world/" class="article-date">
-  	<time datetime="2016-01-27T12:43:47.000Z" itemprop="datePublished">2016-01-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
