@@ -4,47 +4,28 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>JSPatch基本使用 | 阳光下的程序猿</title>
+  <title>上滑隐藏navigationBar | 阳光下的程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="想成为一个小小的小小的小小的全栈工程师">
   <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
-  <meta name="description" content="由于iOS项目上架AppStore的审核周期较长，而 JSPatch 能实现使用JS代码，替换项目原生代码修复bug，实现对项目的热更新，意义由此可见。具体JSPatch原理可自行搜索查看
+  <meta name="description" content="实现UIScrollView或UITableView的delegate事件
+根据属性 velocity.y 分别实现显示和隐藏navigation
 
-
-pod引入JSPatch
-pod &amp;apos;JSPatch&amp;apos;
-
-AppDelegate中引入JSPatch头文件
-#import &amp;lt;JPEngine.h&amp;gt;
-
-一般在App进入时，根据">
+1234567891011#pragma mark -- scroll delegate//监测速度-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSPatch基本使用">
-<meta property="og:url" content="www.3vcolor.com/2016/02/01/JSPatch基本使用/index.html">
+<meta property="og:title" content="上滑隐藏navigationBar">
+<meta property="og:url" content="www.3vcolor.com/2016/01/上滑隐藏navigationBar/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
-<meta property="og:description" content="由于iOS项目上架AppStore的审核周期较长，而 JSPatch 能实现使用JS代码，替换项目原生代码修复bug，实现对项目的热更新，意义由此可见。具体JSPatch原理可自行搜索查看
+<meta property="og:description" content="实现UIScrollView或UITableView的delegate事件
+根据属性 velocity.y 分别实现显示和隐藏navigation
 
-
-pod引入JSPatch
-pod &amp;apos;JSPatch&amp;apos;
-
-AppDelegate中引入JSPatch头文件
-#import &amp;lt;JPEngine.h&amp;gt;
-
-一般在App进入时，根据">
-<meta property="og:updated_time" content="2016-02-01T14:28:53.000Z">
+1234567891011#pragma mark -- scroll delegate//监测速度-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(C">
+<meta property="og:updated_time" content="2016-01-29T03:57:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSPatch基本使用">
-<meta name="twitter:description" content="由于iOS项目上架AppStore的审核周期较长，而 JSPatch 能实现使用JS代码，替换项目原生代码修复bug，实现对项目的热更新，意义由此可见。具体JSPatch原理可自行搜索查看
+<meta name="twitter:title" content="上滑隐藏navigationBar">
+<meta name="twitter:description" content="实现UIScrollView或UITableView的delegate事件
+根据属性 velocity.y 分别实现显示和隐藏navigation
 
-
-pod引入JSPatch
-pod &amp;apos;JSPatch&amp;apos;
-
-AppDelegate中引入JSPatch头文件
-#import &amp;lt;JPEngine.h&amp;gt;
-
-一般在App进入时，根据">
+1234567891011#pragma mark -- scroll delegate//监测速度-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(C">
   
     <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
   
@@ -221,11 +202,11 @@ AppDelegate中引入JSPatch头文件
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-JSPatch基本使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-上滑隐藏navigationBar" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/01/JSPatch基本使用/" class="article-date">
-  	<time datetime="2016-02-01T14:28:54.000Z" itemprop="datePublished">2016-02-01</time>
+      <a href="/2016/01/上滑隐藏navigationBar/" class="article-date">
+  	<time datetime="2016-01-29T03:57:30.000Z" itemprop="datePublished">2016-01-29</time>
 </a>
     </div>
   
@@ -238,7 +219,7 @@ AppDelegate中引入JSPatch头文件
         
   
     <h1 class="article-title" itemprop="name">
-      JSPatch基本使用
+      上滑隐藏navigationBar
     </h1>
   
 
@@ -252,7 +233,7 @@ AppDelegate中引入JSPatch头文件
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-JSPatch/">iOS JSPatch</a>
+	<a class="article-category-link" href="/categories/iOS-隐藏navigationBar-下拉显示/">iOS 隐藏navigationBar 下拉显示</a>
 	</div>
 
 
@@ -268,71 +249,10 @@ AppDelegate中引入JSPatch头文件
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>由于iOS项目上架AppStore的审核周期较长，而 <strong>JSPatch</strong> 能实现使用JS代码，替换项目原生代码修复bug，实现对项目的热更新，意义由此可见。<br>具体JSPatch原理可自行搜索查看</p>
+        <h5 id="u5B9E_u73B0UIScrollView_u6216UITableView_u7684delegate_u4E8B_u4EF6"><a href="#u5B9E_u73B0UIScrollView_u6216UITableView_u7684delegate_u4E8B_u4EF6" class="headerlink" title="实现UIScrollView或UITableView的delegate事件"></a>实现UIScrollView或UITableView的delegate事件</h5><blockquote>
+<p>根据属性 <strong>velocity.y</strong> 分别实现显示和隐藏navigation</p>
 </blockquote>
-<ol>
-<li><p>pod引入JSPatch</p>
-<pre><code>pod &apos;JSPatch&apos;
-</code></pre></li>
-<li><p>AppDelegate中引入JSPatch头文件</p>
-<pre><code>#import &lt;JPEngine.h&gt;
-</code></pre></li>
-<li><p>一般在App进入时，根据版本号等，执行网络请求，获取需要执行的js代码</p>
-</li>
-<li><p>执行js代码</p>
-<pre><code>[JPEngine startEngine];    //开启引擎
-[JPEngine evaluateScript:js];//执行js代码
-</code></pre></li>
-</ol>
-<h3 id="oc_u8F6Cjs_u4EE3_u7801"><a href="#oc_u8F6Cjs_u4EE3_u7801" class="headerlink" title="oc转js代码"></a>oc转js代码</h3><hr>
-<h4 id="oc__u65E0_u53C2_u6570"><a href="#oc__u65E0_u53C2_u6570" class="headerlink" title="oc 无参数"></a>oc 无参数</h4><pre><code>- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title = @&quot;发现&quot;;
-    _selectedIndex = 0;
-    [self initView];
-}
-</code></pre><h4 id="js"><a href="#js" class="headerlink" title="js"></a>js</h4><pre><code>defineClass(&apos;FindViewController&apos;,{
-    viewDidLoad: function(){
-        self.super().viewDidLoad();
-        self.setTitle(&apos;发现哈哈&apos;);
-        _selectedIndex = 0;
-        self.initView();
-    }
-})
-</code></pre><hr>
-<h4 id="oc__u6709_u53C2_u6570"><a href="#oc__u6709_u53C2_u6570" class="headerlink" title="oc 有参数"></a>oc 有参数</h4><pre><code>require(&apos;UIAlertView&apos;);defineClass(&apos;CircleHotPageViewController&apos;,{
-    tableView_didSelectRowAtIndexPath:function(tableView,indexPath){
-        tableView.deselectRowAtIndexPath_animated(indexPath, YES);
-            var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(&apos;只是提示而已&apos;, &apos;测试JSPath！&apos;, null, &apos;知道了&apos;, null, null);
-            alert.show();
-        }
-})
-</code></pre><h4 id="js-1"><a href="#js-1" class="headerlink" title="js"></a>js</h4><pre><code>- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    CircleHotModel *model = _hotDataArray[indexPath.row];
-    CircleDetailViewController *detailVC = [[CircleDetailViewController alloc] init];
-    detailVC.srcTitle = model.title;
-    detailVC.cid = model.cid;
-    [self pushVC:detailVC animated:YES];
-}
-</code></pre><hr>
-<h4 id="oc__u5728_u4E00_u4E2A_u65B9_u6CD5_u540E_uFF0C_u6DFB_u52A0_u4EE3_u7801"><a href="#oc__u5728_u4E00_u4E2A_u65B9_u6CD5_u540E_uFF0C_u6DFB_u52A0_u4EE3_u7801" class="headerlink" title="oc 在一个方法后，添加代码"></a>oc 在一个方法后，添加代码</h4><pre><code>- (void)refreshAction {
-    NSLog(@&quot;刷新。。&quot;);
-    [self getData];
-}
-</code></pre><h4 id="js-2"><a href="#js-2" class="headerlink" title="js"></a>js</h4><pre><code>require(&apos;UIAlertView&apos;);defineClass(&apos;HomePageVCNew&apos;,{
-    refreshAction: function() {
-        self.ORIGrefreshAction();
-        var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles(&apos;测试js&apos;, &apos;哈哈&apos;, null, &apos;取消&apos;, null, null);
-        alert.show();
-    }})
-</code></pre><blockquote>
-<p><strong>self.ORIGrefreshAction()</strong> ，表示执行之前已有的方法</p>
-</blockquote>
-<hr>
-<h2 id="u5927_u725B_u5236_u4F5C_u7684_oc_u8BED_u6CD5_u81EA_u52A8_u8F6Cjs"><a href="#u5927_u725B_u5236_u4F5C_u7684_oc_u8BED_u6CD5_u81EA_u52A8_u8F6Cjs" class="headerlink" title="大牛制作的 oc语法自动转js"></a><a href="http://bang590.github.io/JSPatchConvertor/" target="_blank" rel="external">大牛制作的 oc语法自动转js</a></h2><h5 id="u867D_u7B80_u5355_u597D_u7528_uFF0C_u4F46_u4E5F_u9700_u8981_u7B80_u5355_u4FEE_u6539_uFF0C_u5207_u8BB0_u3002"><a href="#u867D_u7B80_u5355_u597D_u7528_uFF0C_u4F46_u4E5F_u9700_u8981_u7B80_u5355_u4FEE_u6539_uFF0C_u5207_u8BB0_u3002" class="headerlink" title="虽简单好用，但也需要简单修改，切记。"></a><strong><em>虽简单好用，但也需要简单修改，切记。</em></strong></h5><hr>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#pragma mark -- scroll delegate</span></span><br><span class="line"><span class="comment">//监测速度</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillEndDragging:(<span class="built_in">UIScrollView</span> *)scrollView withVelocity:(<span class="built_in">CGPoint</span>)velocity targetContentOffset:(<span class="keyword">inout</span> <span class="built_in">CGPoint</span> *)targetContentOffset</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (velocity<span class="variable">.y</span> &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.navigationController</span> setNavigationBarHidden:<span class="literal">YES</span> animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.navigationController</span> setNavigationBarHidden:<span class="literal">NO</span> animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -342,18 +262,18 @@ AppDelegate中引入JSPatch头文件
     
 <nav id="article-nav">
   
-    <a href="/2016/02/14/JSPatch安全与RSA,AES加密--iOS,php端使用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/JSPatch基本使用/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          JSPatch安全与RSA,AES加密--iOS,php端使用
+          JSPatch基本使用
         
       </div>
     </a>
   
   
-    <a href="/2016/01/29/上滑隐藏navigationBar/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">上滑隐藏navigationBar</div>
+    <a href="/2016/01/新起点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新起点</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -369,7 +289,7 @@ AppDelegate中引入JSPatch头文件
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="JSPatch基本使用" data-title="JSPatch基本使用" data-url="www.3vcolor.com/2016/02/01/JSPatch基本使用/"></div>
+	<div class="ds-thread" data-thread-key="上滑隐藏navigationBar" data-title="上滑隐藏navigationBar" data-url="www.3vcolor.com/2016/01/上滑隐藏navigationBar/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
