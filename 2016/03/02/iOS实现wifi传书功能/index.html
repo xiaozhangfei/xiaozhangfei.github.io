@@ -21,9 +21,9 @@
  Anyview 阅读是从塞班时代一直用到现在的，由于大多小说是从网络下载的txt文本，所以就用到了此阅读器的wifi传书的功能。
 原理：将手机作为服务器，在同一网络下，可以通过浏览器访问到此服务器，上传文件后，服务器（即手机）将文件存储到沙盒内。
 使用：Cocoa">
-<meta property="og:image" content="www.3vcolor.com/()">
-<meta property="og:image" content="www.3vcolor.com/()">
-<meta property="og:updated_time" content="2016-03-02T09:54:51.000Z">
+<meta property="og:image" content="www.3vcolor.com/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_2.png)">
+<meta property="og:image" content="www.3vcolor.com/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_3.png)">
+<meta property="og:updated_time" content="2016-03-02T10:02:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS实现wifi传书功能">
 <meta name="twitter:description" content="由于iOS的封闭性，没有像安卓一样的便利的文件管理器（当然也是iOS安全的一个表现），每个app都有自己独立的操作空间，也叫沙盒。
@@ -211,7 +211,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/02/iOS实现wifi传书功能/" class="article-date">
-  	<time datetime="2016-03-02T09:55:22.000Z" itemprop="datePublished">2016-03-02</time>
+  	<time datetime="2016-03-02T10:02:49.000Z" itemprop="datePublished">2016-03-02</time>
 </a>
     </div>
   
@@ -260,7 +260,8 @@
 <p> <strong>Anyview</strong> 阅读是从塞班时代一直用到现在的，由于大多小说是从网络下载的txt文本，所以就用到了此阅读器的wifi传书的功能。</p>
 <h5 id="u539F_u7406_uFF1A"><a href="#u539F_u7406_uFF1A" class="headerlink" title="原理："></a>原理：</h5><p>将手机作为服务器，在同一网络下，可以通过浏览器访问到此服务器，上传文件后，服务器（即手机）将文件存储到沙盒内。</p>
 <h5 id="u4F7F_u7528_uFF1A"><a href="#u4F7F_u7528_uFF1A" class="headerlink" title="使用："></a>使用：</h5><p><a href="/1"><strong>CocoaHTTPServer</strong></a> 是面向Mac OS X和iOS app的轻量级、可嵌入的HTTP服务器框架。</p>
-<h5 id="u53C2_u8003_uFF1A"><a href="#u53C2_u8003_uFF1A" class="headerlink" title="参考："></a>参考：</h5><p>[] ()</p>
+<h5 id="u53C2_u8003_uFF1A"><a href="#u53C2_u8003_uFF1A" class="headerlink" title="参考："></a>参考：</h5><p>[cocoahttpserver使用详解（一）] (<a href="http://blog.csdn.net/wjsxiaoweige/article/details/25902293" target="_blank" rel="external">http://blog.csdn.net/wjsxiaoweige/article/details/25902293</a>)</p>
+<p><a href="http://www.oschina.net/code/snippet_569983_11316#18460" target="_blank" rel="external">ajax 文件上传</a></p>
 <h5 id="u6B65_u9AA4_uFF1A"><a href="#u6B65_u9AA4_uFF1A" class="headerlink" title="步骤："></a>步骤：</h5><ol>
 <li>导入库文件<ul>
 <li>Security.framework</li>
@@ -268,10 +269,10 @@
 </ul>
 </li>
 <li><p>将CocoaHTTPServer中的类拖入工程</p>
-<p> <img src="/()" alt="cocoaHttpServer拖入工程"></p>
+<p> <img src="/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_2.png)" alt="cocoaHttpServer拖入工程"></p>
 </li>
 <li><p>将web文件夹拖入工程(注意：此处文件夹为蓝色，为真实目录，【打开ipa包】-【显示包内容】，可以看到该文件夹所有内容)</p>
-<p> <img src="/()" alt="web文件夹目录"></p>
+<p> <img src="/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_3.png)" alt="web文件夹目录"></p>
 </li>
 <li><p>在AppDelegate.h中声明httpServer</p>
  <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">HTTPServer</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> : <span class="title">UIResponder</span>&lt;<span class="title">UIApplicationDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIWindow</span> *window;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) HTTPServer *httpServer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
