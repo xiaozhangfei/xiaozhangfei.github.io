@@ -198,7 +198,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/02/iOS实现wifi传书功能/" class="article-date">
-  	<time datetime="2016-03-02T10:02:49.000Z" itemprop="datePublished">2016-03-02</time>
+  	<time datetime="2016-03-02T10:04:08.000Z" itemprop="datePublished">2016-03-02</time>
 </a>
     </div>
   
@@ -235,10 +235,10 @@
 </ul>
 </li>
 <li><p>将CocoaHTTPServer中的类拖入工程</p>
-<p> <img src="/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_2.png)" alt="cocoaHttpServer拖入工程"></p>
+<p> <img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_2.png" alt="cocoaHttpServer拖入工程"></p>
 </li>
 <li><p>将web文件夹拖入工程(注意：此处文件夹为蓝色，为真实目录，【打开ipa包】-【显示包内容】，可以看到该文件夹所有内容)</p>
-<p> <img src="/(http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_3.png)" alt="web文件夹目录"></p>
+<p> <img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_3.png" alt="web文件夹目录"></p>
 </li>
 <li><p>在AppDelegate.h中声明httpServer</p>
  <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">HTTPServer</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> : <span class="title">UIResponder</span>&lt;<span class="title">UIApplicationDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIWindow</span> *window;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) HTTPServer *httpServer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
