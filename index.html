@@ -194,6 +194,131 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS实现wifi传书功能" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/02/iOS实现wifi传书功能/" class="article-date">
+  	<time datetime="2016-03-02T09:55:22.000Z" itemprop="datePublished">2016-03-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/02/iOS实现wifi传书功能/">iOS实现wifi传书功能</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于iOS的封闭性，没有像安卓一样的便利的文件管理器（当然也是iOS安全的一个表现），每个app都有自己独立的操作空间，也叫沙盒。</p>
+</blockquote>
+<p> <strong>Anyview</strong> 阅读是从塞班时代一直用到现在的，由于大多小说是从网络下载的txt文本，所以就用到了此阅读器的wifi传书的功能。</p>
+<h5 id="u539F_u7406_uFF1A"><a href="#u539F_u7406_uFF1A" class="headerlink" title="原理："></a>原理：</h5><p>将手机作为服务器，在同一网络下，可以通过浏览器访问到此服务器，上传文件后，服务器（即手机）将文件存储到沙盒内。</p>
+<h5 id="u4F7F_u7528_uFF1A"><a href="#u4F7F_u7528_uFF1A" class="headerlink" title="使用："></a>使用：</h5><p><a href="/1"><strong>CocoaHTTPServer</strong></a> 是面向Mac OS X和iOS app的轻量级、可嵌入的HTTP服务器框架。</p>
+<h5 id="u53C2_u8003_uFF1A"><a href="#u53C2_u8003_uFF1A" class="headerlink" title="参考："></a>参考：</h5><p>[] ()</p>
+<h5 id="u6B65_u9AA4_uFF1A"><a href="#u6B65_u9AA4_uFF1A" class="headerlink" title="步骤："></a>步骤：</h5><ol>
+<li>导入库文件<ul>
+<li>Security.framework</li>
+<li>CFNetwork.framework</li>
+</ul>
+</li>
+<li><p>将CocoaHTTPServer中的类拖入工程</p>
+<p> <img src="/()" alt="cocoaHttpServer拖入工程"></p>
+</li>
+<li><p>将web文件夹拖入工程(注意：此处文件夹为蓝色，为真实目录，【打开ipa包】-【显示包内容】，可以看到该文件夹所有内容)</p>
+<p> <img src="/()" alt="web文件夹目录"></p>
+</li>
+<li><p>在AppDelegate.h中声明httpServer</p>
+ <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;UIKit/UIKit.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">@class</span> <span class="title">HTTPServer</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> : <span class="title">UIResponder</span>&lt;<span class="title">UIApplicationDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) <span class="built_in">UIWindow</span> *window;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">strong</span>, <span class="keyword">nonatomic</span>) HTTPServer *httpServer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AppDelegate.m中启动和关闭服务器（当然真正在项目中使用时，也可以放在VC中）</p>
+<p> 引用头文件</p>
+ <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"HTTPServer.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"DDLog.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"DDTTYLogger.h"</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">"MyHTTPConnection.h"</span></span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> ddLogLevel = LOG_LEVEL_VERBOSE;</span><br></pre></td></tr></table></figure>
+<p> 初始化httpServer</p>
+ <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	- (<span class="keyword">void</span>)setServer &#123;</span><br><span class="line">    [DDLog addLogger:[DDTTYLogger sharedInstance]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span><span class="variable">.httpServer</span> = [[HTTPServer alloc] init];<span class="comment">//初始化</span></span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.httpServer</span> setType:<span class="string">@"_http._tcp."</span>];<span class="comment">//通过Bonjour服务发布的类型,允许浏览器访问</span></span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.httpServer</span> setPort:<span class="number">8080</span>];<span class="comment">//设置端口</span></span><br><span class="line">    <span class="comment">//[self.httpServer setConnectionClass:[MyHTTPConnection class]];//设置处理连接的自定义类文件</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *webPath = [[[<span class="built_in">NSBundle</span> mainBundle] resourcePath] stringByAppendingPathComponent:<span class="string">@"Web"</span>];</span><br><span class="line">    DDLogInfo(<span class="string">@"Setting document root: %@"</span>, webPath);</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.httpServer</span> setDocumentRoot:webPath];<span class="comment">//设置服务器根目录</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"home = %@"</span>,<span class="built_in">NSHomeDirectory</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 开启httpServer</p>
+ <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">	- (<span class="keyword">void</span>)startServer</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Start the server (and check for problems)</span></span><br><span class="line">    <span class="built_in">NSError</span> *error;</span><br><span class="line">    <span class="keyword">if</span>([<span class="keyword">self</span><span class="variable">.httpServer</span> start:&amp;error])&#123;</span><br><span class="line">        DDLogInfo(<span class="string">@"Started HTTP Server on port %hu %@"</span>, [<span class="keyword">self</span><span class="variable">.httpServer</span> listeningPort],<span class="keyword">self</span><span class="variable">.httpServer</span><span class="variable">.domain</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        DDLogError(<span class="string">@"Error starting HTTP Server: %@"</span>, error);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 此时通过手机【设置】-【无线局域网】-【当前连接的无线网】-【IP地址】，例如IP地址为192.168.2.2，之前设置的端口为8080，则在同一wifi下的电脑浏览器访问 <a href="http://192.168.2.2:8080" target="_blank" rel="external">http://192.168.2.2:8080</a> 即可访问到web目录下的index.html，到此已经说明服务器搭建好了。</p>
+<p> 然而使用中让用户去寻找IP地址还是比较麻烦的，所以直接将地址显示在app中就相当有人性了。</p>
+<ol>
+<li><p>在vc中引入头文件</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#include <span class="title">&lt;ifaddrs.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#include <span class="title">&lt;arpa/inet.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取本机ip地址</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSString</span> *)deviceIPAdress &#123;</span><br><span class="line">  	<span class="built_in">NSString</span> *address = <span class="string">@"an error occurred when obtaining ip address"</span>;</span><br><span class="line">   <span class="keyword">struct</span> ifaddrs *interfaces = <span class="literal">NULL</span>;</span><br><span class="line">   <span class="keyword">struct</span> ifaddrs *temp_addr = <span class="literal">NULL</span>;</span><br><span class="line">   <span class="keyword">int</span> success = <span class="number">0</span>;</span><br><span class="line">   success = getifaddrs(&amp;interfaces);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">if</span> (success == <span class="number">0</span>) &#123; <span class="comment">// 0 表示获取成功</span></span><br><span class="line">       </span><br><span class="line">       temp_addr = interfaces;</span><br><span class="line">       <span class="keyword">while</span> (temp_addr != <span class="literal">NULL</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span>( temp_addr-&gt;ifa_addr-&gt;sa_family == AF_INET) &#123;</span><br><span class="line">               <span class="comment">// Check if interface is en0 which is the wifi connection on the iPhone</span></span><br><span class="line">               <span class="keyword">if</span> ([[<span class="built_in">NSString</span> stringWithUTF8String:temp_addr-&gt;ifa_name] isEqualToString:<span class="string">@"en0"</span>]) &#123;</span><br><span class="line">                   <span class="comment">// Get NSString from C String</span></span><br><span class="line">                   address = [<span class="built_in">NSString</span> stringWithUTF8String:inet_ntoa(((<span class="keyword">struct</span> sockaddr_in *)temp_addr-&gt;ifa_addr)-&gt;sin_addr)];</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br><span class="line">           temp_addr = temp_addr-&gt;ifa_next;</span><br><span class="line">       &#125;</span><br><span class="line">   	&#125;</span><br><span class="line">   </span><br><span class="line">   	freeifaddrs(interfaces);</span><br><span class="line">   </span><br><span class="line">   	<span class="built_in">NSLog</span>(<span class="string">@"手机的IP是：%@"</span>, address);</span><br><span class="line">   	<span class="keyword">return</span> address;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加一个label到vc上，用来显示服务器地址</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc] initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.frame</span><span class="variable">.size</span><span class="variable">.width</span>, <span class="number">50</span>)];</span><br><span class="line">    label<span class="variable">.text</span> = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"http://%@:%@"</span>, [<span class="keyword">self</span> deviceIPAdress],<span class="string">@"8080"</span>];</span><br><span class="line">    label<span class="variable">.textAlignment</span> = <span class="built_in">NSTextAlignmentCenter</span>;</span><br><span class="line">    [<span class="keyword">self</span><span class="variable">.view</span> addSubview:label];</span><br><span class="line">    label<span class="variable">.center</span> = <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.center</span>;</span><br></pre></td></tr></table></figure>
+<p>现在运行工程，app中就会显示服务器地址，不需要再查看手机设置了。</p>
+</li>
+</ol>
+</li>
+<li><p>之后就是传书，由于手机作为服务器，很明显不能使用php或者jsp了，那就只能使用HTTPConnection方法来处理。</p>
+<ol>
+<li>web服务器html，使用的<a href="http://www.oschina.net/code/snippet_569983_11316#18460" target="_blank" rel="external">使用ajax+html上传文件</a>，部分有改动。</li>
+<li><p>在html页面中，可以使用一下格式 <strong>%a%</strong> 占位，之后数据可由自定义的HTTPConnection填充。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"filesname"</span>&gt;</span>%filesname%<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>3. 使用自定义的[MyHTTPConnectioin(见Demo)](2)，继承与HTTPConnection，来处理上传的文件。在此仅说明部分方法
+
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">	- (<span class="built_in">NSObject</span>&lt;HTTPResponse&gt; *)httpResponseForMethod:(<span class="built_in">NSString</span> *)method URI:(<span class="built_in">NSString</span> *)path</span><br><span class="line">&#123;</span><br><span class="line">    HTTPLogTrace();</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> ([method isEqualToString:<span class="string">@"POST"</span>] &amp;&amp; [path isEqualToString:<span class="string">@"/upload.html"</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// this method will generate response with links to uploaded file</span></span><br><span class="line">        <span class="built_in">NSMutableString</span>* filesStr = [[<span class="built_in">NSMutableString</span> alloc] init];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>( <span class="built_in">NSString</span>* filePath <span class="keyword">in</span> uploadedFiles ) &#123;</span><br><span class="line">            <span class="comment">//generate links</span></span><br><span class="line">            [filesStr appendFormat:<span class="string">@"&lt;a href=\"%@\"&gt; %@ &lt;/a&gt;&lt;br/&gt;"</span>,filePath, [filePath lastPathComponent]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">NSString</span>* templatePath = [[config documentRoot] stringByAppendingPathComponent:<span class="string">@"upload.html"</span>];</span><br><span class="line">        <span class="built_in">NSDictionary</span>* replacementDict = [<span class="built_in">NSDictionary</span> dictionaryWithObject:filesStr forKey:<span class="string">@"MyFiles"</span>];</span><br><span class="line">        <span class="comment">// use dynamic file response to apply our links to response template</span></span><br><span class="line">        <span class="keyword">return</span> [[HTTPDynamicFileResponse alloc] initWithFilePath:templatePath forConnection:<span class="keyword">self</span> separator:<span class="string">@"%"</span> replacementDictionary:replacementDict];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>( [method isEqualToString:<span class="string">@"GET"</span>] &amp;&amp; [path hasPrefix:<span class="string">@"/upload/"</span>] ) &#123;</span><br><span class="line">        <span class="comment">// let download the uploaded files</span></span><br><span class="line">        <span class="keyword">return</span> [[HTTPFileResponse alloc] initWithFilePath: [[config documentRoot] stringByAppendingString:path] forConnection:<span class="keyword">self</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([path isEqualToString:<span class="string">@"/index.html"</span>] || [path isEqualToString:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSString</span>* templatePath = [[config documentRoot] stringByAppendingPathComponent:<span class="string">@"index.html"</span>];</span><br><span class="line">        <span class="comment">//NSDictionary* replacementDict = [NSDictionary dictionaryWithObject:@"哈哈" forKey:@"ceshi"];</span></span><br><span class="line">        <span class="built_in">NSMutableDictionary</span> *replacementDict = [<span class="built_in">NSMutableDictionary</span> dictionary];</span><br><span class="line">        </span><br><span class="line">        [replacementDict setObject:<span class="string">@"哈哈"</span> forKey:<span class="string">@"ceshi"</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSFileManager</span> *fileManager = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line">        <span class="comment">//在这里获取应用程序Documents文件夹里的文件及文件夹列表</span></span><br><span class="line">        <span class="built_in">NSArray</span> *documentPaths = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>);</span><br><span class="line">        <span class="built_in">NSString</span> *documentDir = [documentPaths objectAtIndex:<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">        <span class="built_in">NSArray</span> *fileList = [[<span class="built_in">NSArray</span> alloc] init];</span><br><span class="line">        <span class="comment">//fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组</span></span><br><span class="line">        fileList = [fileManager contentsOfDirectoryAtPath:documentDir error:&amp;error];</span><br><span class="line">        <span class="built_in">NSString</span> *uploadFile = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@/upload"</span>,documentDir];</span><br><span class="line"><span class="comment">//        if (![fileList containsObject:@"upload"]) &#123;//不存在则新建文件夹</span></span><br><span class="line"><span class="comment">//            [fileManager createDirectoryAtPath:uploadFile attributes:nil];</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="built_in">NSArray</span> *upA = [fileManager directoryContentsAtPath:uploadFile];</span><br><span class="line">        <span class="built_in">NSMutableString</span> *st = [<span class="built_in">NSMutableString</span> string];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSString</span> *ul <span class="keyword">in</span> upA) &#123;</span><br><span class="line">            [st appendString:ul];</span><br><span class="line">        &#125;</span><br><span class="line">        [replacementDict setObject:st forKey:<span class="string">@"filess"</span>];</span><br><span class="line">        <span class="comment">// use dynamic file response to apply our links to response template</span></span><br><span class="line">        <span class="keyword">return</span> [[HTTPDynamicFileResponse alloc] initWithFilePath:templatePath forConnection:<span class="keyword">self</span> separator:<span class="string">@"%"</span> replacementDictionary:replacementDict];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">super</span> httpResponseForMethod:method URI:path];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+本方法可以作为在页面初始化时，作为补位工作。
+
+将setServer方法中
+
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="keyword">self</span><span class="variable">.httpServer</span> setConnectionClass:[MyHTTPConnection class]];<span class="comment">//设置处理连接的自定义类文件</span></span><br></pre></td></tr></table></figure>
+
+解除注释，再次运行，上传文件后，可以看到upload文件夹下的所有文件名全部显示了，在此也可以写通知刷新app界面。当然就看需求是什么样的了。
+</code></pre><p><a href="/2">本文github地址</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-wifi传书/">iOS wifi传书</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS记录小点" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -957,90 +1082,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/iOS-国际化/">iOS 国际化</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS 第三方库" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/28/iOS 第三方库/" class="article-date">
-  	<time datetime="2016-01-28T05:19:22.000Z" itemprop="datePublished">2016-01-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/28/iOS 第三方库/">iOS 第三方库</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><strong>AFNetworking</strong> 网络请求</li>
-<li><strong>SDWebImage</strong>  图片异步下载，缓存管理</li>
-<li><strong>MBProgressHUD</strong>  HUD loading提示</li>
-<li><strong>Masonry</strong>  AutoLayout手写库</li>
-<li><strong>Pop</strong>  自定义动画</li>
-<li><strong>iToast</strong>  黑底白字提示框</li>
-<li><strong>GPUImage</strong>  图片处理框架</li>
-<li><strong>CRToast</strong>  顶部状态栏提示</li>
-<li><strong>SSKeychain</strong>  使用系统keychain储存、修改、访问密码</li>
-<li><strong>chartee</strong>  K线图绘制</li>
-<li><strong>MMDrawerController</strong> 侧滑</li>
-<li><strong>iCarousel</strong>  分页效果</li>
-<li><strong>ReactiveCocoa</strong>  响应式编程</li>
-<li><strong>DOPNavbarMenu</strong>  导航栏展开菜单</li>
-<li><strong>KYGooeyMenu</strong>  带粘性的扇形菜单</li>
-<li><strong>RESideMenu</strong>  开源中国App中使用的侧拉</li>
-<li><strong>MMPopupView</strong>  弹出框</li>
-<li><strong>Reachability</strong>  网络检测</li>
-<li><strong>RTLabel</strong>  富文本</li>
-<li><strong>ZBarSDK</strong>  二维码扫描</li>
-<li><strong>LJWKeyboardHandler</strong>  键盘监听</li>
-<li><strong>CKCalendarView</strong>  日历</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-第三方库/">iOS 第三方库</a>
 	</div>
 
 
