@@ -31,7 +31,7 @@ viewWillAppear中在原有代码后添加代码
 在refreshAction方法原有代码后添加代码
 oc语法，需要添加调用refreshAction方法后，调用hideHub方法
 123- (">
-<meta property="og:updated_time" content="2016-03-04T08:33:36.000Z">
+<meta property="og:updated_time" content="2016-03-04T09:13:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSPatch基本语法(二)">
 <meta name="twitter:description" content="JSPatch基本使用JSPatch安全与RSA,AES加密–iOS,php端使用在此仅记录oc转js语法目录
@@ -224,7 +224,7 @@ oc语法，需要添加调用refreshAction方法后，调用hideHub方法
   
     <div class="article-meta">
       <a href="/2016/03/JSPatch基本语法(二)/" class="article-date">
-  	<time datetime="2016-03-04T08:33:57.000Z" itemprop="datePublished">2016-03-04</time>
+  	<time datetime="2016-03-04T09:13:41.000Z" itemprop="datePublished">2016-03-04</time>
 </a>
     </div>
   
@@ -267,26 +267,26 @@ oc语法，需要添加调用refreshAction方法后，调用hideHub方法
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="JSPatch_u57FA_u672C_u4F7F_u7528"><a href="#JSPatch_u57FA_u672C_u4F7F_u7528" class="headerlink" title="JSPatch基本使用"></a><a href="/(http://www.3vcolor.com/2016/02/01/JSPatch基本使用/)">JSPatch基本使用</a></h5><h5 id="JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528"><a href="#JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528" class="headerlink" title="JSPatch安全与RSA,AES加密–iOS,php端使用"></a><a href="/(http://www.3vcolor.com/2016/02/14/JSPatch安全与RSA,AES加密--iOS,php端使用/)">JSPatch安全与RSA,AES加密–iOS,php端使用</a></h5><h4 id="u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5"><a href="#u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5" class="headerlink" title="在此仅记录oc转js语法"></a>在此仅记录oc转js语法</h4><p>目录</p>
+        <h5 id="JSPatch_u57FA_u672C_u4F7F_u7528"><a href="#JSPatch_u57FA_u672C_u4F7F_u7528" class="headerlink" title="JSPatch基本使用"></a><a href="/2016/02/JSPatch基本使用/">JSPatch基本使用</a></h5><h5 id="JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528"><a href="#JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528" class="headerlink" title="JSPatch安全与RSA,AES加密–iOS,php端使用"></a><a href="/2016/02/JSPatch安全与RSA,AES加密--iOS,php端使用/">JSPatch安全与RSA,AES加密–iOS,php端使用</a></h5><h4 id="u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5"><a href="#u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5" class="headerlink" title="在此仅记录oc转js语法"></a>在此仅记录oc转js语法</h4><p>目录</p>
 <ul>
-<li><a href="/#3">在refreshAction方法原有代码后添加代码</a></li>
-<li><a href="/#1">viewWillAppear中在原有代码后添加代码</a>  </li>
-<li><a href="/#2">数据请求中对数组及属性的操作</a></li>
+<li><a href="#t3">在refreshAction方法原有代码后添加代码</a></li>
+<li><a href="#t1">viewWillAppear中在原有代码后添加代码</a>  </li>
+<li><a href="#t2">数据请求中对数组及属性的操作</a></li>
 </ul>
 <hr>
-<p><a href="#3">在refreshAction方法原有代码后添加代码</a></p>
+<p><a id="t3">在refreshAction方法原有代码后添加代码</a></p>
 <p>oc语法，需要添加调用refreshAction方法后，调用hideHub方法</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)refreshAction &#123;</span><br><span class="line">    [<span class="keyword">self</span> getData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	refreshAction:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		self.ORIGrefreshAction();</span><br><span class="line">		self.hideHud();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <hr>
-<p><a href="#1">viewWillAppear中在原有代码中添加代码</a></p>
+<p><a id="t1">viewWillAppear中在原有代码中添加代码</a></p>
 <p>oc语法，需要添加调用refreshAction方法</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>js</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	viewWillAppear:<span class="function"><span class="keyword">function</span>(<span class="params">animated &#123;</span><br><span class="line">		self.ORIGviewWillAppear(animated</span>);</span><br><span class="line">		<span class="title">self</span>.<span class="title">refreshAction</span>(<span class="params"></span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure>
 <hr>
-<p><a href="#2">数据请求中对数组及属性的操作</a></p>
+<p><a id="t2">数据请求中对数组及属性的操作</a></p>
 <p>oc语法</p>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)infoHandle:(<span class="built_in">NSInteger</span>)code responseObject:(<span class="keyword">id</span>)responseObject</span><br><span class="line">&#123;</span><br><span class="line">	  <span class="comment">// 添加的代码，修改bug</span></span><br><span class="line">    <span class="keyword">if</span> (code == <span class="number">0</span>) &#123;</span><br><span class="line">        _model = [[URLDeal shareURLDeal] getDetailInfo:responseObject];</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span> + _model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j ++) &#123;</span><br><span class="line">                <span class="comment">//防止越界</span></span><br><span class="line">                <span class="keyword">if</span> (_model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span> != <span class="number">0</span> &amp;&amp; j == <span class="number">1</span> &amp;&amp; i == _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                GiftImageModel *gift = [_model<span class="variable">.gtype</span> objectAtIndex:i * <span class="number">2</span> + j];</span><br><span class="line">                <span class="keyword">if</span> (i * <span class="number">2</span> + j == <span class="number">0</span> || i * <span class="number">2</span> + j == <span class="number">1</span>) &#123;</span><br><span class="line">                    [gift setGhnum:<span class="string">@"0"</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (k == <span class="number">0</span> &amp;&amp; [gift<span class="variable">.ghnum</span> integerValue] != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">self</span><span class="variable">.chooseType</span> = i * <span class="number">2</span> + j;</span><br><span class="line">                    [<span class="keyword">self</span> setChooseType:(i * <span class="number">2</span> + j)];</span><br><span class="line">                    k ++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>js</p>
