@@ -194,6 +194,99 @@
 
       <div class="body-wrap">
   
+    <article id="post-JSPatch基本语法(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/JSPatch基本语法(二)/" class="article-date">
+  	<time datetime="2016-03-04T08:33:57.000Z" itemprop="datePublished">2016-03-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/JSPatch基本语法(二)/">JSPatch基本语法(二)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="JSPatch_u57FA_u672C_u4F7F_u7528"><a href="#JSPatch_u57FA_u672C_u4F7F_u7528" class="headerlink" title="JSPatch基本使用"></a><a href="/(http://www.3vcolor.com/2016/02/01/JSPatch基本使用/)">JSPatch基本使用</a></h5><h5 id="JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528"><a href="#JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528" class="headerlink" title="JSPatch安全与RSA,AES加密–iOS,php端使用"></a><a href="/(http://www.3vcolor.com/2016/02/14/JSPatch安全与RSA,AES加密--iOS,php端使用/)">JSPatch安全与RSA,AES加密–iOS,php端使用</a></h5><h4 id="u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5"><a href="#u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5" class="headerlink" title="在此仅记录oc转js语法"></a>在此仅记录oc转js语法</h4><p>目录</p>
+<ul>
+<li><a href="/#3">在refreshAction方法原有代码后添加代码</a></li>
+<li><a href="/#1">viewWillAppear中在原有代码后添加代码</a>  </li>
+<li><a href="/#2">数据请求中对数组及属性的操作</a></li>
+</ul>
+<hr>
+<p><a href="#3">在refreshAction方法原有代码后添加代码</a></p>
+<p>oc语法，需要添加调用refreshAction方法后，调用hideHub方法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)refreshAction &#123;</span><br><span class="line">    [<span class="keyword">self</span> getData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	refreshAction:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		self.ORIGrefreshAction();</span><br><span class="line">		self.hideHud();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="#1">viewWillAppear中在原有代码中添加代码</a></p>
+<p>oc语法，需要添加调用refreshAction方法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	viewWillAppear:<span class="function"><span class="keyword">function</span>(<span class="params">animated &#123;</span><br><span class="line">		self.ORIGviewWillAppear(animated</span>);</span><br><span class="line">		<span class="title">self</span>.<span class="title">refreshAction</span>(<span class="params"></span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="#2">数据请求中对数组及属性的操作</a></p>
+<p>oc语法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)infoHandle:(<span class="built_in">NSInteger</span>)code responseObject:(<span class="keyword">id</span>)responseObject</span><br><span class="line">&#123;</span><br><span class="line">	  <span class="comment">// 添加的代码，修改bug</span></span><br><span class="line">    <span class="keyword">if</span> (code == <span class="number">0</span>) &#123;</span><br><span class="line">        _model = [[URLDeal shareURLDeal] getDetailInfo:responseObject];</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span> + _model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j ++) &#123;</span><br><span class="line">                <span class="comment">//防止越界</span></span><br><span class="line">                <span class="keyword">if</span> (_model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span> != <span class="number">0</span> &amp;&amp; j == <span class="number">1</span> &amp;&amp; i == _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                GiftImageModel *gift = [_model<span class="variable">.gtype</span> objectAtIndex:i * <span class="number">2</span> + j];</span><br><span class="line">                <span class="keyword">if</span> (i * <span class="number">2</span> + j == <span class="number">0</span> || i * <span class="number">2</span> + j == <span class="number">1</span>) &#123;</span><br><span class="line">                    [gift setGhnum:<span class="string">@"0"</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (k == <span class="number">0</span> &amp;&amp; [gift<span class="variable">.ghnum</span> integerValue] != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">self</span><span class="variable">.chooseType</span> = i * <span class="number">2</span> + j;</span><br><span class="line">                    [<span class="keyword">self</span> setChooseType:(i * <span class="number">2</span> + j)];</span><br><span class="line">                    k ++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<blockquote>
+<p>先运行方法原有的代码，再执行添加的内容</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'URLDeal'</span>);</span><br><span class="line">defineClass(<span class="string">'DetailVC'</span>, &#123; </span><br><span class="line">    SSJHInfoHandle_responseObject: <span class="function"><span class="keyword">function</span>(<span class="params">code, responseObject</span>) </span><br><span class="line">    </span>&#123;</span><br><span class="line">        self.ORIGinfoHandle_responseObject(code,responseObject);</span><br><span class="line">        <span class="keyword">if</span> (code == <span class="number">0</span>) &#123; </span><br><span class="line">            _model = URLDeal.shareURLDeal().getDetailInfo(responseObject); </span><br><span class="line">            <span class="keyword">var</span> k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _model.gtype().count() / <span class="number">2</span> + _model.gtype().count() % <span class="number">2</span>; i++) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123; </span><br><span class="line">                    <span class="keyword">if</span> (_model.gtype().count() % <span class="number">2</span> != <span class="number">0</span> &amp;&amp; j == <span class="number">1</span> &amp;&amp; i == _model.gtype().count() / <span class="number">2</span>) </span><br><span class="line">                    &#123; </span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">var</span> gift = _model.gtype().objectAtIndex(i * <span class="number">2</span> + j);  </span><br><span class="line">                    <span class="keyword">if</span> (k == <span class="number">0</span> &amp;&amp; gift.ghnum().integerValue() != <span class="number">0</span>) </span><br><span class="line">                    &#123; </span><br><span class="line">                        self.setChooseType(i * <span class="number">2</span> + j);</span><br><span class="line">                        k++;  </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意： </p>
+<ul>
+<li>在oc转为js语法中，属性设置值时要用set语法。</li>
+<li>数组根据下标去数据，使用.objectAtIndex(2）</li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-JSPatch/">iOS JSPatch</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS实现wifi传书功能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -974,112 +1067,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/有一个小小的小小的想成为全栈工程师的梦想/">有一个小小的小小的想成为全栈工程师的梦想</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS 国际化" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/iOS 国际化/" class="article-date">
-  	<time datetime="2016-01-28T09:33:43.000Z" itemprop="datePublished">2016-01-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/iOS 国际化/">iOS 国际化</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>=====</p>
-<h3 id="u9879_u76EE_u540D_u79F0_u56FD_u9645_u5316"><a href="#u9879_u76EE_u540D_u79F0_u56FD_u9645_u5316" class="headerlink" title="项目名称国际化"></a>项目名称国际化</h3><h5 id="u68C0_u67E5_u5DE5_u7A0B_u4E2D_u662F_u5426_u5B58_u5728InfoPlist-strings"><a href="#u68C0_u67E5_u5DE5_u7A0B_u4E2D_u662F_u5426_u5B58_u5728InfoPlist-strings" class="headerlink" title="检查工程中是否存在InfoPlist.strings"></a>检查工程中是否存在InfoPlist.strings</h5><blockquote>
-<p>如果没有，则新建此文件，点击右侧Localization，选择English,Chinese<br><img src="http://7xo6u7.com1.z0.glb.clouddn.com/2016-01-28%2016.49.18.png" alt="InfoPlist.strings如图"></p>
-<p>在InfoPlist.strings(Englist)文件中写入</p>
-</blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">CFBundleDisplayName = <span class="value"><span class="string">"English Name"</span>;</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在InfoPlist.strings(Chinese)文件中写入</p>
-</blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">CFBundleDisplayName = <span class="value"><span class="string">"中文项目名称"</span>;</span></span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在 <strong>Info.plist</strong> 文件中加入属性 <strong>Application has localized display name</strong> ,属性值为 YES</p>
-</blockquote>
-<h5 id="u91CD_u65B0_u8FD0_u884C_u5373_u53EF"><a href="#u91CD_u65B0_u8FD0_u884C_u5373_u53EF" class="headerlink" title="重新运行即可"></a>重新运行即可</h5><h1 id="u2014"><a href="#u2014" class="headerlink" title="—-"></a>—-</h1><h3 id="u5B57_u7B26_u4E32_u56FD_u9645_u5316"><a href="#u5B57_u7B26_u4E32_u56FD_u9645_u5316" class="headerlink" title="字符串国际化"></a>字符串国际化</h3><h5 id="u5728_u5DE5_u7A0B_u4E2D_u65B0_u5EFA_Localizable-strings"><a href="#u5728_u5DE5_u7A0B_u4E2D_u65B0_u5EFA_Localizable-strings" class="headerlink" title="在工程中新建 Localizable.strings"></a>在工程中新建 Localizable.strings</h5><blockquote>
-<p>点击右侧 [Localization] ,生成文件如图<br><img src="http://7xo6u7.com1.z0.glb.clouddn.com/2016-01-28%2016.49.42.png" alt="国际化文件"><br>在Localization.strings(English)文件中写入</p>
-</blockquote>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"tab_message"</span>       = <span class="string">"Message"</span>;</span><br><span class="line"><span class="string">"tab_find"</span>          = <span class="string">"Find"</span>;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在Localization.strings(Chinese)文件中写入</p>
-</blockquote>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"tab_message"</span>       = <span class="string">"消息"</span>;</span><br><span class="line"><span class="string">"tab_find"</span>          = <span class="string">"发现"</span>;</span><br></pre></td></tr></table></figure>
-<h5 id="u4FEE_u6539_u7CFB_u7EDF_u8BED_u8A00_uFF0C_u8FD0_u884Capp_u5373_u53EF"><a href="#u4FEE_u6539_u7CFB_u7EDF_u8BED_u8A00_uFF0C_u8FD0_u884Capp_u5373_u53EF" class="headerlink" title="修改系统语言，运行app即可"></a>修改系统语言，运行app即可</h5><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *str = <span class="built_in">NSLocalizedString</span>(<span class="string">@"tab_find"</span>, <span class="string">@"tab_"</span>);</span><br></pre></td></tr></table></figure>
-<h1 id="u2014-1"><a href="#u2014-1" class="headerlink" title="—-"></a>—-</h1><h3 id="u56FE_u7247_u56FD_u9645_u5316"><a href="#u56FE_u7247_u56FD_u9645_u5316" class="headerlink" title="图片国际化"></a>图片国际化</h3><h4 id="u4E24_u79CD_u65B9_u5F0F"><a href="#u4E24_u79CD_u65B9_u5F0F" class="headerlink" title="两种方式"></a>两种方式</h4><ul>
-<li>与字符串国际化类似，</li>
-</ul>
-<blockquote>
-<p>在Localization.strings(English)文件中写入</p>
-</blockquote>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"image_ok"</span>		= <span class="string">"ok_en.png"</span>;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在Localization.strings(Chinese)文件中写入</p>
-</blockquote>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"image_ok"</span>		= <span class="string">"ok_cn.png"</span>;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在文件中调用</p>
-</blockquote>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_okImv<span class="variable">.image</span> = [<span class="built_in">UIImage</span> imageNamed:<span class="built_in">NSLocalizedString</span>(<span class="string">@"image_ok"</span>, <span class="string">@"btn_"</span>)];</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用 XCode 普通文件国际化方式</li>
-</ul>
-<blockquote>
-<p>点击需要国际化的图片<strong>check.png</strong>，点击右侧 Localization<br><img src="http://7xo6u7.com1.z0.glb.clouddn.com/2016-01-28%2017.13.39.png" alt="点击国际化按钮"></p>
-<p>选择 Englist , Chinese</p>
-<p>打开此图片所在文件夹，会出现zh-Hans.lproj和en.lproj两个文件夹，每个文件夹下各一张之前国际化的图片，名字相同<br><img src="http://7xo6u7.com1.z0.glb.clouddn.com/2016-01-28%2017.19.11.png" alt="国际化图片"><br>分别替换文件夹下的图片即可</p>
-</blockquote>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_checkImv.image = [UIImage <span class="string">imageNamed:</span>@<span class="string">"check.png"</span>];</span><br></pre></td></tr></table></figure>
-<h1 id="u2014_u2014"><a href="#u2014_u2014" class="headerlink" title="——-"></a>——-</h1><h3 id="u56FD_u9645_u5316_u5176_u4ED6_u6587_u4EF6_u4E0E_u56FD_u9645_u5316_u56FE_u7247_u7C7B_u4F3C"><a href="#u56FD_u9645_u5316_u5176_u4ED6_u6587_u4EF6_u4E0E_u56FD_u9645_u5316_u56FE_u7247_u7C7B_u4F3C" class="headerlink" title="国际化其他文件与国际化图片类似"></a>国际化其他文件与国际化图片类似</h3><h4 id="u4E0D_u505A_u8D58_u8FF0"><a href="#u4E0D_u505A_u8D58_u8FF0" class="headerlink" title="不做赘述"></a>不做赘述</h4>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-国际化/">iOS 国际化</a>
 	</div>
 
 
