@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>枚举类型导致的1 duplicate symbol for architecture x86\_64错误 | 阳光下的程序猿</title>
+  <title>枚举类型导致的1 duplicate symbol for architecture x86_64错误 | 阳光下的程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
   <meta name="description" content="bug起因(ios7.1，xCode7.2.1)工程原本是正常运行的（不管模拟器还是真机）
 但是之后添加了新的Target - WatchKit App 之后，真机运行正常，模拟器运行报错
 12345duplicate symbol _iToastDuration in:    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="枚举类型导致的1 duplicate symbol for architecture x86\_64错误">
-<meta property="og:url" content="www.3vcolor.com/2016/02/枚举类型导致的1 duplicate symbol for architecture x86_64错误/index.html">
+<meta property="og:title" content="枚举类型导致的1 duplicate symbol for architecture x86_64错误">
+<meta property="og:url" content="www.3vcolor.com/2016/03/枚举类型导致的1 duplicate symbol for architecture x86_64错误/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
 <meta property="og:description" content="bug起因(ios7.1，xCode7.2.1)工程原本是正常运行的（不管模拟器还是真机）
 但是之后添加了新的Target - WatchKit App 之后，真机运行正常，模拟器运行报错
 12345duplicate symbol _iToastDuration in:    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzo">
-<meta property="og:updated_time" content="2016-02-23T02:51:48.000Z">
+<meta property="og:updated_time" content="2016-03-06T09:18:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枚举类型导致的1 duplicate symbol for architecture x86\_64错误">
+<meta name="twitter:title" content="枚举类型导致的1 duplicate symbol for architecture x86_64错误">
 <meta name="twitter:description" content="bug起因(ios7.1，xCode7.2.1)工程原本是正常运行的（不管模拟器还是真机）
 但是之后添加了新的Target - WatchKit App 之后，真机运行正常，模拟器运行报错
 12345duplicate symbol _iToastDuration in:    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzo">
@@ -202,8 +202,8 @@
       <div class="body-wrap"><article id="post-枚举类型导致的1 duplicate symbol for architecture x86_64错误" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/02/枚举类型导致的1 duplicate symbol for architecture x86_64错误/" class="article-date">
-  	<time datetime="2016-02-23T02:51:48.000Z" itemprop="datePublished">2016-02-23</time>
+      <a href="/2016/03/枚举类型导致的1 duplicate symbol for architecture x86_64错误/" class="article-date">
+  	<time datetime="2016-03-06T09:18:36.000Z" itemprop="datePublished">2016-03-06</time>
 </a>
     </div>
   
@@ -216,7 +216,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      枚举类型导致的1 duplicate symbol for architecture x86\_64错误
+      枚举类型导致的1 duplicate symbol for architecture x86_64错误
     </h1>
   
 
@@ -230,7 +230,7 @@
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-1-duplicate-symbol-for-architecture-x86-64错误/">iOS 1 duplicate symbol for architecture x86\_64错误</a>
+	<a class="article-category-link" href="/categories/iOS-1-duplicate-symbol-for-architecture-x86-64错误/">iOS 1 duplicate symbol for architecture x86_64错误</a>
 	</div>
 
 
@@ -250,10 +250,10 @@
 <p>但是之后添加了新的Target - WatchKit App 之后，真机运行正常，模拟器运行报错</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">duplicate symbol _iToastDuration <span class="keyword">in</span>:</span><br><span class="line">    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzonquheuzvvzaqxjtrlbpililv/Build/Intermediates/MyCircle.build/Debug-iphonesimulator/MyCircle.build/Objects-normal/x86_64/BaseViewController.o</span><br><span class="line">    /Users/and/Library/Developer/Xcode/DerivedData/MyCircle-fdzonquheuzvvzaqxjtrlbpililv/Build/Products/Debug-iphonesimulator/libiToast.a(iToast.o)</span><br><span class="line">ld: <span class="number">1</span> duplicate symbol <span class="keyword">for</span> architecture x86_64</span><br><span class="line">clang: error: linker <span class="built_in">command</span> failed with <span class="built_in">exit</span> code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure>
 <p>在百度、谷歌，修改了一系列Search Frame Path之后，仍是一无所获。</p>
-<p>之后找到了参看了 <a href="/(http://http://www.jianshu.com/p/2b79e450d67e)"> <em>枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a> ，去到iToast源码中找到以下代码</p>
+<p>之后找到了参看了 <a href="http://www.jianshu.com/p/2b79e450d67e" target="_blank" rel="external"> <em>枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a> ，去到iToast源码中找到以下代码</p>
 <blockquote>
 <p>p.s. Podfile中支持ios7.1，从pod上更新所得的iToast为0.0.1，代码如下</p>
-<p>而直接从 <a href="/(https://github.com/ecstasy2/toast-notifications-ios)">github</a> 下载的iToast.h中则不缺少typedef</p>
+<p>而直接从 <a href="https://github.com/ecstasy2/toast-notifications-ios" target="_blank" rel="external">github</a> 下载的iToast.h中则不缺少typedef</p>
 </blockquote>
 <figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> iToastGravity &#123;</span><br><span class="line">	iToastGravityTop = <span class="number">1000001</span>,</span><br><span class="line">	iToastGravityBottom,</span><br><span class="line">	iToastGravityCenter</span><br><span class="line">&#125;iToastGravity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> iToastDuration &#123;</span><br><span class="line">	iToastDurationLong = <span class="number">10000</span>,</span><br><span class="line">	iToastDurationShort = <span class="number">1000</span>,</span><br><span class="line">	iToastDurationNormal = <span class="number">3000</span></span><br><span class="line">&#125;iToastDuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span> iToastType &#123;</span><br><span class="line">	iToastTypeInfo = -<span class="number">100000</span>,</span><br><span class="line">	iToastTypeNotice,</span><br><span class="line">	iToastTypeWarning,</span><br><span class="line">	iToastTypeError,</span><br><span class="line">	iToastTypeNone <span class="comment">// For internal use only (to force no image)</span></span><br><span class="line">&#125;iToastType;</span><br></pre></td></tr></table></figure>
 <p>一共三个枚举，不知道为何只有 <em>iToastDuration</em> 用了C语言样式的枚举。</p>
@@ -264,7 +264,7 @@
 </blockquote>
 <p>解决。</p>
 <p></p><h4>本文参考</h4><p></p>
-<h5 id="u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF"><a href="#u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF" class="headerlink" title="简书 由于枚举类型导致的1 duplicate symbol for architecture x86_64错误"></a><a href="/(http://http://www.jianshu.com/p/2b79e450d67e)">简书 <em>由于枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a></h5><h5 id="iToast_github_u5730_u5740"><a href="#iToast_github_u5730_u5740" class="headerlink" title="iToast github地址"></a><a href="/(https://github.com/ecstasy2/toast-notifications-ios)">iToast github地址</a></h5><hr>
+<h5 id="u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF"><a href="#u7B80_u4E66__u7531_u4E8E_u679A_u4E3E_u7C7B_u578B_u5BFC_u81F4_u76841_duplicate_symbol_for_architecture_x86_64_u9519_u8BEF" class="headerlink" title="简书 由于枚举类型导致的1 duplicate symbol for architecture x86_64错误"></a><a href="http://www.jianshu.com/p/2b79e450d67e" target="_blank" rel="external">简书 <em>由于枚举类型导致的1 duplicate symbol for architecture x86_64错误</em> </a></h5><h5 id="iToast_github_u5730_u5740"><a href="#iToast_github_u5730_u5740" class="headerlink" title="iToast github地址"></a><a href="https://github.com/ecstasy2/toast-notifications-ios" target="_blank" rel="external">iToast github地址</a></h5><hr>
 
       
     </div>
@@ -274,18 +274,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/iOS记录小点/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS记录小点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/02/UIWebView与js交互(1)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UIWebView与js交互(1)</div>
+    <a href="/2016/03/iOS实现wifi传书功能/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS实现wifi传书功能</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -301,7 +292,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="枚举类型导致的1 duplicate symbol for architecture x86_64错误" data-title="枚举类型导致的1 duplicate symbol for architecture x86\_64错误" data-url="www.3vcolor.com/2016/02/枚举类型导致的1 duplicate symbol for architecture x86_64错误/"></div>
+	<div class="ds-thread" data-thread-key="枚举类型导致的1 duplicate symbol for architecture x86_64错误" data-title="枚举类型导致的1 duplicate symbol for architecture x86_64错误" data-url="www.3vcolor.com/2016/03/枚举类型导致的1 duplicate symbol for architecture x86_64错误/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
