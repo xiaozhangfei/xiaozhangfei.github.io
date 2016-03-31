@@ -195,6 +195,150 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS利用Jenkins搭建自动化编译打包发布" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/iOS利用Jenkins搭建自动化编译打包发布/" class="article-date">
+  	<time datetime="2016-03-31T05:46:57.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/iOS利用Jenkins搭建自动化编译打包发布/">iOS利用Jenkins搭建自动化编译打包发布</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iOS利用Jenkins搭建自动化编译打包发布</p>
+<h4 id="u4F7F_u7528_u547D_u4EE4_u884C_u5B89_u88C5Jenkins"><a href="#u4F7F_u7528_u547D_u4EE4_u884C_u5B89_u88C5Jenkins" class="headerlink" title="使用命令行安装Jenkins"></a>使用命令行安装Jenkins</h4><ol>
+<li><p>如果没有安装homebrew,先进行安装 (若已安装，则跳过)</p>
+<p> 安装homebrew</p>
+<pre><code>$ ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre></li>
+<li><p>安装Jenkins</p>
+<pre><code>$ brew install jenkins 
+</code></pre></li>
+<li><p>启动Jenkins</p>
+<pre><code>$ jenkins
+</code></pre></li>
+<li><p>测试是否安装成功</p>
+<p> 浏览器访问</p>
+<pre><code>http://localhost:8080/
+</code></pre><p> 如果端口冲突，修改端口</p>
+<pre><code>defaults write /Library/Preferences/org.jenkins-ci httpPort xxxx
+</code></pre></li>
+</ol>
+<h4 id="Jenkins_u4F7F_u7528"><a href="#Jenkins_u4F7F_u7528" class="headerlink" title="Jenkins使用"></a>Jenkins使用</h4><ol>
+<li><p>安装插件</p>
+<p> <img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_10.png" alt="Jenkins首页图片"></p>
+<p> 【系统管理】 -&gt; 【管理插件】 -&gt; 【可选插件】</p>
+<p> 安装如下插件</p>
+<ul>
+<li><p>Xcode integration</p>
+</li>
+<li><p>GIT plugin</p>
+</li>
+<li><p>Post-Build Script Plug-in</p>
+</li>
+<li><p>GitHub plugin</p>
+</li>
+</ul>
+</li>
+<li><p>新建项目</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_11.png" alt="Jenkins新建项目图片"></p>
+<p>【新建】 -&gt; [构建一个自由风格的软件项目] </p>
+</li>
+<li><p>配置</p>
+<ol>
+<li><p>填写描述</p>
+</li>
+<li><p>源码管理</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_12.png" alt="Jenkins源码管理"></p>
+<p>此处使用的是开源中国git私有仓库，若为public，则无需填写 <em>Credentials</em> </p>
+</li>
+<li><p>构建触发器（可不设置）</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_13.png" alt="Jenkins构建触发器"></p>
+<pre><code>H H(10-11) * * 1-5
+</code></pre><p>表示在每周一到周五，10点到11点之间构建一次。</p>
+</li>
+<li><p>构建</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_14.png" alt="Jenkins构建General build settings"></p>
+<p>设置需要构建的工程target名称，及输出的ipa名称，此处使用分发证书，ad hoc</p>
+</li>
+<li><p>钥匙串</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_15.png" alt="Jenkins钥匙串"></p>
+<p>Keychain path :</p>
+<pre><code>${HOME}/Library/Keychains/login.keychain
+</code></pre></li>
+<li><p>使用cocoapods，需要配置此处（否则，可跳过）</p>
+<p> <img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_16.png" alt="Jenkins cocoapods配置"></p>
+</li>
+<li><p>构建后步骤</p>
+<p>上传到fir.im</p>
+<p> Build steps  –&gt;  Excecute shell  –&gt;  Command 填入</p>
+<pre><code>fir p ${WORKSPACE}/build/DemoJenkins.ipa -T **此处为fir.im API token**
+</code></pre></li>
+<li><p>保存。 立即构建，去fir.im 查看即可。</p>
+<p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_17.png" alt="Jenkins构建历史"></p>
+</li>
+</ol>
+</li>
+<li><p>注意：</p>
+<p> 在3-7前，首先确认安装fir_cli</p>
+<pre><code>sudo gem install fir-cli --no-ri --no-rdoc
+</code></pre><p> <a href="https://github.com/FIRHQ/fir-cli/blob/master/README.md" target="_blank" rel="external">fir_cli 官方使用说明</a></p>
+<p> 安装</p>
+<pre><code>$ gem install fir-cli
+</code></pre><p> 登录</p>
+<pre><code>fir login **fir.im API token**
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Jenkins-iOS-fir-自动化编译打包/">Jenkins_iOS_fir 自动化编译打包</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-记一次对Anyview阅读iOS版wifi传书功能的抹黑探索" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1033,70 +1177,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/iOS-JSPatch/">iOS JSPatch</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-上滑隐藏navigationBar" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/上滑隐藏navigationBar/" class="article-date">
-  	<time datetime="2016-01-29T03:57:30.000Z" itemprop="datePublished">2016-01-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/上滑隐藏navigationBar/">上滑隐藏navigationBar</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="u5B9E_u73B0UIScrollView_u6216UITableView_u7684delegate_u4E8B_u4EF6"><a href="#u5B9E_u73B0UIScrollView_u6216UITableView_u7684delegate_u4E8B_u4EF6" class="headerlink" title="实现UIScrollView或UITableView的delegate事件"></a>实现UIScrollView或UITableView的delegate事件</h5><blockquote>
-<p>根据属性 <strong>velocity.y</strong> 分别实现显示和隐藏navigation</p>
-</blockquote>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#pragma mark -- scroll delegate</span></span><br><span class="line"><span class="comment">//监测速度</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillEndDragging:(<span class="built_in">UIScrollView</span> *)scrollView withVelocity:(<span class="built_in">CGPoint</span>)velocity targetContentOffset:(<span class="keyword">inout</span> <span class="built_in">CGPoint</span> *)targetContentOffset</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (velocity<span class="variable">.y</span> &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.navigationController</span> setNavigationBarHidden:<span class="literal">YES</span> animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span><span class="variable">.navigationController</span> setNavigationBarHidden:<span class="literal">NO</span> animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-隐藏navigationBar-下拉显示/">iOS 隐藏navigationBar 下拉显示</a>
 	</div>
 
 
