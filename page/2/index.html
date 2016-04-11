@@ -195,6 +195,217 @@
 
       <div class="body-wrap">
   
+    <article id="post-杭电acm 1001" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/杭电acm 1001/" class="article-date">
+  	<time datetime="2016-02-14T13:36:07.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/杭电acm 1001/">杭电acm 1001</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u676D_u7535acm_1001"><a href="#u676D_u7535acm_1001" class="headerlink" title="杭电acm 1001"></a>杭电acm 1001</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"></span><br><span class="line">int <span class="function"><span class="title">main</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">	double a;</span><br><span class="line">	<span class="keyword">while</span>(scanf(<span class="string">"%lf"</span>,&amp;a) != EOF) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.0lf\n\n"</span>,a * (<span class="number">1</span> + a) / <span class="number">2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1001" target="_blank" rel="external">杭电acm 1001</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/c-杭电1001/">c 杭电1001</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JSPatch安全与RSA,AES加密--iOS,php端使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/JSPatch安全与RSA,AES加密--iOS,php端使用/" class="article-date">
+  	<time datetime="2016-02-14T13:29:57.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/JSPatch安全与RSA,AES加密--iOS,php端使用/">JSPatch安全与RSA,AES加密--iOS,php端使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用JSPatch时，JS脚本理论上可以调用任意OC方法，权限非常大，若经过HTTP传输时，被中间人攻击篡改js代码，则会造成很大危害。</p>
+<p>鉴于此种情况</p>
+<pre><code>1. 服务器尽量使用https传输
+2. 对传输的代码做好加密和校验
+</code></pre><p>接下来，以服务器端使用php，移动端iOS，主要对第二种方式进行处理</p>
+<h4 id="RSA_u7B97_u6CD5"><a href="#RSA_u7B97_u6CD5" class="headerlink" title="RSA算法"></a>RSA算法</h4><blockquote>
+<p>RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推荐为公钥数据加密标准。</p>
+<p>RSA算法是一种非对称加密算法,常被用于加密数据传输.如果配合上数字摘要算法, 也可以用于文件签名.</p>
+<p>RSA算法是一种非对称算法，算法需要一对密钥，使用其中一个加密，需要使用另外一个才能解密。我们在进行RSA加密通讯时，就把公钥放在客户端，私钥留在服务器。</p>
+</blockquote>
+<h6 id="u4E00_u822C_u6765_u8BF4"><a href="#u4E00_u822C_u6765_u8BF4" class="headerlink" title="一般来说"></a><strong><em>一般来说</em></strong></h6><pre><code>1.公钥加密，私钥解密
+2.私钥对文件进行签名，公钥对签名进行验证
+</code></pre><h4 id="u516C_u94A5_u3001_u79C1_u94A5_u751F_u6210"><a href="#u516C_u94A5_u3001_u79C1_u94A5_u751F_u6210" class="headerlink" title="公钥、私钥生成"></a>公钥、私钥生成</h4><ol>
+<li><blockquote>
+<p>使用openSSL命令生成密钥</p>
+</blockquote>
+<pre><code>openssl req -x509 -out public_key.der -outform der -new -newkey rsa:1024 -keyout private_key.pem
+</code></pre><blockquote>
+<p>按照提示，填入私钥的密码(之后会使用)，签名证书的组织名、邮件等信息之后，就会生成包含有公钥的证书文件public_key.der和私钥文件private_key.pem。</p>
+<p>public_key.der文件用于分发到ios客户端进行公钥加解密，而private_key.pem文件留在服务器端供php使用</p>
+</blockquote>
+<pre><code>openssl rsa -in private_key.pem -pubout -out public_key.pem
+</code></pre><blockquote>
+<p>此命令会根据输入的私钥文件生成pem格式的公钥文件，这也是把private_key放在服务端的原因</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="u670D_u52A1_u7AEFphp_u4EE3_u7801_uFF08ThinkPHP_u6846_u67B6_uFF0C_u52A0_u5BC6_u89E3_u5BC6_u4EE3_u7801_u4E0E_u6846_u67B6_u65E0_u76F4_u63A5_u5173_u7CFB_uFF09"><a href="#u670D_u52A1_u7AEFphp_u4EE3_u7801_uFF08ThinkPHP_u6846_u67B6_uFF0C_u52A0_u5BC6_u89E3_u5BC6_u4EE3_u7801_u4E0E_u6846_u67B6_u65E0_u76F4_u63A5_u5173_u7CFB_uFF09" class="headerlink" title="服务端php代码（ThinkPHP框架，加密解密代码与框架无直接关系）"></a>服务端php代码（ThinkPHP框架，加密解密代码与框架无直接关系）</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">&lt;?php</span></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Created by PhpStorm.</span><br><span class="line">	 * User: and</span><br><span class="line">	 * Date: 16/2/1</span><br><span class="line">	 * Time: 10:14</span><br><span class="line">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">namespace</span> <span class="title">Home</span>\<span class="title">Controller</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">RsaController</span> <span class="keyword">extends</span> <span class="title">CommenController</span> </span>&#123;</span><br><span class="line">	<span class="comment">//使用文本打开之前获取的private_key.pem可得如下</span></span><br><span class="line">	<span class="comment">//为了隐秘，key在此做了部分删除</span></span><br><span class="line">		<span class="keyword">const</span> PRIVATE_KEY = <span class="string">'-----BEGIN PRIVATE KEY-----</span><br><span class="line">	MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAN2DTzqHsIiEw8bQ</span><br><span class="line">	R3MT9FpwVzet+kGQphJCFfY6A5u4gK6BuiVKqJpRroJlzg5yT3zy5tzowpSqIuMZ</span><br><span class="line">	8104ncih3uvKoNvvPhwjTy6mGHJHoKaGBlnK7oMXOmi50wVA8qvf++kZnxn9W7tM</span><br><span class="line">	YnCe6GSkQBS5KgythpIqPaqcaY1dAgMBAAECgYEAjTfqacEZvV8OxRABjQ76qDGY</span><br><span class="line">	mOm0cto51cgF4k0IAd21RAt2VdHr/T33yDAJFtKvdFQS9GD7s/VnemsP6K1wgMld</span><br><span class="line">	AvV2+KAPK2ZcCNTktLLBmOikJtBYQZGBnaAlxKQD2RFr+YJRCORxSQfOgGVxzch6</span><br><span class="line">	tgXC7VyQmddYBvaOEq0CQQD0dRHMxvn8iTa1x+Df4ghE3XZwyG8rDIpMehfAQdm/</span><br><span class="line">	hgf5Z1DX56DOG0LD99OMH5wE+C8CHdSP9F842cFJrZjTAkEA5/jlFcQU3vW/6fmk</span><br><span class="line">	XshHyaF40s9+5K84i/1EzTW/Wx08zZGql/WrTuQ8QllMAUDR6+kZvPLSPexA/8DS</span><br><span class="line">	e8xjDwJAObn7fhPurIfqd3q/y56gvUJe2bs7JTtM3UpnmWrzdJq9/1M6cAGuo30k</span><br><span class="line">	gwpe1lQQj</span><br><span class="line">	-----END PRIVATE KEY-----'</span>;</span><br><span class="line">	</span><br><span class="line">	    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//此处为了验证，所以取出publick_key.pem中的public_key</span></span><br><span class="line">	<span class="comment">//为了隐秘，key在此做了部分删除</span></span><br><span class="line">        <span class="variable">$public_key</span> = <span class="string">'-----BEGIN PUBLIC KEY-----</span><br><span class="line">	MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3</span><br><span class="line">	rf6CZc4OhhyR6CmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAU</span><br><span class="line">	uSoMrYaSKj2qnGmNXQIDAQAB</span><br><span class="line">	-----END PUBLIC KEY-----'</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//之前使用openssl生成private_key时填写的密码</span></span><br><span class="line">		<span class="variable">$open_key</span> = <span class="string">'123456'</span>;</span><br><span class="line">	</span><br><span class="line">        <span class="variable">$pi_key</span> = openssl_pkey_get_private(<span class="keyword">self</span>::PRIVATE_KEY,<span class="variable">$open_key</span>);<span class="comment">//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$pi_key</span>,<span class="string">"\n"</span>;</span><br><span class="line">        <span class="variable">$pu_key</span> = openssl_pkey_get_public(<span class="variable">$public_key</span>);<span class="comment">//这个函数可用来判断公钥是否是可用的</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="variable">$pu_key</span>,<span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="variable">$data</span> = <span class="string">"xiaohulu123"</span>;<span class="comment">//原始数据</span></span><br><span class="line">        <span class="variable">$encrypted</span> = <span class="string">""</span>;</span><br><span class="line">        <span class="variable">$decrypted</span> = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"source data:"</span>,<span class="variable">$data</span>,<span class="string">"\n"</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"private key encrypt:\n"</span>;</span><br><span class="line"></span><br><span class="line">        openssl_public_encrypt(<span class="variable">$data</span>,<span class="variable">$encrypted</span>,<span class="variable">$pu_key</span>);<span class="comment">//公钥加密，私钥解密</span></span><br><span class="line">        <span class="variable">$encrypted</span> = base64_encode(<span class="variable">$encrypted</span>);<span class="comment">//加密后的内容通常含有特殊字符，需要编码转换下，在网络间通过url传输时要注意base64编码是否是url安全的</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"公钥加密后:"</span>,<span class="variable">$encrypted</span>,<span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">        openssl_private_decrypt(base64_decode(<span class="variable">$encrypted</span>),<span class="variable">$decrypted</span>,<span class="variable">$pi_key</span>);<span class="comment">//私钥加密的内容通过公钥可用解密出来</span></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"私钥解密:"</span>,<span class="variable">$decrypted</span>,<span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"\n"</span>,<span class="string">"---------------------------------------"</span>,<span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//私钥对数据进行签名，公钥解密验证</span></span><br><span class="line">        <span class="variable">$bicode</span> = <span class="string">""</span>;</span><br><span class="line">        <span class="variable">$cdbicode</span> = <span class="string">""</span>;</span><br><span class="line">        openssl_private_encrypt(<span class="variable">$data</span>, <span class="variable">$bicode</span>, <span class="variable">$pi_key</span>);</span><br><span class="line">        <span class="variable">$bicode</span> = base64_encode(<span class="variable">$bicode</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"私钥签名："</span>,<span class="variable">$bicode</span>,<span class="string">"\n"</span>;</span><br><span class="line"></span><br><span class="line">        openssl_public_decrypt(base64_decode(<span class="variable">$bicode</span>), <span class="variable">$cdbicode</span>, <span class="variable">$pu_key</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">"公钥验证签名："</span>,<span class="variable">$cdbicode</span>,<span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果得不到resourceID，先查看是否开启openssl扩展，之后查看private_key是否私自添加了缩进等。</p>
+</blockquote>
+<p>=============</p>
+<h3 id="iOS_u4F7F_u7528JSPatch"><a href="#iOS_u4F7F_u7528JSPatch" class="headerlink" title="iOS使用JSPatch"></a>iOS使用JSPatch</h3><p>JSPatch脚本的执行权限很高，若在传输过程中被中间人篡改，会带来很大的安全问题，为了防止这种情况出现，我们在传输过程中对JS文件进行了RSA签名加密，流程如下：</p>
+<h4 id="u670D_u52A1_u7AEF_uFF1A"><a href="#u670D_u52A1_u7AEF_uFF1A" class="headerlink" title="服务端："></a>服务端：</h4><ol>
+<li>计算 JS 内容 MD5 值。</li>
+<li>用 RSA 私钥对 MD5 值进行加密，与JS内容一起下发给客户端。</li>
+</ol>
+<blockquote>
+<p>对md5进行RSA加密，而不是对整个js内容加密，是因为</p>
+<p>1.一般的RSA加密算法，对待加密内容有长度要求，通常不会很长；</p>
+<p>2.对较长内容进行RSA加密，较影响性能。 </p>
+<p>本实例服务器返回js代码，也可以直接下载js文件，进行校验。 </p>
+</blockquote>
+<h4 id="u5BA2_u6237_u7AEF_uFF1A"><a href="#u5BA2_u6237_u7AEF_uFF1A" class="headerlink" title="客户端："></a>客户端：</h4><ol>
+<li>拿到加密数据，用 RSA 公钥解密出 MD5 值。</li>
+<li>本地计算返回的 JS 内容 MD5 值。</li>
+<li>对比上述的两个 MD5 值，若相等则校验通过，取 JS 文件保存到本地。<br>由于 RSA 是非对称加密，在没有私钥的情况下第三方无法加密对应的 MD5 值，也就无法伪造 JS 内容，杜绝了 JS 内容在传输过程被篡改的可能。</li>
+</ol>
+<h4 id="u670D_u52A1_u7AEFphp_u4EE3_u7801"><a href="#u670D_u52A1_u7AEFphp_u4EE3_u7801" class="headerlink" title="服务端php代码"></a>服务端php代码</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">    * 加密一个字符串，返回RSA加密后的内容</span><br><span class="line">    * aString 需要加密的字符串</span><br><span class="line">    * return encrypted rsa加密后的字符串</span><br><span class="line">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">enjscode</span><span class="params">(<span class="variable">$aString</span>)</span> </span>&#123;</span><br><span class="line">       <span class="variable">$pi_key</span> = openssl_pkey_get_private(<span class="keyword">self</span>::PRIVATE_KEY);<span class="comment">//这个函数可用来判断私钥是否是可用的，可用返回资源id Resource id</span></span><br><span class="line">       openssl_private_encrypt(<span class="variable">$aString</span>, <span class="variable">$encrypted</span>, <span class="variable">$pi_key</span>);<span class="comment">//私钥加密</span></span><br><span class="line">       <span class="variable">$encrypted</span> = base64_encode(<span class="variable">$encrypted</span>);<span class="comment">//加密后的内容通常含有特殊字符，需要编码转换下，在网络间通过url传输时要注意base64编码是否是url安全的</span></span><br><span class="line">       <span class="keyword">return</span> <span class="variable">$encrypted</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//JS</span></span><br><span class="line">   <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">jscode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">//$headers = $this-&gt;verifyHeaders();</span></span><br><span class="line">       <span class="comment">//验证header</span></span><br><span class="line">       <span class="comment">//$this-&gt;verifyHeadersWithHeaders($headers);</span></span><br><span class="line"></span><br><span class="line">       <span class="variable">$data</span>[<span class="string">'con'</span>] = <span class="string">"defineClass('FindViewController',&#123;viewDidLoad: function() &#123;self.super().viewDidLoad();self.setTitle('发现哈哈');_selectedIndex = 0;self.initView();&#125;&#125;)"</span>;</span><br><span class="line">       <span class="variable">$data</span>[<span class="string">'isUpdate'</span>] = <span class="string">'true'</span>;</span><br><span class="line">      <span class="comment">//首先计算js内容的md5值，再将md5值进行RSA加密</span></span><br><span class="line">       <span class="variable">$data</span>[<span class="string">"ver"</span>] = <span class="keyword">self</span>::enjscode(md5(<span class="variable">$data</span>[<span class="string">'con'</span>]));</span><br><span class="line"></span><br><span class="line">       <span class="variable">$data1</span>[<span class="string">'con'</span>] = <span class="string">"require('UIAlertView');defineClass('CircleHotPageViewController',&#123;tableView_didSelectRowAtIndexPath:function(tableView,indexPath)&#123;tableView.deselectRowAtIndexPath_animated(indexPath, YES);var alert = UIAlertView.alloc().initWithTitle_message_delegate_cancelButtonTitle_otherButtonTitles('只是提示而已', '测试JSPath！', null, '知道了', null, null);alert.show();&#125;&#125;)"</span>;</span><br><span class="line">       <span class="variable">$data1</span>[<span class="string">'isUpdate'</span>] = <span class="string">'true'</span>;</span><br><span class="line">       <span class="variable">$data1</span>[<span class="string">"ver"</span>] = <span class="keyword">self</span>::enjscode(md5(<span class="variable">$data1</span>[<span class="string">'con'</span>]));</span><br><span class="line"></span><br><span class="line">       <span class="variable">$this</span>-&gt;json_out(<span class="string">'200'</span>,<span class="string">'0'</span>,<span class="string">''</span>,<span class="variable">$da</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="iOS_u7AEF_u4EE3_u7801"><a href="#iOS_u7AEF_u4EE3_u7801" class="headerlink" title="iOS端代码"></a>iOS端代码</h5><p>iOS端RSA原生加密解密</p>
+<ol>
+<li><strong>SecKeyEncrypt</strong> ：使用公钥对数据进行加密</li>
+<li><strong>SecKeyDecrypt</strong> ：使用私钥对数据进行解密</li>
+<li><strong>SecKeyRawVerify</strong> ：使用公钥对数字签名和数据进行验证，以确认该数据的来源合法性。<a href="http://baike.baidu.com/view/16501.htm#7" target="_blank" rel="external">什么是数字签名，可以参考百度百科这篇文章？</a></li>
+<li><strong>SecKeyRawSign</strong> ：使用私钥对数据进行摘要并生成数字签名</li>
+</ol>
+<p>在开发中，通常后端会把给前端一个 <strong>公钥</strong> 和 用 <strong>私钥加密过的数据</strong> 。在此，我们使用大牛封装好的RSA加密解密方法，下载请点击<br><a href="https://codeload.github.com/ideawu/Objective-C-RSA/zip/master" target="_blank" rel="external">RSA加密解密</a>。</p>
+<ol>
+<li>导入Security.framework</li>
+<li>把public_key.pem中的public_key取出</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#define rsa_public_key @<span class="title">"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDdg086h7CIhMPG0EdzE/RacFc3rfpBkKYSQhX2OgObuICugbolSqiaUa6CZc4Ock988ubc6MKUqiLjGfNdOJ3Iod7ryqDCmhgZZyu6DFzpoudMFQPKr3/vpGZ8Z/Vu7TGJwnuhkpEAUuSoMrYaSKj2qnGmNXQIDAQAB"</span></span></span><br></pre></td></tr></table></figure>
+<p>3.在didFinishLaunchingWithOptions方法中进行网络请求，从网络断获取内容data</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line"> *  获取内容为</span><br><span class="line"> *  con         js内容</span><br><span class="line"> *  isUpdate    是否更新（无用）</span><br><span class="line"> *  ver         验证内容，有con 计算md5，再进行rsa加密得来  -&gt;  客户端首页解密得到con的md5值，将此md5值与获取的js内容的md5值进行比较</span><br><span class="line"> *      </span><br><span class="line"> *  若值相等，则说明无篡改；否则，说明被篡改，放弃存储</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)upJSHandle:(<span class="built_in">NSDictionary</span> *)response &#123;</span><br><span class="line">   	<span class="built_in">NSMutableString</span> *jsString = [<span class="built_in">NSMutableString</span> string];</span><br><span class="line">   	<span class="keyword">for</span> (<span class="built_in">NSDictionary</span> *di <span class="keyword">in</span> (<span class="built_in">NSArray</span> *)response) &#123;</span><br><span class="line">       	<span class="built_in">NSString</span> *js = di[<span class="string">@"con"</span>];</span><br><span class="line">      </span><br><span class="line">      	<span class="comment">//计算获取到的js内容的md5值</span></span><br><span class="line">       	<span class="built_in">NSString</span> *jsMd5 = [MiscTool md5:js];</span><br><span class="line">       </span><br><span class="line">       	<span class="comment">//解密获取js内容的md5</span></span><br><span class="line">       	<span class="built_in">NSString</span> *cdMd5 = [RSA decryptString:di[<span class="string">@"ver"</span>] publicKey:rsa_public_key];</span><br><span class="line">       	<span class="built_in">NSLog</span>(<span class="string">@"cd bicode = %@"</span>,cdMd5);</span><br><span class="line">       </span><br><span class="line">       	<span class="comment">//校验</span></span><br><span class="line">       	<span class="keyword">if</span> (![jsMd5 isEqualToString:cdMd5]) &#123;<span class="comment">//经过校验，不相等，说明内容被篡改，直接返回不存储</span></span><br><span class="line">           	<span class="built_in">NSLog</span>(<span class="string">@"zz 内容被篡改!!!"</span>);</span><br><span class="line">           	<span class="keyword">return</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       </span><br><span class="line">       	[jsString appendString:js];</span><br><span class="line">       	<span class="comment">//将代码下载到本地，保存成文件Document/up.js, 各个方法之间使用 ***** 分隔符</span></span><br><span class="line">       	[jsString appendString:<span class="string">@"*****"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取保存js文件内容</span></span><br><span class="line">    <span class="built_in">NSString</span> *jsPath = [<span class="keyword">self</span> jsFilePath];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"js xx = 写入 %@"</span>,jsString);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将jsString 进行aes对称加密</span></span><br><span class="line">   	<span class="comment">//jsString = [self aes:jsString].mutableCopy;</span></span><br><span class="line">   	<span class="comment">//NSLog(@"xx 加密后 = %@",jsString);</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSData</span> *jsData = [jsString dataUsingEncoding:(<span class="built_in">NSUTF8StringEncoding</span>)];</span><br><span class="line">    <span class="comment">//写入文件</span></span><br><span class="line">    [jsData writeToFile:jsPath atomically:<span class="literal">YES</span>];</span><br><span class="line">    <span class="comment">//执行</span></span><br><span class="line">    [<span class="keyword">self</span> execUpJsWithJsArray:[<span class="keyword">self</span> readJs]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.在applicationDidBecomeActive方法，读取js文件，并执行</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="preprocessor">#pragma mark -- js 读取</span></span><br><span class="line">- (<span class="built_in">NSArray</span> *)readJs &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *file = [<span class="keyword">self</span> jsFilePath];</span><br><span class="line">    <span class="built_in">NSFileManager</span> *fileManager = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line">    <span class="keyword">if</span>(![fileManager fileExistsAtPath:file]) &#123;<span class="comment">//如果不存在</span></span><br><span class="line">        <span class="keyword">return</span> @[];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">NSString</span> *jsString = [<span class="built_in">NSString</span> stringWithContentsOfFile:file encoding:<span class="built_in">NSUTF8StringEncoding</span> error:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//取出后，将jsString 解密</span></span><br><span class="line">    <span class="comment">//jsString = [self cdAes:jsString];</span></span><br><span class="line">    <span class="comment">//NSLog(@"xx 解密后 = %@",jsString);</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *jsArray = [jsString componentsSeparatedByString:<span class="string">@"*****"</span>];</span><br><span class="line">    <span class="keyword">return</span> jsArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)execUpJsWithJsArray:(<span class="built_in">NSArray</span> *)jsArray &#123;</span><br><span class="line">    <span class="keyword">if</span> (jsArray<span class="variable">.count</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    [JPEngine startEngine];</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSString</span> *js <span class="keyword">in</span> jsArray) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([js isEqualToString:<span class="string">@""</span>] || js == <span class="literal">nil</span>) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"read js = %@"</span>,js);</span><br><span class="line">        [JPEngine evaluateScript:js];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)applicationDidBecomeActive:(<span class="built_in">UIApplication</span> *)application &#123;</span><br><span class="line">   	<span class="comment">//每次进入时执行js</span></span><br><span class="line">   	[<span class="keyword">self</span> execUpJsWithJsArray:[<span class="keyword">self</span> readJs]];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u672C_u5730_u5B58_u50A8"><a href="#u672C_u5730_u5B58_u50A8" class="headerlink" title="本地存储"></a>本地存储</h3><blockquote>
+<p>本地存储的脚本被篡改的机会小很多，只在越狱机器上有点风险，对此可以在下载完脚本保存到本地时进行对称加密，每次读取时解密。</p>
+</blockquote>
+<h5 id="aes_u52A0_u5BC6_u89E3_u5BC6"><a href="#aes_u52A0_u5BC6_u89E3_u5BC6" class="headerlink" title="aes加密解密"></a>aes加密解密</h5><pre><code class="obj-c"><span class="comment">/*
+ *  进行aes对称加密
+ */</span>
+- (<span class="built_in">NSString</span> *)aes:(<span class="built_in">NSString</span> *)aString {
+    <span class="built_in">NSString</span> *biCode = [SecurityUtil encryptAESData:aString app_key:aesKey];
+    <span class="comment">//NSLog(@"xx 加密： %@",st);</span>
+    <span class="keyword">return</span> biCode;
+}
+<span class="comment">/*
+ *  对字符串进行aes解密
+ */</span>
+- (<span class="built_in">NSString</span> *)cdAes:(<span class="built_in">NSString</span> *)aString {
+    <span class="comment">//NSData *EncryptData1 = [GTMBase64 decodeString:[SecurityUtil encryptAESData:string app_key:aesKey]]; // 解密前进行 GTMBase64 编码</span>
+    <span class="built_in">NSData</span> *EncryptData = [GTMBase64 decodeString:aString];
+    <span class="built_in">NSString</span> *unCode = [SecurityUtil decryptAESData:EncryptData app_key:aesKey];
+    <span class="comment">//NSLog(@"xx 解密：%@", string1);</span>
+    <span class="keyword">return</span> unCode;
+}
+</code></pre>
+<hr>
+<h4 id="u5F53_u7136_u4E5F_u53EF_u4EE5_u4F7F_u7528_u81EA_u5B9A_u4E49_u7684_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u4F46_u4F7F_u7528_u73B0_u6210_u7684_u7ECF_u8FC7_u9A8C_u8BC1_u5B89_u5168_u7684_u901A_u7528_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u624D_u662F_u4E1A_u754C_u7684_u4E3B_u6D41_uFF0C_u7279_u522B_u662F_u91D1_u878D_u7C7B_u4EA7_u54C1_u3002_u603B_u4E4B_uFF0C_u5B89_u5168_u624D_u662F_u738B_u9053_u3002"><a href="#u5F53_u7136_u4E5F_u53EF_u4EE5_u4F7F_u7528_u81EA_u5B9A_u4E49_u7684_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u4F46_u4F7F_u7528_u73B0_u6210_u7684_u7ECF_u8FC7_u9A8C_u8BC1_u5B89_u5168_u7684_u901A_u7528_u52A0_u5BC6_u65B9_u5F0F_uFF0C_u624D_u662F_u4E1A_u754C_u7684_u4E3B_u6D41_uFF0C_u7279_u522B_u662F_u91D1_u878D_u7C7B_u4EA7_u54C1_u3002_u603B_u4E4B_uFF0C_u5B89_u5168_u624D_u662F_u738B_u9053_u3002" class="headerlink" title="当然也可以使用自定义的加密方式，但使用现成的经过验证安全的通用加密方式，才是业界的主流，特别是金融类产品。总之，安全才是王道。"></a>当然也可以使用自定义的加密方式，但使用现成的经过验证安全的通用加密方式，才是业界的主流，特别是金融类产品。总之，安全才是王道。</h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-JSPatch-RSA-AES-PHP/">iOS JSPatch, RSA, AES, PHP</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JSPatch基本使用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

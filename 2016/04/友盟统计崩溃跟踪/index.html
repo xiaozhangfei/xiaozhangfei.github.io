@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>友盟统计崩溃跟踪 | 阳光下的程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
+  <meta name="baidu-site-verification" content="yhU5S8HXW0" />
+  <meta name="description" content="使用友盟统计经常会出现 Application received signal SIGSEGV 错误
+12345678910111213141516171819202122232425262728293031Application received signal SIGSEGV(null)(	0   CoreFoundation                      0x2f28eee3  +">
+<meta property="og:type" content="article">
+<meta property="og:title" content="友盟统计崩溃跟踪">
+<meta property="og:url" content="www.3vcolor.com/2016/04/友盟统计崩溃跟踪/index.html">
+<meta property="og:site_name" content="阳光下的程序猿">
+<meta property="og:description" content="使用友盟统计经常会出现 Application received signal SIGSEGV 错误
+12345678910111213141516171819202122232425262728293031Application received signal SIGSEGV(null)(	0   CoreFoundation                      0x2f28eee3  +">
+<meta property="og:image" content="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_18.png">
+<meta property="og:updated_time" content="2016-04-11T08:19:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="友盟统计崩溃跟踪">
+<meta name="twitter:description" content="使用友盟统计经常会出现 Application received signal SIGSEGV 错误
+12345678910111213141516171819202122232425262728293031Application received signal SIGSEGV(null)(	0   CoreFoundation                      0x2f28eee3  +">
+  
+    <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">三维色</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/iOS">iOS</a></li>
+				        
+							<li><a href="/tags/php">php</a></li>
+				        
+							<li><a href="/tags/android">android</a></li>
+				        
+							<li><a href="/tags/c">c</a></li>
+				        
+							<li><a href="/tags/bug">bug</a></li>
+				        
+							<li><a href="/tags/随想">随想</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">无心得到的一切放开也未染尘 随心欣赏的景致最吸引 谁想过 清风踏绿草未无痕 留下无心的美感 谁想过 一生像雾水逐闲云 原是无心中发生</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">三维色</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">三维色</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/iOS">iOS</a></li>
+		        
+					<li><a href="/tags/php">php</a></li>
+		        
+					<li><a href="/tags/android">android</a></li>
+		        
+					<li><a href="/tags/c">c</a></li>
+		        
+					<li><a href="/tags/bug">bug</a></li>
+		        
+					<li><a href="/tags/随想">随想</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-友盟统计崩溃跟踪" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/友盟统计崩溃跟踪/" class="article-date">
+  	<time datetime="2016-04-11T08:19:47.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      友盟统计崩溃跟踪
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/友盟统计/">友盟统计</a>
+	</div>
+
+
+
+        <div class="article-category-read" style="margin-right:30px;margin-top:10px;" align="right">
+        <span id="busuanzi_container_page_pv">
+  <font size='2'>本文总阅读量<span id="busuanzi_value_page_pv" ></span>次</font>
+</span>
+</div>
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用友盟统计经常会出现 <strong>Application received signal SIGSEGV</strong> 错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Application received signal SIGSEGV</span><br><span class="line">(null)</span><br><span class="line">(</span><br><span class="line">	<span class="number">0</span>   CoreFoundation                      <span class="number">0</span>x2f28eee3  + <span class="number">154</span></span><br><span class="line">	<span class="number">1</span>   libobjc.A.dylib                     <span class="number">0</span>x39a29ce7 objc_exception_throw + <span class="number">38</span></span><br><span class="line">	<span class="number">2</span>   CoreFoundation                      <span class="number">0</span>x2f28ee0d  + <span class="number">0</span></span><br><span class="line">	<span class="number">3</span>   myAppName                           <span class="number">0</span>x123b59 myAppName + <span class="number">1178457</span></span><br><span class="line">	<span class="number">4</span>   libsystem_platform.dylib            <span class="number">0</span>x3a04171b _sigtramp + <span class="number">34</span></span><br><span class="line">	<span class="number">5</span>   UIKit                               <span class="number">0</span>x31f59ea3  + <span class="number">62</span></span><br><span class="line">	<span class="number">6</span>   UIKit                               <span class="number">0</span>x31<span class="built_in">cd</span>71d7  + <span class="number">94</span></span><br><span class="line">	<span class="number">7</span>   UIKit                               <span class="number">0</span>x31<span class="built_in">cd</span>6edb  + <span class="number">378</span></span><br><span class="line">	<span class="number">8</span>   UIKit                               <span class="number">0</span>x31bde7d3  + <span class="number">1078</span></span><br><span class="line">	<span class="number">9</span>   UIKit                               <span class="number">0</span>x31c90c93  + <span class="number">214</span></span><br><span class="line">	<span class="number">10</span>  UIKit                               <span class="number">0</span>x31b3fde9  + <span class="number">316</span></span><br><span class="line">	<span class="number">11</span>  UIKit                               <span class="number">0</span>x31ab8b37  + <span class="number">430</span></span><br><span class="line">	<span class="number">12</span>  CoreFoundation                      <span class="number">0</span>x2f259ff9  + <span class="number">20</span></span><br><span class="line">	<span class="number">13</span>  CoreFoundation                      <span class="number">0</span>x2f257987  + <span class="number">286</span></span><br><span class="line">	<span class="number">14</span>  CoreFoundation                      <span class="number">0</span>x2f257<span class="built_in">cd</span>3  + <span class="number">738</span></span><br><span class="line">	<span class="number">15</span>  CoreFoundation                      <span class="number">0</span>x2f1c2729 CFRunLoopRunSpecific + <span class="number">524</span></span><br><span class="line">	<span class="number">16</span>  CoreFoundation                      <span class="number">0</span>x2f1c250b CFRunLoopRunInMode + <span class="number">106</span></span><br><span class="line">	<span class="number">17</span>  GraphicsServices                    <span class="number">0</span>x341316d3 GSEventRunModal + <span class="number">138</span></span><br><span class="line">	<span class="number">18</span>  UIKit                               <span class="number">0</span>x31b23871 UIApplicationMain + <span class="number">1136</span></span><br><span class="line">	<span class="number">19</span>  myAppName                           <span class="number">0</span>xb9de7 myAppName + <span class="number">744935</span></span><br><span class="line">	<span class="number">20</span>  libdyld.dylib                       <span class="number">0</span>x39f27ab7  + <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">dSYM UUID: BD160261-<span class="number">5655</span>-<span class="number">349</span>F-BA5D-<span class="number">9</span>C47FDD88226</span><br><span class="line">CPU Type: armv7</span><br><span class="line">Slide Address: <span class="number">0</span>x00004000</span><br><span class="line">Binary Image: myAppName</span><br><span class="line">Base Address: <span class="number">0</span>x0005b000</span><br></pre></td></tr></table></figure>
+<p>此类信息，无明显提示。</p>
+<p>使用以下方法，可以得出具体信息</p>
+<ol>
+<li><p>打开Archive界面，找到上传的历史版本，右键 【show in Finder】</p>
+<p> <img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/oc_18.png" alt="Archive界面"></p>
+</li>
+<li><p>找到该版本，右键【显示包内容】-&gt;【dYSMs】</p>
+<p>将myAppName.app.dSYMs复制到桌面</p>
+</li>
+<li><p>在终端中输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Desktop</span><br><span class="line"></span><br><span class="line">atos -arch armv7 -o 将myAppName <span class="number">0</span>x5c24d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>结果输出内存地址编译返回的信息</p>
+<p>-[IQKeyboardManager nextAction:] (in myAppName) (IQKeyboardManager.m:1472)</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/04/相机小窗口/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">相机小窗口</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="友盟统计崩溃跟踪" data-title="友盟统计崩溃跟踪" data-url="www.3vcolor.com/2016/04/友盟统计崩溃跟踪/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	<!-- var duoshuoQuery = {short_name:"5f115847112b15a48b4f5f4f94a1a7fa"}; -->
+    var duoshuoQuery = {short_name:"3vcolor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 三维色
+    	</div>
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+ <span id="busuanzi_container_site_uv"  align="center">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      	<div class="footer-right">
+         
+      		<a href="http://www.3vcolor.com" target="_blank">一只小小的程序猿</a>
+      	</div>
+         
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+<!--  -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

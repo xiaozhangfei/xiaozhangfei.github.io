@@ -4,19 +4,26 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/4 | 阳光下的程序猿</title>
+  <title>iOSversion | 阳光下的程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
   <meta name="baidu-site-verification" content="yhU5S8HXW0" />
-  <meta name="description" content="想成为一个小小的小小的小小的全栈工程师">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阳光下的程序猿">
-<meta property="og:url" content="www.3vcolor.com/archives/2016/04/index.html">
+  <meta name="description" content="获取iOS当前版本
+1NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];
+判断版本高低12345if ([version compare:@&quot;2.0.14&quot; options:NSNumericSearch] ==NSOrderedDescen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOSversion">
+<meta property="og:url" content="www.3vcolor.com/2016/03/iosversion/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
-<meta property="og:description" content="想成为一个小小的小小的小小的全栈工程师">
+<meta property="og:description" content="获取iOS当前版本
+1NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];
+判断版本高低12345if ([version compare:@&quot;2.0.14&quot; options:NSNumericSearch] ==NSOrderedDescen">
+<meta property="og:updated_time" content="2016-03-10T01:47:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阳光下的程序猿">
-<meta name="twitter:description" content="想成为一个小小的小小的小小的全栈工程师">
+<meta name="twitter:title" content="iOSversion">
+<meta name="twitter:description" content="获取iOS当前版本
+1NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@&quot;CFBundleShortVersionString&quot;];
+判断版本高低12345if ([version compare:@&quot;2.0.14&quot; options:NSNumericSearch] ==NSOrderedDescen">
   
     <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
   
@@ -193,92 +200,112 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-iosversion" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/友盟统计崩溃跟踪/" class="archive-article-date">
-  	<time datetime="2016-04-11T08:19:47.000Z" itemprop="datePublished">Apr 11</time>
+    <div class="article-meta">
+      <a href="/2016/03/iosversion/" class="article-date">
+  	<time datetime="2016-03-10T01:47:14.000Z" itemprop="datePublished">2016-03-10</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/友盟统计崩溃跟踪/">友盟统计崩溃跟踪</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOSversion
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
 	</div>
 
-          
+        
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/友盟统计/">友盟统计</a>
+	<a class="article-category-link" href="/categories/iOS-version/">iOS version</a>
 	</div>
 
 
-        </div>
+
+        <div class="article-category-read" style="margin-right:30px;margin-top:10px;" align="right">
+        <span id="busuanzi_container_page_pv">
+  <font size='2'>本文总阅读量<span id="busuanzi_value_page_pv" ></span>次</font>
+</span>
+</div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>获取iOS当前版本</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *version = [[[<span class="built_in">NSBundle</span> mainBundle] infoDictionary] objectForKey:<span class="string">@"CFBundleShortVersionString"</span>];</span><br></pre></td></tr></table></figure>
+<p>判断版本高低<br><figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ([version compare:<span class="string">@"2.0.14"</span> options:<span class="built_in">NSNumericSearch</span>] ==<span class="built_in">NSOrderedDescending</span> ) &#123;<span class="comment">//比较系统版本</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"当前版本较高"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>  &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"当前版本较低"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/记一次对Anyview阅读iOS版wifi传书功能的抹黑探索/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          记一次对Anyview阅读iOS版wifi传书功能的抹黑探索
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/枚举类型导致的1 duplicate symbol for architecture x86_64错误/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">枚举类型导致的1 duplicate symbol for architecture x86_64错误</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/04/相机小窗口/" class="archive-article-date">
-  	<time datetime="2016-04-08T01:58:25.000Z" itemprop="datePublished">Apr 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/04/相机小窗口/">相机小窗口</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/相机缩略图/">相机缩略图</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iosversion" data-title="iOSversion" data-url="www.3vcolor.com/2016/03/iosversion/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	<!-- var duoshuoQuery = {short_name:"5f115847112b15a48b4f5f4f94a1a7fa"}; -->
+    var duoshuoQuery = {short_name:"3vcolor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -313,8 +340,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
