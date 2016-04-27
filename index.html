@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
 					</div>
 				</section>
 				
@@ -194,6 +194,68 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-杭电acm 1002" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/杭电acm 1002/" class="article-date">
+  	<time datetime="2016-04-27T01:06:29.000Z" itemprop="datePublished">2016-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/杭电acm 1002/">杭电acm 1002</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u676D_u7535acm_1001"><a href="#u676D_u7535acm_1001" class="headerlink" title="杭电acm 1001"></a>杭电acm 1001</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include "string.h"</span></span><br><span class="line">int TotalNum = <span class="number">2000</span>;</span><br><span class="line"></span><br><span class="line">// 反转字符串</span><br><span class="line">char* turnStr(char * s, int len) &#123;</span><br><span class="line"></span><br><span class="line">    char tmp;</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; len / <span class="number">2</span>; i ++) &#123;</span><br><span class="line">        tmp = s[i];</span><br><span class="line">        s[i] = s[len - <span class="number">1</span> - i];</span><br><span class="line">        s[len - <span class="number">1</span> - i] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> s;</span><br><span class="line">&#125;</span><br><span class="line">// 计算大整数</span><br><span class="line">void aAddb(int n)</span><br><span class="line">&#123;</span><br><span class="line">    char a[TotalNum], b[TotalNum];</span><br><span class="line">    char sum[TotalNum];</span><br><span class="line">    scanf(<span class="string">"%s%s"</span>, a, b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Case %d:\n"</span>,n + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s + %s = "</span>, a, b);</span><br><span class="line">    char *s = turnStr(a, (int)strlen(a));</span><br><span class="line">    char *t = turnStr(b, (int)strlen(b));</span><br><span class="line"></span><br><span class="line">    int k = <span class="number">0</span>, c = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    memset(sum, <span class="number">0</span>, TotalNum);</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; strlen(s) &amp;&amp; i &lt; strlen(t) ; i ++) &#123;</span><br><span class="line">        c = s[i] + t[i] - <span class="number">2</span> * <span class="string">'0'</span> + k;</span><br><span class="line">        sum[i] = c % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">        k = c / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (i == strlen(s) &amp;&amp; i == strlen(t)) &#123; //同等长度</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == strlen(s)) &#123; // t较长</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; strlen(t); i ++) &#123;</span><br><span class="line">            c = t[i] - <span class="string">'0'</span> + k;</span><br><span class="line">            sum[i] = c % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">            k = c / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i == strlen(t)) &#123; // s较长</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; strlen(s); i ++) &#123;</span><br><span class="line">            c = s[i] - <span class="string">'0'</span> + k;</span><br><span class="line">            sum[i] = c % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">            k = c / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (k != <span class="number">0</span>) &#123;</span><br><span class="line">        sum[i] = k % <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">if</span> (k / <span class="number">10</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sum[i + <span class="number">1</span>] = k / <span class="number">10</span> + <span class="string">'0'</span>;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, turnStr(sum, (int)strlen(sum)));</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line"></span><br><span class="line">    int n = <span class="number">0</span>;</span><br><span class="line">    //<span class="built_in">printf</span>(<span class="string">"total case:"</span>);</span><br><span class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">        aAddb(i);</span><br><span class="line">        <span class="keyword">if</span> (i != n - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1002" target="_blank" rel="external">杭电acm 1002</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/c-杭电1002/">c 杭电1002</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-友盟统计崩溃跟踪" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -973,75 +1035,6 @@
       
 	<div class="article-category tagcloud">
 	<a class="article-category-link" href="/categories/iOS-小点/">iOS 小点</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-UIWebView与js交互(1)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/UIWebView与js交互(1)/" class="article-date">
-  	<time datetime="2016-02-16T08:39:26.000Z" itemprop="datePublished">2016-02-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/UIWebView与js交互(1)/">UIWebView与js交互(1)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在WebView与js交互中，会出现点击html按钮跳转进入原生VC的情况。</p>
-</blockquote>
-<h5 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h5><ol>
-<li><p><a href="http://mozhenhau.com/2016/02/07/D3Generator实现万能跳转界面，UIWebview与js随意交互/?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="external">UIWebView 与 js 交互</a></p>
-</li>
-<li><p><a href="https://github.com/mozhenhau/D3Generator" target="_blank" rel="external">D3Generator Demo 下载</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/UIWebView-js-页面跳转/">UIWebView js 页面跳转</a>
 	</div>
 
 
