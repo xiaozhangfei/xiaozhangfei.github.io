@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>runtime | 阳光下的程序猿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
+  <meta name="baidu-site-verification" content="yhU5S8HXW0" />
+  <meta name="description" content="转载
+来源：IOS高级开发～Runtime（一）
+来源：IOS高级开发～Runtime（二）
+来源：IOS高级开发～Runtime（三）
+来源：IOS高级开发～Runtime（四）
+
+引入头文件 #include
+
+对象拷贝id object_copy(id obj, size_t size)
+
+1object_copy(obj,sizeof(obj));
+
+对象释放id object_dispo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="runtime">
+<meta property="og:url" content="www.3vcolor.com/2016/07/runtime/index.html">
+<meta property="og:site_name" content="阳光下的程序猿">
+<meta property="og:description" content="转载
+来源：IOS高级开发～Runtime（一）
+来源：IOS高级开发～Runtime（二）
+来源：IOS高级开发～Runtime（三）
+来源：IOS高级开发～Runtime（四）
+
+引入头文件 #include
+
+对象拷贝id object_copy(id obj, size_t size)
+
+1object_copy(obj,sizeof(obj));
+
+对象释放id object_dispo">
+<meta property="og:updated_time" content="2016-07-26T08:20:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="runtime">
+<meta name="twitter:description" content="转载
+来源：IOS高级开发～Runtime（一）
+来源：IOS高级开发～Runtime（二）
+来源：IOS高级开发～Runtime（三）
+来源：IOS高级开发～Runtime（四）
+
+引入头文件 #include
+
+对象拷贝id object_copy(id obj, size_t size)
+
+1object_copy(obj,sizeof(obj));
+
+对象释放id object_dispo">
+  
+    <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">三维色</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/iOS">iOS</a></li>
+				        
+							<li><a href="/tags/php">php</a></li>
+				        
+							<li><a href="/tags/android">android</a></li>
+				        
+							<li><a href="/tags/c">c</a></li>
+				        
+							<li><a href="/tags/bug">bug</a></li>
+				        
+							<li><a href="/tags/随想">随想</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">无心得到的一切放开也未染尘 随心欣赏的景致最吸引 谁想过 清风踏绿草未无痕 留下无心的美感 谁想过 一生像雾水逐闲云 原是无心中发生</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">三维色</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="http://7xo6u7.com1.z0.glb.clouddn.com/avater.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">三维色</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">想改变世界的小小小小小葫芦</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/iOS">iOS</a></li>
+		        
+					<li><a href="/tags/php">php</a></li>
+		        
+					<li><a href="/tags/android">android</a></li>
+		        
+					<li><a href="/tags/c">c</a></li>
+		        
+					<li><a href="/tags/bug">bug</a></li>
+		        
+					<li><a href="/tags/随想">随想</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xiaozhangfei" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/muatong" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-runtime" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/runtime/" class="article-date">
+  	<time datetime="2016-07-26T08:20:07.000Z" itemprop="datePublished">2016-07-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      runtime
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-runtime/">iOS runtime</a>
+	</div>
+
+
+
+        <div class="article-category-read" style="margin-right:30px;margin-top:10px;" align="right">
+        <span id="busuanzi_container_page_pv">
+  <font size='2'>本文总阅读量<span id="busuanzi_value_page_pv" ></span>次</font>
+</span>
+</div>
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="u8F6C_u8F7D"><a href="#u8F6C_u8F7D" class="headerlink" title="转载"></a>转载</h3><ul>
+<li><a href="http://blog.csdn.net/lizhongfu2013/article/details/9496705" target="_blank" rel="external">来源：IOS高级开发～Runtime（一）</a></li>
+<li><a href="http://blog.csdn.net/zfpp25_/article/details/9497187" target="_blank" rel="external">来源：IOS高级开发～Runtime（二）</a></li>
+<li><a href="http://blog.csdn.net/zfpp25_/article/details/9497721" target="_blank" rel="external">来源：IOS高级开发～Runtime（三）</a></li>
+<li><a href="http://blog.csdn.net/zfpp25_/article/details/9498233" target="_blank" rel="external">来源：IOS高级开发～Runtime（四）</a></li>
+</ul>
+<p>引入头文件 #include<objc runtime.h=""></objc></p>
+<ol>
+<li>对象拷贝<br>id object_copy(id obj, size_t size)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object_copy(obj,<span class="keyword">sizeof</span>(obj));</span><br></pre></td></tr></table></figure>
+<ol>
+<li>对象释放<br>id object_dispose(id obj)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">object_dispose(obj);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>更改对象的类／获取对象的类<br>Class object_setClass(id obj, Class cls)<br>Class object_getClass(id obj)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//修改对象</span></span><br><span class="line">object_setClass(obj, obj1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取对象</span></span><br><span class="line">Class obj2 = object_getClass(obj);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取对象的类名<br>constchar *object_getClassName(id obj)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSString</span> *className = [<span class="built_in">NSStringstringWithCString</span>:object_getClassName(obj) encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br></pre></td></tr></table></figure>
+<ol>
+<li>给一个类添加方法<br>BOOL class_addMethod(Class cls,SEL name,IMP imp,    const char *types)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">一个参数</span><br><span class="line">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cfunction(<span class="keyword">id</span> <span class="keyword">self</span>, SEL _cmd, <span class="built_in">NSString</span> *str) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, str);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">10</span>;<span class="comment">//随便返回个值</span></span><br><span class="line">&#125;</span><br><span class="line">    - (<span class="keyword">void</span>)oneParam &#123;</span><br><span class="line">    TestClass *instance = [[TestClass alloc] init];</span><br><span class="line">    <span class="comment">//方法添加</span></span><br><span class="line">    class_addMethod([TestClass class],<span class="keyword">@selector</span>(ocMethod:), (IMP)cfunction,<span class="string">"i@:@"</span>);</span><br><span class="line">    <span class="keyword">if</span> ([instance respondsToSelector:<span class="keyword">@selector</span>(ocMethod:)]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Yes, instance respondsToSelector:@selector(ocMethod:)"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Sorry"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> a = (<span class="keyword">int</span>)[instance ocMethod:<span class="string">@"我是一个OC的method，C函数实现"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"a:%d"</span>, a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">/*</span><br><span class="line">  *两个参数</span><br><span class="line">  */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> cfunctionA(<span class="keyword">id</span> <span class="keyword">self</span>, SEL _cmd, <span class="built_in">NSString</span> *str, <span class="built_in">NSString</span> *str1) &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@-%@"</span>, str, str1);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">20</span>;<span class="comment">//随便返回个值</span></span><br><span class="line">&#125;</span><br><span class="line">    - (<span class="keyword">void</span>)twoParam &#123;</span><br><span class="line">    TestClass *instance = [[TestClass alloc] init];</span><br><span class="line">    class_addMethod([TestClass class],<span class="keyword">@selector</span>(ocMethodA::), (IMP)cfunctionA, <span class="string">"i@:@@"</span>);</span><br><span class="line">    <span class="keyword">if</span> ([instance respondsToSelector:<span class="keyword">@selector</span>(ocMethodA::)]) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Yes, instance respondsToSelector:@selector(ocMethodA::)"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Sorry"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> a = (<span class="keyword">int</span>)[instance ocMethodA:<span class="string">@"我是一个OC的method，C函数实现"</span> :<span class="string">@"-----我是第二个参数"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"a:%d"</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Obj-C的方法（method）就是一个至少需要两个参数（self，_cmd）的C函数<br>  IMP有点类似函数指针，指向具体的Method实现</p>
+<p>向一个类动态添加方法<br>    BOOL class_addMethod(Class cls, SEL name, IMP imp, const char *types)<br>    参数说明：<br>    cls：被添加方法的类<br>    name：可以理解为方法名<br>    imp：实现这个方法的函数<br>    types：一个定义该函数返回值类型和参数类型的字符串</p>
+<p>class_addMethod([TestClass class], @selector(ocMethod:), (IMP)testFunc, “i@:@”);<br>    其中types参数为”i@:@“，按顺序分别表示：<br>    i：返回值类型int，若是v则表示void<br>    @：参数id(self)<br>    :：SEL(_cmd)<br>    @：id(str)</p>
+</blockquote>
+<ol>
+<li>获取一个类的所有方法<br> u_int count;<br> Method* methods= class_copyMethodList([UIViewController class], &amp;count);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) getClassAllMethod</span><br><span class="line">&#123;</span><br><span class="line">    u_int count;</span><br><span class="line">    Method* methods= class_copyMethodList([<span class="built_in">UIViewController</span> class], &amp;count);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        SEL name = method_getName(methods[i]);</span><br><span class="line">        <span class="built_in">NSString</span> *strName = [<span class="built_in">NSString</span> stringWithCString:sel_getName(name) encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,strName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取一个类的所有属性<br> objc_property_t *properties = class_copyPropertyList([UIViewControllerclass], &amp;count);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) propertyNameList</span><br><span class="line">&#123;</span><br><span class="line">    u_int count;</span><br><span class="line">    objc_property_t *properties=class_copyPropertyList([<span class="built_in">UIViewController</span> class], &amp;count);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count ; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span>* propertyName =property_getName(properties[i]);</span><br><span class="line">        <span class="built_in">NSString</span> *strName = [<span class="built_in">NSString</span> stringWithCString:propertyName encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,strName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>获取／设置类的属性变量<br> object_getInstanceVariable(self,”myFloat”, (void<em>)&amp;myFloatValue);<br> object_setInstanceVariable(self,”myFloat”, </em>(float**)addr);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取全局变量的值   （myFloat 为类的一个属性变量）</span></span><br><span class="line">- (<span class="keyword">void</span>) getInstanceVar &#123;</span><br><span class="line">    <span class="keyword">float</span> myFloatValue;</span><br><span class="line">    object_getInstanceVariable(<span class="keyword">self</span>,<span class="string">"myFloat"</span>, (<span class="keyword">void</span>*)&amp;myFloatValue);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%f"</span>, myFloatValue);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//设置全局变量的值</span></span><br><span class="line">- (<span class="keyword">void</span>) setInstanceVar &#123;</span><br><span class="line">    <span class="keyword">float</span> newValue = <span class="number">10.00</span>f;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> addr = (unsignedint)&amp;newValue;</span><br><span class="line">    object_setInstanceVariable(<span class="keyword">self</span>,<span class="string">"myFloat"</span>, *(<span class="keyword">float</span>**)addr);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%f"</span>, myFloat);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>判断类的某个属性的类型<br> Ivar var = class_getInstanceVariable(object_getClass(obj),”varTest1”);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) getVarType &#123;</span><br><span class="line">    ClassCustomClass *obj = [ClassCustomClass new];</span><br><span class="line">    Ivar var = class_getInstanceVariable(object_getClass(obj),<span class="string">"varTest1"</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* typeEncoding =ivar_getTypeEncoding(var);</span><br><span class="line">    <span class="built_in">NSString</span> *stringType =  [<span class="built_in">NSString</span> stringWithCString:typeEncoding encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([stringType hasPrefix:<span class="string">@"@"</span>]) &#123;</span><br><span class="line">        <span class="comment">// handle class case</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"handle class case"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([stringTypehasPrefix:<span class="string">@"i"</span>]) &#123;</span><br><span class="line">        <span class="comment">// handle int case</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"handle int case"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([stringTypehasPrefix:<span class="string">@"f"</span>]) &#123;</span><br><span class="line">        <span class="comment">// handle float case</span></span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"handle float case"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>通过属性的值来获取其属性的名字（反射机制）<br> Ivar * ivars = class_copyIvarList([ClassCustomClassclass], &amp;numIvars);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSString</span> *)nameOfInstance:(<span class="keyword">id</span>)instance</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> numIvars =<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *key = <span class="literal">nil</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Describes the instance variables declared by a class. </span></span><br><span class="line">    Ivar * ivars = class_copyIvarList([ClassCustomClass class], &amp;numIvars);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numIvars; i++) &#123;</span><br><span class="line">        Ivar thisIvar = ivars[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *type = ivar_getTypeEncoding(thisIvar);</span><br><span class="line">        <span class="built_in">NSString</span> *stringType =  [<span class="built_in">NSString</span> stringWithCString:type encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//不是class就跳过</span></span><br><span class="line">        <span class="keyword">if</span> (![stringType hasPrefix:<span class="string">@"@"</span>]) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Reads the value of an instance variable in an object.</span></span><br><span class="line">        <span class="comment">//object_getIvar这个方法中，当遇到非objective-c对象时，并直接crash</span></span><br><span class="line">        <span class="keyword">if</span> ((object_getIvar(allobj, thisIvar) == instance)) &#123;</span><br><span class="line">            <span class="comment">// Returns the name of an instance variable.</span></span><br><span class="line">            key = [<span class="built_in">NSString</span> stringWithUTF8String:ivar_getName(thisIvar)];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    free(ivars);<span class="comment">//需要释放</span></span><br><span class="line">    <span class="keyword">return</span> key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>系统类的方法实现部分替换<br>method_exchangeImplementations(m1, m2);</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Method m1 = class_getInstanceMethod([<span class="built_in">NSString</span> class],<span class="keyword">@selector</span>(lowercaseString));</span><br><span class="line">Method m2 = class_getInstanceMethod([<span class="built_in">NSString</span> class],<span class="keyword">@selector</span>(uppercaseString));</span><br><span class="line">method_exchangeImplementations(m1, m2);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [<span class="string">@"sssAAAAss"</span>lowercaseString]);</span><br><span class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, [<span class="string">@"sssAAAAss"</span>uppercaseString]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line">*   2013-07-26 16:33:22.776 HighOC[7104:c07] SSSAAAASS</span><br><span class="line">*   2013-07-26 16:33:22.778 HighOC[7104:c07] sssaaaass</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>自定义类的方法实现部分替换<br>method_setImplementation(m1, originalImp)</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>) justLog1 &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"justLog1"</span>);</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>) justLog2 &#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"justLog2"</span>);</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>) methodSetImplementation &#123;</span><br><span class="line">    Method method = class_getInstanceMethod([ClassMethodViewCtr class],<span class="keyword">@selector</span>(justLog1));</span><br><span class="line">    IMP originalImp = method_getImplementation(method);</span><br><span class="line">    Method m1 = class_getInstanceMethod([ClassMethodViewCtr class],<span class="keyword">@selector</span>(justLog2));</span><br><span class="line">    method_setImplementation(m1, originalImp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>覆盖系统方法</li>
+</ol>
+<ol>
+<li>自动序列化</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">"NSObject+AutoEncodeDecode.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span> (<span class="title">AutoEncodeDecode</span>)</span></span><br><span class="line">- (<span class="keyword">void</span>)encodeWithCoder:(<span class="built_in">NSCoder</span> *)encoder &#123;</span><br><span class="line">    Class cls = [<span class="keyword">self</span> class];</span><br><span class="line">    <span class="keyword">while</span> (cls != [<span class="built_in">NSObject</span> class]) &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> numberOfIvars =<span class="number">0</span>;</span><br><span class="line">        Ivar *ivars = class_copyIvarList(cls, &amp;numberOfIvars);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">const</span> Ivar* p = ivars; p &lt; ivars + numberOfIvars; p++)&#123;</span><br><span class="line">            Ivar <span class="keyword">const</span> ivar = *p;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span> *type = ivar_getTypeEncoding(ivar);</span><br><span class="line">            <span class="built_in">NSString</span> *key = [<span class="built_in">NSString</span> stringWithUTF8String:ivar_getName(ivar)];</span><br><span class="line">            <span class="keyword">id</span> value = [<span class="keyword">self</span> valueForKey:key];</span><br><span class="line">            <span class="keyword">if</span> (value) &#123;</span><br><span class="line">                <span class="keyword">switch</span> (type[<span class="number">0</span>]) &#123;</span><br><span class="line">                    <span class="keyword">case</span> _C_STRUCT_B: &#123;</span><br><span class="line">                        <span class="built_in">NSUInteger</span> ivarSize =<span class="number">0</span>;</span><br><span class="line">                        <span class="built_in">NSUInteger</span> ivarAlignment =<span class="number">0</span>;</span><br><span class="line">                        <span class="built_in">NSGetSizeAndAlignment</span>(type, &amp;ivarSize, &amp;ivarAlignment);</span><br><span class="line">                        <span class="built_in">NSData</span> *data = [<span class="built_in">NSDatadataWithBytes</span>:(constchar *)<span class="keyword">self</span> + ivar_getOffset(ivar)</span><br><span class="line">                                                      length:ivarSize];</span><br><span class="line">                        [encoder encodeObject:data forKey:key];</span><br><span class="line">                    &#125;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">default</span>:</span><br><span class="line">                        [encoder encodeObject:value</span><br><span class="line">                                       forKey:key];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        free(ivars);</span><br><span class="line">        cls = class_getSuperclass(cls);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">id</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)decoder &#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="keyword">self</span> init];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        Class cls = [<span class="keyword">self</span> class];</span><br><span class="line">        <span class="keyword">while</span> (cls != [<span class="built_in">NSObject</span> class]) &#123;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">int</span> numberOfIvars =<span class="number">0</span>;</span><br><span class="line">            Ivar* ivars = class_copyIvarList(cls, &amp;numberOfIvars);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(constIvar *p = ivars; p &lt; ivars + numberOfIvars; p++)&#123;</span><br><span class="line">                Ivar <span class="keyword">const</span> ivar = *p;</span><br><span class="line">                <span class="keyword">const</span> <span class="keyword">char</span> *type = ivar_getTypeEncoding(ivar);</span><br><span class="line">                <span class="built_in">NSString</span> *key = [<span class="built_in">NSString</span> stringWithUTF8String:ivar_getName(ivar)];</span><br><span class="line">                <span class="keyword">id</span> value = [decoder decodeObjectForKey:key];</span><br><span class="line">                <span class="keyword">if</span> (value) &#123;</span><br><span class="line">                    <span class="keyword">switch</span> (type[<span class="number">0</span>]) &#123;</span><br><span class="line">                        <span class="keyword">case</span> _C_STRUCT_B: &#123;</span><br><span class="line">                            <span class="built_in">NSUInteger</span> ivarSize =<span class="number">0</span>;</span><br><span class="line">                            <span class="built_in">NSUInteger</span> ivarAlignment =<span class="number">0</span>;</span><br><span class="line">                            <span class="built_in">NSGetSizeAndAlignment</span>(type, &amp;ivarSize, &amp;ivarAlignment);</span><br><span class="line">                            <span class="built_in">NSData</span> *data = [decoder decodeObjectForKey:key];</span><br><span class="line">                            <span class="keyword">char</span> *sourceIvarLocation = (<span class="keyword">char</span>*)<span class="keyword">self</span> + ivar_getOffset(ivar);</span><br><span class="line">                            [data getBytes:sourceIvarLocation length:ivarSize];</span><br><span class="line">                        &#125;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        <span class="keyword">default</span>:</span><br><span class="line">                            [<span class="keyword">self</span> setValue:[decoder decodeObjectForKey:key]</span><br><span class="line">                                    forKey:key];</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            free(ivars);</span><br><span class="line">            cls = class_getSuperclass(cls);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>用c代替oc</li>
+</ol>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#import <span class="title">&lt;objc/runtime.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;objc/message.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#import <span class="title">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="built_in">UIApplicationMain</span> (<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[],<span class="keyword">void</span> *principalClassName,<span class="keyword">void</span> *delegateClassName);</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> Rect &#123;</span><br><span class="line">  <span class="keyword">float</span> x;</span><br><span class="line">  <span class="keyword">float</span> y;</span><br><span class="line">  <span class="keyword">float</span> width;</span><br><span class="line">  <span class="keyword">float</span> height;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> Rect Rect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> *navController;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> numberOfRows = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tableView_numberOfRowsInSection(<span class="keyword">void</span> *receiver,structobjc_selector *selector, <span class="keyword">void</span> *tblview,<span class="keyword">int</span> section) &#123;</span><br><span class="line">  returnnumberOfRows;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> *tableView_cellForRowAtIndexPath(<span class="keyword">void</span> *receiver,structobjc_selector *selector, <span class="keyword">void</span> *tblview,<span class="keyword">void</span> *indexPath) &#123;</span><br><span class="line">  Class TableViewCell = (Class)objc_getClass(<span class="string">"UITableViewCell"</span>);</span><br><span class="line">  <span class="keyword">void</span> *cell = class_createInstance(TableViewCell,<span class="number">0</span>);</span><br><span class="line">  objc_msgSend(cell, sel_registerName(<span class="string">"init"</span>));</span><br><span class="line">  <span class="keyword">char</span> buffer[<span class="number">7</span>];</span><br><span class="line">  <span class="keyword">int</span> row = (<span class="keyword">int</span>) objc_msgSend(indexPath, sel_registerName(<span class="string">"row"</span>));</span><br><span class="line">  sprintf (buffer, <span class="string">"Row %d"</span>, row);</span><br><span class="line">  <span class="keyword">void</span> *label =objc_msgSend(objc_getClass(<span class="string">"NSString"</span>),sel_registerName(<span class="string">"stringWithUTF8String:"</span>),buffer);</span><br><span class="line">  objc_msgSend(cell, sel_registerName(<span class="string">"setText:"</span>),label);</span><br><span class="line">  <span class="keyword">return</span> cell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> tableView_didSelectRowAtIndexPath(<span class="keyword">void</span> *receiver,structobjc_selector *selector, <span class="keyword">void</span> *tblview,<span class="keyword">void</span> *indexPath) &#123;</span><br><span class="line">  Class ViewController = (Class)objc_getClass(<span class="string">"UIViewController"</span>);</span><br><span class="line">  <span class="keyword">void</span> * vc = class_createInstance(ViewController,<span class="number">0</span>);</span><br><span class="line">  objc_msgSend(vc, sel_registerName(<span class="string">"init"</span>));</span><br><span class="line">  <span class="keyword">char</span> buffer[<span class="number">8</span>];</span><br><span class="line">  <span class="keyword">int</span> row = (<span class="keyword">int</span>) objc_msgSend(indexPath, sel_registerName(<span class="string">"row"</span>));</span><br><span class="line">  sprintf (buffer, <span class="string">"Item %d"</span>, row);</span><br><span class="line">  <span class="keyword">void</span> *label =objc_msgSend(objc_getClass(<span class="string">"NSString"</span>),sel_registerName(<span class="string">"stringWithUTF8String:"</span>),buffer);</span><br><span class="line">  objc_msgSend(vc, sel_registerName(<span class="string">"setTitle:"</span>),label);</span><br><span class="line">  objc_msgSend(navController,sel_registerName(<span class="string">"pushViewController:animated:"</span>),vc,<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> *createDataSource() &#123;</span><br><span class="line">  Class superclass = (Class)objc_getClass(<span class="string">"NSObject"</span>);</span><br><span class="line">  Class DataSource = objc_allocateClassPair(superclass,<span class="string">"DataSource"</span>,<span class="number">0</span>);</span><br><span class="line">  class_addMethod(DataSource,sel_registerName(<span class="string">"tableView:numberOfRowsInSection:"</span>), (<span class="keyword">void</span>(*))tableView_numberOfRowsInSection,<span class="literal">nil</span>);</span><br><span class="line">  class_addMethod(DataSource,sel_registerName(<span class="string">"tableView:cellForRowAtIndexPath:"</span>), (<span class="keyword">void</span>(*))tableView_cellForRowAtIndexPath,<span class="literal">nil</span>);</span><br><span class="line">  objc_registerClassPair(DataSource);</span><br><span class="line">  returnclass_createInstance(DataSource,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> *createDelegate() &#123;</span><br><span class="line">  Class superclass = (Class)objc_getClass(<span class="string">"NSObject"</span>);</span><br><span class="line">  Class DataSource = objc_allocateClassPair(superclass,<span class="string">"Delegate"</span>,<span class="number">0</span>);</span><br><span class="line">  class_addMethod(DataSource,sel_registerName(<span class="string">"tableView:didSelectRowAtIndexPath:"</span>), (<span class="keyword">void</span>(*))tableView_didSelectRowAtIndexPath,<span class="literal">nil</span>);</span><br><span class="line">  objc_registerClassPair(DataSource);</span><br><span class="line">  returnclass_createInstance(DataSource,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> applicationdidFinishLaunching(<span class="keyword">void</span> *receiver,structobjc_selector *selector, <span class="keyword">void</span> *application) &#123;</span><br><span class="line">  Class windowClass = (Class)objc_getClass(<span class="string">"UIWindow"</span>);</span><br><span class="line">  <span class="keyword">void</span> * windowInstance = class_createInstance(windowClass, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">  objc_msgSend(windowInstance, sel_registerName(<span class="string">"initWithFrame:"</span>),(Rect)&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">320</span>,<span class="number">480</span>&#125;);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//Make Key and Visiable</span></span><br><span class="line">  objc_msgSend(windowInstance,sel_registerName(<span class="string">"makeKeyAndVisible"</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">//Create Table View</span></span><br><span class="line">  Class TableViewController = (Class)objc_getClass(<span class="string">"UITableViewController"</span>);</span><br><span class="line">  <span class="keyword">void</span> *tableViewController = class_createInstance(TableViewController, <span class="number">0</span>);</span><br><span class="line">  objc_msgSend(tableViewController, sel_registerName(<span class="string">"init"</span>));</span><br><span class="line">  <span class="keyword">void</span> *tableView = objc_msgSend(tableViewController,sel_registerName(<span class="string">"tableView"</span>));</span><br><span class="line">  objc_msgSend(tableView, sel_registerName(<span class="string">"setDataSource:"</span>),createDataSource());</span><br><span class="line">  objc_msgSend(tableView, sel_registerName(<span class="string">"setDelegate:"</span>),createDelegate());</span><br><span class="line"> </span><br><span class="line">  Class NavController = (Class)objc_getClass(<span class="string">"UINavigationController"</span>);</span><br><span class="line">  navController = class_createInstance(NavController,<span class="number">0</span>);</span><br><span class="line">  objc_msgSend(navController,sel_registerName(<span class="string">"initWithRootViewController:"</span>),tableViewController);</span><br><span class="line">  <span class="keyword">void</span> *view =objc_msgSend(navController,sel_registerName(<span class="string">"view"</span>));</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//Add Table View To Window</span></span><br><span class="line">  objc_msgSend(windowInstance, sel_registerName(<span class="string">"addSubview:"</span>),view);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Create an class named "AppDelegate", and return it's name as an instance of class NSString</span></span><br><span class="line"><span class="keyword">void</span> *createAppDelegate() &#123;</span><br><span class="line">  Class mySubclass = objc_allocateClassPair((Class)objc_getClass(<span class="string">"NSObject"</span>),<span class="string">"AppDelegate"</span>,<span class="number">0</span>);</span><br><span class="line">  structobjc_selector *selName =sel_registerName(<span class="string">"application:didFinishLaunchingWithOptions:"</span>);</span><br><span class="line">  class_addMethod(mySubclass, selName, (<span class="keyword">void</span>(*))applicationdidFinishLaunching,<span class="literal">nil</span>);</span><br><span class="line">  objc_registerClassPair(mySubclass);</span><br><span class="line">  returnobjc_msgSend(objc_getClass(<span class="string">"NSString"</span>),sel_registerName(<span class="string">"stringWithUTF8String:"</span>),<span class="string">"AppDelegate"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[]) &#123;</span><br><span class="line">  <span class="keyword">return</span><span class="built_in">UIApplicationMain</span>(argc, argv,<span class="number">0</span>,createAppDelegate());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/postMan使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Postman</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="runtime" data-title="runtime" data-url="www.3vcolor.com/2016/07/runtime/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	<!-- var duoshuoQuery = {short_name:"5f115847112b15a48b4f5f4f94a1a7fa"}; -->
+    var duoshuoQuery = {short_name:"3vcolor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 三维色
+    	</div>
+
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+ <span id="busuanzi_container_site_uv"  align="center">
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+      	<div class="footer-right">
+         
+      		<a href="http://www.3vcolor.com" target="_blank">一只小小的程序猿</a>
+      	</div>
+         
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+<!--  -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

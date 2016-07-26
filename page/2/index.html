@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
+						<a href="/tags/bug/" style="font-size: 15px;">bug</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/php/" style="font-size: 15px;">php</a> <a href="/tags/随想/" style="font-size: 10px;">随想</a>
 					</div>
 				</section>
 				
@@ -194,6 +194,163 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-JSPatch基本语法(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/JSPatch基本语法(二)/" class="article-date">
+  	<time datetime="2016-03-04T09:13:41.000Z" itemprop="datePublished">2016-03-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/JSPatch基本语法(二)/">JSPatch基本语法(二)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="JSPatch_u57FA_u672C_u4F7F_u7528"><a href="#JSPatch_u57FA_u672C_u4F7F_u7528" class="headerlink" title="JSPatch基本使用"></a><a href="/2016/02/JSPatch基本使用/">JSPatch基本使用</a></h5><h5 id="JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528"><a href="#JSPatch_u5B89_u5168_u4E0ERSA_2CAES_u52A0_u5BC6_u2013iOS_2Cphp_u7AEF_u4F7F_u7528" class="headerlink" title="JSPatch安全与RSA,AES加密–iOS,php端使用"></a><a href="/2016/02/JSPatch安全与RSA,AES加密--iOS,php端使用/">JSPatch安全与RSA,AES加密–iOS,php端使用</a></h5><h4 id="u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5"><a href="#u5728_u6B64_u4EC5_u8BB0_u5F55oc_u8F6Cjs_u8BED_u6CD5" class="headerlink" title="在此仅记录oc转js语法"></a>在此仅记录oc转js语法</h4><p>目录</p>
+<ul>
+<li><a href="#t3">在refreshAction方法原有代码后添加代码</a></li>
+<li><a href="#t1">viewWillAppear中在原有代码后添加代码</a>  </li>
+<li><a href="#t2">数据请求中对数组及属性的操作</a></li>
+</ul>
+<hr>
+<p><a id="t3">在refreshAction方法原有代码后添加代码</a></p>
+<p>oc语法，需要添加调用refreshAction方法后，调用hideHub方法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)refreshAction &#123;</span><br><span class="line">    [<span class="keyword">self</span> getData];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	refreshAction:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		self.ORIGrefreshAction();</span><br><span class="line">		self.hideHud();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a id="t1">viewWillAppear中在原有代码中添加代码</a></p>
+<p>oc语法，需要添加调用refreshAction方法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">defineClass(<span class="string">'MainVC'</span>,&#123;</span><br><span class="line">	viewWillAppear:<span class="function"><span class="keyword">function</span>(<span class="params">animated &#123;</span><br><span class="line">		self.ORIGviewWillAppear(animated</span>);</span><br><span class="line">		<span class="title">self</span>.<span class="title">refreshAction</span>(<span class="params"></span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><a id="t2">数据请求中对数组及属性的操作</a></p>
+<p>oc语法</p>
+<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)infoHandle:(<span class="built_in">NSInteger</span>)code responseObject:(<span class="keyword">id</span>)responseObject</span><br><span class="line">&#123;</span><br><span class="line">	  <span class="comment">// 添加的代码，修改bug</span></span><br><span class="line">    <span class="keyword">if</span> (code == <span class="number">0</span>) &#123;</span><br><span class="line">        _model = [[URLDeal shareURLDeal] getDetailInfo:responseObject];</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span> + _model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j ++) &#123;</span><br><span class="line">                <span class="comment">//防止越界</span></span><br><span class="line">                <span class="keyword">if</span> (_model<span class="variable">.gtype</span><span class="variable">.count</span> % <span class="number">2</span> != <span class="number">0</span> &amp;&amp; j == <span class="number">1</span> &amp;&amp; i == _model<span class="variable">.gtype</span><span class="variable">.count</span> / <span class="number">2</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                GiftImageModel *gift = [_model<span class="variable">.gtype</span> objectAtIndex:i * <span class="number">2</span> + j];</span><br><span class="line">                <span class="keyword">if</span> (i * <span class="number">2</span> + j == <span class="number">0</span> || i * <span class="number">2</span> + j == <span class="number">1</span>) &#123;</span><br><span class="line">                    [gift setGhnum:<span class="string">@"0"</span>];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (k == <span class="number">0</span> &amp;&amp; [gift<span class="variable">.ghnum</span> integerValue] != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">self</span><span class="variable">.chooseType</span> = i * <span class="number">2</span> + j;</span><br><span class="line">                    [<span class="keyword">self</span> setChooseType:(i * <span class="number">2</span> + j)];</span><br><span class="line">                    k ++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js</p>
+<blockquote>
+<p>先运行方法原有的代码，再执行添加的内容</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'URLDeal'</span>);</span><br><span class="line">defineClass(<span class="string">'DetailVC'</span>, &#123; </span><br><span class="line">    SSJHInfoHandle_responseObject: <span class="function"><span class="keyword">function</span>(<span class="params">code, responseObject</span>) </span><br><span class="line">    </span>&#123;</span><br><span class="line">        self.ORIGinfoHandle_responseObject(code,responseObject);</span><br><span class="line">        <span class="keyword">if</span> (code == <span class="number">0</span>) &#123; </span><br><span class="line">            _model = URLDeal.shareURLDeal().getDetailInfo(responseObject); </span><br><span class="line">            <span class="keyword">var</span> k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _model.gtype().count() / <span class="number">2</span> + _model.gtype().count() % <span class="number">2</span>; i++) </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123; </span><br><span class="line">                    <span class="keyword">if</span> (_model.gtype().count() % <span class="number">2</span> != <span class="number">0</span> &amp;&amp; j == <span class="number">1</span> &amp;&amp; i == _model.gtype().count() / <span class="number">2</span>) </span><br><span class="line">                    &#123; </span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">var</span> gift = _model.gtype().objectAtIndex(i * <span class="number">2</span> + j);  </span><br><span class="line">                    <span class="keyword">if</span> (k == <span class="number">0</span> &amp;&amp; gift.ghnum().integerValue() != <span class="number">0</span>) </span><br><span class="line">                    &#123; </span><br><span class="line">                        self.setChooseType(i * <span class="number">2</span> + j);</span><br><span class="line">                        k++;  </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意： </p>
+<ul>
+<li>在oc转为js语法中，属性设置值时要用set语法。</li>
+<li>数组根据下标去数据，使用.objectAtIndex(2）</li>
+</ul>
+<hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-JSPatch/">iOS JSPatch</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS记录小点" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/iOS记录小点/" class="article-date">
+  	<time datetime="2016-02-24T01:23:49.000Z" itemprop="datePublished">2016-02-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/iOS记录小点/">iOS记录小点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="u53BB_u9664_TabBar__u81EA_u5E26_u7684_u9876_u90E8_u9634_u5F71"><a href="#u53BB_u9664_TabBar__u81EA_u5E26_u7684_u9876_u90E8_u9634_u5F71" class="headerlink" title="去除 TabBar 自带的顶部阴影"></a>去除 TabBar 自带的顶部阴影</h4><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[<span class="collection">[UITabBar appearance]</span> setShadowImage:<span class="collection">[<span class="collection">[UIImage alloc]</span> init]</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h4 id="u53BB_u9664_UINavigationBar__u81EA_u5E26_u7684_u5E95_u90E8_u9634_u5F71"><a href="#u53BB_u9664_UINavigationBar__u81EA_u5E26_u7684_u5E95_u90E8_u9634_u5F71" class="headerlink" title="去除 UINavigationBar 自带的底部阴影"></a>去除 UINavigationBar 自带的底部阴影</h4><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[<span class="collection">[UINavigationBar appearance]</span> setShadowImage:<span class="collection">[<span class="collection">[UIImage alloc]</span> init]</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h4 id="CocoaPods_u5B89_u88C5_u5931_u8D25"><a href="#CocoaPods_u5B89_u88C5_u5931_u8D25" class="headerlink" title="CocoaPods安装失败"></a>CocoaPods安装失败</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem <span class="operator"><span class="keyword">install</span> -<span class="keyword">n</span> /usr/<span class="keyword">local</span>/<span class="keyword">bin</span> cocoapods</span></span><br></pre></td></tr></table></figure>
+<h4 id="u89E3_u51B3_u591A_u4E2A_Xcode_u5BFC_u81F4_u7684N_u4E2A_u6A21_u62DF_u5668_u95EE_u9898"><a href="#u89E3_u51B3_u591A_u4E2A_Xcode_u5BFC_u81F4_u7684N_u4E2A_u6A21_u62DF_u5668_u95EE_u9898" class="headerlink" title="解决多个 Xcode导致的N个模拟器问题"></a>解决多个 Xcode导致的N个模拟器问题</h4><p><img src="http://7xo6u7.com1.z0.glb.clouddn.com/oc/%E8%A7%A3%E5%86%B3xcode%E9%97%AE%E9%A2%98" width="300"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-小点/">iOS 小点</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-UIWebView与js交互(1)" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -919,132 +1076,9 @@
 
 
   
-    <article id="post-iOS bug记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/iOS bug记录/" class="article-date">
-  	<time datetime="2016-01-28T01:53:01.000Z" itemprop="datePublished">2016-01-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/iOS bug记录/">iOS bug记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>iOS 7.0使用此方法闪退</p>
-<p>  友盟统计错误提示：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+[UIFont <span class="string">systemFontOfSize:</span><span class="string">weight:</span>]: unrecognized selector sent to <span class="class"><span class="keyword">class</span> 0<span class="title">x191252b50</span></span></span><br></pre></td></tr></table></figure>
-<p>  ###错误原因</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIFont systemFontOfSize:<span class="number">12.0f</span> weight:<span class="number">12.0f</span>];</span><br></pre></td></tr></table></figure>
-<p>  ###字体加粗使用</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[UIFont boldSystemFontOfSize:12.0f]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/iOS-bug/">iOS bug</a>
-	</div>
-
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/01/hello-world/" class="article-date">
-  	<time datetime="2016-01-27T12:43:47.000Z" itemprop="datePublished">2016-01-27</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>

@@ -4,23 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>相机小窗口 | 阳光下的程序猿</title>
+  <title>阳光下的程序猿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="PHP,iOS,Android,Html5,程序猿,工程师">
   <meta name="baidu-site-verification" content="yhU5S8HXW0" />
-  <meta name="description" content="在使用 like 这个app时，打开相册，会弹出照片列表，左上角第一个却是小小的相机取景框，觉得很奇妙。
-12345678910111213_picker = [[UIImagePickerController alloc] init];if([[[UIDevice      currentDevice] systemVersion] floatValue]&amp;gt;=8.0) &amp;#123;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="相机小窗口">
-<meta property="og:url" content="www.3vcolor.com/2016/04/相机小窗口/index.html">
+  <meta name="description" content="想成为一个小小的小小的小小的全栈工程师">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阳光下的程序猿">
+<meta property="og:url" content="www.3vcolor.com/page/3/index.html">
 <meta property="og:site_name" content="阳光下的程序猿">
-<meta property="og:description" content="在使用 like 这个app时，打开相册，会弹出照片列表，左上角第一个却是小小的相机取景框，觉得很奇妙。
-12345678910111213_picker = [[UIImagePickerController alloc] init];if([[[UIDevice      currentDevice] systemVersion] floatValue]&amp;gt;=8.0) &amp;#123;">
-<meta property="og:updated_time" content="2016-04-08T01:58:03.000Z">
+<meta property="og:description" content="想成为一个小小的小小的小小的全栈工程师">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相机小窗口">
-<meta name="twitter:description" content="在使用 like 这个app时，打开相册，会弹出照片列表，左上角第一个却是小小的相机取景框，觉得很奇妙。
-12345678910111213_picker = [[UIImagePickerController alloc] init];if([[[UIDevice      currentDevice] systemVersion] floatValue]&amp;gt;=8.0) &amp;#123;">
+<meta name="twitter:title" content="阳光下的程序猿">
+<meta name="twitter:description" content="想成为一个小小的小小的小小的全栈工程师">
   
     <link rel="alternative" href="/atom.xml" title="阳光下的程序猿" type="application/atom+xml">
   
@@ -197,11 +193,13 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-相机小窗口" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
+  
+    <article id="post-iOS bug记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/相机小窗口/" class="article-date">
-  	<time datetime="2016-04-08T01:58:25.000Z" itemprop="datePublished">2016-04-08</time>
+      <a href="/2016/01/iOS bug记录/" class="article-date">
+  	<time datetime="2016-01-28T01:53:01.000Z" itemprop="datePublished">2016-01-28</time>
 </a>
     </div>
   
@@ -213,64 +211,48 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      相机小窗口
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/iOS bug记录/">iOS bug记录</a>
     </h1>
   
 
       </header>
       
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
-	</div>
-
-        
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/相机缩略图/">相机缩略图</a>
-	</div>
-
-
-
-        <div class="article-category-read" style="margin-right:30px;margin-top:10px;" align="right">
-        <span id="busuanzi_container_page_pv">
-  <font size='2'>本文总阅读量<span id="busuanzi_value_page_pv" ></span>次</font>
-</span>
-</div>
-        <div class="clearfix"></div>
-      </div>
-      
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在使用 <strong>like</strong> 这个app时，打开相册，会弹出照片列表，左上角第一个却是小小的相机取景框，觉得很奇妙。</p>
-<figure class="highlight obj-c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">_picker = [[<span class="built_in">UIImagePickerController</span> alloc] init];</span><br><span class="line"><span class="keyword">if</span>([[[<span class="built_in">UIDevice</span></span><br><span class="line">      currentDevice] systemVersion] floatValue]&gt;=<span class="number">8.0</span>) &#123;</span><br><span class="line">    _picker<span class="variable">.modalPresentationStyle</span> = <span class="built_in">UIModalPresentationOverCurrentContext</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    _picker<span class="variable">.modalPresentationStyle</span> = <span class="built_in">UIModalPresentationFormSheet</span>;</span><br><span class="line">&#125;</span><br><span class="line">_picker<span class="variable">.modalTransitionStyle</span> = <span class="built_in">UIModalTransitionStyleCoverVertical</span>;</span><br><span class="line">_picker<span class="variable">.sourceType</span> = <span class="built_in">UIImagePickerControllerSourceTypeCamera</span>;</span><br><span class="line">_picker<span class="variable">.showsCameraControls</span> = <span class="literal">NO</span>;</span><br><span class="line">[_picker<span class="variable">.view</span> setFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">140</span>, <span class="number">140</span>)];</span><br><span class="line"></span><br><span class="line">[img addSubview:_picker<span class="variable">.view</span>];</span><br></pre></td></tr></table></figure>
+        <ul>
+<li><p>iOS 7.0使用此方法闪退</p>
+<p>  友盟统计错误提示：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+[UIFont <span class="string">systemFontOfSize:</span><span class="string">weight:</span>]: unrecognized selector sent to <span class="class"><span class="keyword">class</span> 0<span class="title">x191252b50</span></span></span><br></pre></td></tr></table></figure>
+<p>  ###错误原因</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[UIFont systemFontOfSize:<span class="number">12.0f</span> weight:<span class="number">12.0f</span>];</span><br></pre></td></tr></table></figure>
+<p>  ###字体加粗使用</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[UIFont boldSystemFontOfSize:12.0f]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
       
     </div>
     
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/04/友盟统计崩溃跟踪/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          友盟统计崩溃跟踪
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/03/iOS利用Jenkins搭建自动化编译打包发布/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS利用Jenkins搭建自动化编译打包发布</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/">bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+	</div>
 
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/iOS-bug/">iOS bug</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
   
 </article>
 
@@ -279,29 +261,68 @@
 
 
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="相机小窗口" data-title="相机小窗口" data-url="www.3vcolor.com/2016/04/相机小窗口/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	<!-- var duoshuoQuery = {short_name:"5f115847112b15a48b4f5f4f94a1a7fa"}; -->
-    var duoshuoQuery = {short_name:"3vcolor"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/hello-world/" class="article-date">
+  	<time datetime="2016-01-27T12:43:47.000Z" itemprop="datePublished">2016-01-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
 
 
 
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -334,8 +355,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
